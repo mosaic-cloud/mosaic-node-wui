@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+
+<html>
+	
+	<head>
+		
+		<title>mOSAIC WebUI ({+blocks__subtitle}???{/blocks__subtitle})</title>
+		
+		<link rel="stylesheet" href="http://twitter.github.com/bootstrap/1.3.0/bootstrap.min.css" />
+		
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+		<script src="http://twitter.github.com/bootstrap/1.3.0/bootstrap-twipsy.js"></script>
+		<script src="http://twitter.github.com/bootstrap/1.3.0/bootstrap-popover.js"></script>
+		
+	</head>
+	
+	<body style="padding-top: 60px;">
+		
+		<div class="topbar">
+			<div class="topbar-inner">
+				<div class="container-fluid">
+					<a class="brand" href="http://mosaic-cloud.eu/">mOSAIC</a>
+					<ul class="nav">
+						<li class="active"><a href="/">WebUI</a></li>
+						<li><a href="/console">Console</a></li>
+						<li><a href="/about">About</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		
+		<div class="container-fluid">
+			
+			<div class="sidebar">
+				<div class="well">
+					<div>
+						<h5>Processes</h5>
+						<ul>
+							<li><a href="/processes">List</a></li>
+							<li><a href="/process/create">Create</a></li>
+						</ul>
+					</div>
+					<div>
+						<h5>Cluster</h5>
+						<ul>
+							<li><a href="/cluster/nodes">Nodes</a></li>
+							<li><a href="/cluster/ring">Ring</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			
+			<div class="content">
+				{+blocks__main_panel/}
+			</div>
+			
+		</div>
+		
+	</body>
+	
+</html>

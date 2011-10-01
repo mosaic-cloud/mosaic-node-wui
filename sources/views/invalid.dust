@@ -1,0 +1,32 @@
+
+{>layout/}
+
+{<blocks__subtitle}invalid request{/blocks__subtitle}
+
+{<blocks__main_panel}
+	
+	<div>
+		
+		<h1>Invalid request...</h1>
+		
+		<div class="row">
+			<div class="span12">
+				<div class="alert-message block-message error">
+					<p><strong>Invalid request encountered</strong> (either the requested path or method is invalid).</p>
+					<hr />
+					<dl>
+						<dt>Method:</dt><dd><code>{method}</code></dd>
+						<dt>Path:</dt><dd><code>{path}</code></dd>
+						<dt>Query:</dt><dd><code>{query}</code></dd>
+					</dl>
+					<hr />
+					<div class="alert-actions">
+						<a class="btn large" href="javascript:history.back()">Cancel</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+	</div>
+	
+{/blocks__main_panel}
