@@ -1,0 +1,114 @@
+
+{>layout/}
+
+{<blocks__main_panel}
+	{#outcome}
+		
+		<div>
+			
+			<h1>Cluster Nodes</h1>
+			
+			<div>
+				<h2>Self</h2>
+				{#self}
+					<div class="row">
+						<div class="span8">
+							<div class="well">
+								<dl><dt>Identifier:</dt><dd><code>{.}</code></dd></dl>
+							</div>
+						</div>
+						<div class="span4">
+							<div class="row">
+								<div class="span4">
+									<p>
+										<a class="btn info small" href="/cluster/nodes/{.|uc}/examine?return={returnStacked|uc}">Examine</a>
+										<a class="btn danger small" href="/cluster/nodes/{.|uc}/remove?return={returnStacked|uc}">Remove</a>
+									</p>
+								</div>
+							</div>
+							<div class="row">
+								<div class="span4">
+									<p>
+										<a class="btn small" href="/cluster/nodes/{.|uc}/activate?return={returnStacked|uc}">Activate</a>
+										<a class="btn small" href="/cluster/nodes/{.|uc}/deactivate?return={returnStacked|uc}">Deactivate</a>
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				{/self}
+			</div>
+			
+			<div>
+				<h2>Peers</h2>
+				{?peers}
+					{#peers}
+						<div class="row">
+							<div class="span8">
+								<div class="well">
+									<dl><dt>Identifier:</dt><dd><code>{.}</code></dd></dl>
+								</div>
+							</div>
+							<div class="span4">
+								<div class="row">
+									<div class="span4">
+										<p>
+											<a class="btn info small" href="/cluster/nodes/{.|uc}/examine?return={returnStacked|uc}">Examine</a>
+											<a class="btn danger small" href="/cluster/nodes/{.|uc}/remove?return={returnStacked|uc}">Remove</a>
+										</p>
+									</div>
+								</div>
+								<div class="row">
+									<div class="span4">
+										<p>
+											<a class="btn small" href="/cluster/nodes/{.|uc}/activate?return={returnStacked|uc}">Activate</a>
+											<a class="btn small" href="/cluster/nodes/{.|uc}/deactivate?return={returnStacked|uc}">Deactivate</a>
+										</p>
+									</div>
+								</div>
+						</div>
+					{/peers}
+				{:else}
+					<div class="row">
+						<div class="span12">
+							<div class="alert-message">
+								<h4>No other peers discovered!</h4>
+								<ul>
+									<li>You haven't started yet any other nodes. (Thus just ignore this warning.)</li>
+									<li>You haven't waited enough for the nodes to discover one-another and reach a stable state. (Please wait a few seconds and try again.)</li>
+									<li>Multicast is disabled in your networking environment. (You'll have to manually join peers.)</li>
+									<li>There is a connectivity problem between your nodes. (You'll have to check with your network administrator.)</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				{/peers}
+			</div>
+			
+			<div>
+				<h2>Join</h2>
+				<div class="row">
+					<div class="span12">
+						<form action="/cluster/node/join" method="post">
+							<fieldset>
+								<div class="clearfix">
+									<label for="identifier">Identifier</label>
+									<div class="input">
+										<input id="identifier" class="span6" type="text" name="identifier" />
+									</div>
+								</div>
+								<div class="actions">
+									<input class="btn success large" type="submit" value="Join" />
+									<button class="btn large" type="reset">Reset</button>
+									<input type="hidden" name="return" value="{returnStacked|u}" />
+								</div>
+							</fieldset>
+						</form>
+					</div>
+				</div>
+			</div>
+		
+		</div>
+	
+	{/outcome}
+{/blocks__main_panel}

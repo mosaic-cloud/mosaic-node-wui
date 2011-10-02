@@ -1,0 +1,85 @@
+
+{>layout/}
+
+{<blocks__main_panel}
+	
+	<div>
+		
+		<h1>Process create</h1>
+		
+		<div class="row">
+			<div class="span12">
+				
+				<form action="/process/create" method="post">
+					<fieldset>
+						
+						<div class="clearfix">
+							<label for="type">Type</label>
+							<div class="input">
+								{?type}
+									<input id="type" type="text" class="span6 disable" name="type" disabled="true" value="{type}" />
+									<input type="hidden" name="type" value="{type}" />
+								{:else}
+									<select id="type" class="span6" name="type">
+										<option>--</option>
+										<option>#mosaic-components:rabbitmq</option>
+										<option>#mosaic-components:riak</option>
+										<option>#mosaic-components:httpg</option>
+										<option>#mosaic-components:java-container</option>
+										<option>#mosaic-components:java-driver</option>
+										<option>#mosaic-components:java-cloudlet-container</option>
+										<option>--</option>
+										<option>#mosaic-examples-realtime-feeds:fetcher</option>
+										<option>#mosaic-examples-realtime-feeds:indexer</option>
+										<option>#mosaic-examples-realtime-feeds:frontend</option>
+										<option>#mosaic-examples-realtime-feeds:scavanger</option>
+										<option>#mosaic-examples-realtime-feeds:leacher</option>
+										<option>#mosaic-examples-realtime-feeds:pusher</option>
+										<option>--</option>
+										<option>#mosaic-tests:dummy</option>
+										<option>#mosaic-tests:rabbitmq</option>
+										<option>#mosaic-tests:riak-kv</option>
+										<option>#mosaic-tests:httpg</option>
+										<option>#mosaic-tests:java-component</option>
+										<option>#mosaic-tests:java-container</option>
+										<option>#mosaic-tests:jetty-hello-world</option>
+									</select>
+								{/type}
+							</div>
+						</div>
+						
+						<div class="clearfix">
+							<label for="configuration">Configuration</label>
+							<div class="input">
+								{?configuration}
+									<textarea id="configuration" class="span6 disabled" name="configuration" disabled="true">{configuration}</textarea>
+									<input type="hidden" name="configuration" value="{configuration}" />
+								{:else}
+									<textarea id="configuration" class="span6" name="configuration">null</textarea>
+								{/configuration}
+							</div>
+						</div>
+						
+						<div class="clearfix">
+							<label for="count">Count</label>
+							<div class="input">
+								<input id="count" class="span1" type="text" name="count" value="{?count}{count}{:else}1{/count}" />
+							</div>
+						</div>
+						
+						<div class="actions">
+							<input class="btn success large" type="submit" value="Create" />
+							<button class="btn large" type="reset">Reset</button>
+							{?return}<a class="btn large" href="{return|u}">Return</a>{/return}
+							<input type="hidden" name="return" value="{returnStacked|uc}" />
+						</div>
+						
+					</fieldset>
+					
+				</form>
+			</div>
+		</div>
+		
+	</div>
+	
+{/blocks__main_panel}

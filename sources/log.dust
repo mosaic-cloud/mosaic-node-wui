@@ -1,17 +1,17 @@
 
 {>layout/}
 
-{<blocks__subtitle}Console{/blocks__subtitle}
-
 {<blocks__main_panel}
 	
-	<div class="hero-unit">
+	<div>
 		
-		<h1>mOSAIC Console</h1>
+		<h1>Log</h1>
 		
 		<div class="row">
 			<div class="span12">
+				
 				<p>...</p>
+				
 			</div>
 		</div>
 		

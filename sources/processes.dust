@@ -1,0 +1,51 @@
+
+{>layout/}
+
+{<blocks__main_panel}
+	{#outcome}
+		
+		<div>
+			
+			<h1>Processes
+				<span class="pull-right">
+					<a class="btn success small" href="/process/create?return={returnStacked|uc}">Create</a>
+				</span>
+			</h1>
+			
+			<div class="row">
+				<div class="span16">
+					<table class="zebra-striped">
+						<thead>
+							<tr>
+								<th>Actions</th>
+								<th>Key</th>
+								<th>Type</th>
+								<th>Configuration</th>
+							</tr>
+						</thead>
+						<tbody>
+							{#processes}
+								<tr>
+									<td>
+										<span class="pull-right">
+											<a class="btn info small" href="/processes/{key|uc}/examine?return={returnStacked|uc}">Examine</a>
+											<a class="btn danger small" href="/processes/{key|uc}/stop?return={returnStacked|uc}">Stop</a>
+											<a class="btn success small" href="/process/create?type={type|uc}&configuration={?configuration}{configuration|json|uc}{:else}null{/configuration}&return={returnStacked|uc}">Clone</a>
+											<a class="btn small" href="/processes/{key|uc}/call?type={type|uc}&return={returnStacked|uc}">Call</a>
+											<a class="btn small" href="/processes/{key|uc}/cast?type={type|uc}&return={returnStacked|uc}">Cast</a>
+										</span>
+									</td>
+									<td><code>{key}</code></td>
+									<td><code>{type}</code></td>
+									<td>{?configuration}<code>{configuration|json}</code>{/configuration}</td>
+								</tr>
+							{/processes}
+						</tbody>
+					</table>
+				</div>
+			</div>
+			
+		</div>
+		
+	{/outcome}
+{/blocks__main_panel}

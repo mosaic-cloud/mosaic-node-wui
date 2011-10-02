@@ -1,0 +1,20 @@
+
+{>layout/}
+
+{<blocks__main_panel}
+	
+	<div>
+		
+		<h1>Console</h1>
+		
+		<div class="row">
+			<div class="span12">
+				
+				<p>...</p>
+				
+			</div>
+		</div>
+		
+	</div>
+	
+{/blocks__main_panel}

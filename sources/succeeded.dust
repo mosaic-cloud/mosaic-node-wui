@@ -1,0 +1,53 @@
+
+{>layout/}
+
+{<blocks__main_panel}
+	{#outcome}
+		
+		<div>
+			{?ok}
+				
+				<h1>Succeeded!</h1>
+				
+				<div class="row">
+					<div class="span12">
+						<div class="alert-message block-message info">
+							
+							<p><strong>Succeeded executing action.</strong></p>
+							
+							{?return}
+								<div class="alert-actions">
+									<a class="btn primary large" href="{return|u}">Return</a>
+								</div>
+							{/return}
+							
+						</div>
+					</div>
+				</div>
+				
+			{:else}
+				
+				<h1>Failed...</h1>
+				
+				<div class="row">
+					<div class="span12">
+						<div class="alert-message block-message error">
+							
+							<p><strong>Failed executing action!</strong></p>
+							<pre>{error|json}</pre>
+							
+							<div class="alert-actions">
+								<a class="btn danger large" href="javascript:window.location.reload()">Retry</a>
+								<a class="btn large" href="javascript:window.history.back()">Back</a>
+								{?return}<a class="btn primary large" href="{return|u}">Return</a>{/return}
+							</div>
+							
+						</div>
+					</div>
+				</div>
+				
+			{/ok}
+		</div>
+		
+	{/outcome}
+{/blocks__main_panel}

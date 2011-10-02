@@ -1,0 +1,43 @@
+
+{>layout/}
+
+{<blocks__main_panel}
+	
+	<div>
+		
+		<h1>Process stop</h1>
+		
+		<div class="row">
+			<div class="span12">
+				
+				<form action="/process/stop" method="post">
+					<fieldset>
+						
+						<div class="clearfix">
+							<label for="key">Key</label>
+							<div class="input">
+								{?key}
+									<input id="key" type="text" class="span6 disabled" name="key" disabled="true" value="{key}" />
+									<input type="hidden" name="key" value="{key}" />
+								{:else}
+									<input id="key" type="text" class="span6" name="key" />
+								{/key}
+							</div>
+						</div>
+						
+						<div class="actions">
+							<input class="btn danger large" type="submit" value="Stop" />
+							<button class="btn large" type="reset">Reset</button>
+							{?return}<a class="btn large" href="{return|u}">Return</a>{/return}
+							<input type="hidden" name="return" value="{returnStacked|uc}" />
+						</div>
+						
+					</fieldset>
+				</form>
+				
+			</div>
+		</div>
+		
+	</div>
+	
+{/blocks__main_panel}
