@@ -39,6 +39,18 @@ function _createProcess (_type, _configuration, _count, _callback) {
 	}));
 }
 
+function _callProcess (_key, _operation, _inputs, _callback) {
+	return (_invokeGetJson ("/processes/call", {key : _key, operation : _operation, inputs : _inputs}, function (_error, _response, _outcome) {
+		_callback (_error, _outcome);
+	}));
+}
+
+function _castProcess (_key, _operation, _inputs, _callback) {
+	return (_invokeGetJson ("/processes/cast", {key : _key, operation : _operation, inputs : _inputs}, function (_error, _response, _outcome) {
+		_callback (_error, _outcome);
+	}));
+}
+
 function _stopProcess (_key, _callback) {
 	return (_invokeGetJson ("/processes/stop", {key : _key}, function (_error, _response, _outcome) {
 		_callback (_error, _outcome);
@@ -103,6 +115,8 @@ module.exports.getClusterNodes = _getClusterNodes;
 module.exports.getClusterRing = _getClusterRing;
 module.exports.getProcesses = _getProcesses;
 module.exports.createProcess = _createProcess;
+module.exports.callProcess = _callProcess;
+module.exports.castProcess = _castProcess;
 module.exports.stopProcess = _stopProcess;
 
 // ---------------------------------------

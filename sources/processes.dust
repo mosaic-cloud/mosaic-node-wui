@@ -31,8 +31,8 @@
 											<a class="btn info small" href="/processes/{key|uc}/examine?return={returnStacked|uc}">Examine</a>
 											<a class="btn danger small" href="/processes/{key|uc}/stop?return={returnStacked|uc}">Stop</a>
 											<a class="btn success small" href="/process/create?type={type|uc}&configuration={?configuration}{configuration|json|uc}{:else}null{/configuration}&return={returnStacked|uc}">Clone</a>
-											<a class="btn small" href="/processes/{key|uc}/call?type={type|uc}&return={returnStacked|uc}">Call</a>
-											<a class="btn small" href="/processes/{key|uc}/cast?type={type|uc}&return={returnStacked|uc}">Cast</a>
+											<a class="btn small" href="/processes/{key|uc}/call?templateType={type|uc}&return={returnStacked|uc}">Call</a>
+											<a class="btn small" href="/processes/{key|uc}/cast?templateType={type|uc}&return={returnStacked|uc}">Cast</a>
 										</span>
 									</td>
 									<td><code>{key}</code></td>

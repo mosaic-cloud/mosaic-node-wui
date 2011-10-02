@@ -38,7 +38,7 @@
 							<label for="configuration">Configuration</label>
 							<div class="input">
 								{?configuration}
-									<textarea id="configuration" class="span6 disabled" name="configuration" disabled="true" rows="8">{configuration}</textarea>
+									<textarea id="configuration" class="span6 disabled" name="configuration" rows="8" disabled="true">{configuration}</textarea>
 									<input type="hidden" name="configuration" value="{configuration}" />
 								{:else}
 									<textarea id="configuration" class="span6" name="configuration" rows="8">{?templateConfiguration}{templateConfiguration}{:else}null{/templateConfiguration}</textarea>

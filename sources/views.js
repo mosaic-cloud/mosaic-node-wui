@@ -116,7 +116,16 @@ function _handleCallProcessPre (_request, _response) {
 }
 
 function _handleCallProcess (_request, _response) {
-	_handleInvalid (_request, _response);
+	controller.callProcess (_request.param ("key"), _request.param ("operation"), _request.param ("inputs"), function (_error, _outcome) {
+		if (_error === null)
+			_response.render ("succeeded.dust", _mixinContext (_request, false, {
+					outcome : _outcome,
+			}));
+		else
+			_response.render ("failed.dust", _mixinContext (_request, false, {
+					error : _error,
+			}));
+	});
 }
 
 function _handleCastProcessPre (_request, _response) {
@@ -126,7 +135,16 @@ function _handleCastProcessPre (_request, _response) {
 }
 
 function _handleCastProcess (_request, _response) {
-	_handleInvalid (_request, _response);
+	controller.castProcess (_request.param ("key"), _request.param ("operation"), _request.param ("inputs"), function (_error, _outcome) {
+		if (_error === null)
+			_response.render ("succeeded.dust", _mixinContext (_request, false, {
+					outcome : _outcome,
+			}));
+		else
+			_response.render ("failed.dust", _mixinContext (_request, false, {
+					error : _error,
+			}));
+	});
 }
 
 function _handleStopProcessPre (_request, _response) {

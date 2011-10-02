@@ -15,6 +15,10 @@
 							
 							<p><strong>Succeeded executing action.</strong></p>
 							
+							{?outputs}
+							<pre>{outputs|jsonp}</pre>
+							{/outputs}
+							
 							{?return}
 								<div class="alert-actions">
 									<a class="btn primary large" href="{return|u}">Return</a>

@@ -41,10 +41,10 @@
 							<label for="inputs">Inputs</label>
 							<div class="input">
 								{?inputs}
-									<textarea id="inputs" class="span6 disabled" name="inputs" disabled="true">{inputs}</textarea>
+									<textarea id="inputs" class="span6 disabled" name="inputs" rows="8" disabled="true">{inputs}</textarea>
 									<input type="hidden" name="inputs" value="{inputs}" />
 								{:else}
-									<textarea id="inputs" class="span6" name="inputs"></textarea>
+									<textarea id="inputs" class="span6" name="inputs" rows="8">null</textarea>
 								{/inputs}
 							</div>
 						</div>
