@@ -20,7 +20,7 @@
 									<input id="type" type="text" class="span6 disable" name="type" disabled="true" value="{type}" />
 									<input type="hidden" name="type" value="{type}" />
 								{:else}
-									<select id="type" class="span6" name="type" onchange="window.location.assign('/process/create?templateType='+escape(window.document.getElementById(this.id).options[window.document.getElementById(this.id).selectedIndex].text))&return={return|uc};">
+									<select id="type" class="span6" name="type" onchange="window.location.assign('/process/create?templateType='+escape(window.document.getElementById(this.id).options[window.document.getElementById(this.id).selectedIndex].text)+'&return={return|uc}');">
 										<option>[Select...]</option>
 										{#types}
 											{?selected}
