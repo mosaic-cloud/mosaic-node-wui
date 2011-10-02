@@ -44,6 +44,10 @@ express_dust.filters.json = function (_value) {
 	return (JSON.stringify (_value));
 };
 
+express_dust.filters.jsonp = function (_value) {
+	return (JSON.stringify (_value, null, 4));
+};
+
 // ---------------------------------------
 
 _main ();

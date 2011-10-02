@@ -5,7 +5,7 @@
 	{#outcome}
 		
 		<div>
-			{?ok}
+			{^error}
 				
 				<h1>Succeeded!</h1>
 				
@@ -34,7 +34,7 @@
 						<div class="alert-message block-message error">
 							
 							<p><strong>Failed executing action!</strong></p>
-							<pre>{error|json}</pre>
+							<pre>{error|jsonp}</pre>
 							
 							<div class="alert-actions">
 								<a class="btn danger large" href="javascript:window.location.reload()">Retry</a>
@@ -46,7 +46,7 @@
 					</div>
 				</div>
 				
-			{/ok}
+			{/error}
 		</div>
 		
 	{/outcome}

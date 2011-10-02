@@ -16,8 +16,8 @@
 					<dl>
 						<dt>Method:</dt><dd><code>{method}</code></dd>
 						<dt>Path:</dt><dd><code>{path}</code></dd>
-						<dt>Query:</dt><dd><pre>{query|json}</pre></dd>
-						{?body}<dt>Body:</dt><dd><pre>{body|json}</pre></dd>{/body}
+						<dt>Query:</dt><dd><pre>{query|jsonp}</pre></dd>
+						{?body}<dt>Body:</dt><dd><pre>{body|jsonp}</pre></dd>{/body}
 					</dl>
 					
 					<div class="alert-actions">

@@ -20,29 +20,15 @@
 									<input id="type" type="text" class="span6 disable" name="type" disabled="true" value="{type}" />
 									<input type="hidden" name="type" value="{type}" />
 								{:else}
-									<select id="type" class="span6" name="type">
-										<option>--</option>
-										<option>#mosaic-components:rabbitmq</option>
-										<option>#mosaic-components:riak</option>
-										<option>#mosaic-components:httpg</option>
-										<option>#mosaic-components:java-container</option>
-										<option>#mosaic-components:java-driver</option>
-										<option>#mosaic-components:java-cloudlet-container</option>
-										<option>--</option>
-										<option>#mosaic-examples-realtime-feeds:fetcher</option>
-										<option>#mosaic-examples-realtime-feeds:indexer</option>
-										<option>#mosaic-examples-realtime-feeds:frontend</option>
-										<option>#mosaic-examples-realtime-feeds:scavanger</option>
-										<option>#mosaic-examples-realtime-feeds:leacher</option>
-										<option>#mosaic-examples-realtime-feeds:pusher</option>
-										<option>--</option>
-										<option>#mosaic-tests:dummy</option>
-										<option>#mosaic-tests:rabbitmq</option>
-										<option>#mosaic-tests:riak-kv</option>
-										<option>#mosaic-tests:httpg</option>
-										<option>#mosaic-tests:java-component</option>
-										<option>#mosaic-tests:java-container</option>
-										<option>#mosaic-tests:jetty-hello-world</option>
+									<select id="type" class="span6" name="type" onchange="window.location.assign('/process/create?templateType='+escape(window.document.getElementById(this.id).options[window.document.getElementById(this.id).selectedIndex].text))&return={return|uc};">
+										<option>[Select...]</option>
+										{#types}
+											{?selected}
+												<option selected="true">{type}</option>
+											{:else}
+												<option>{type}</option>
+											{/selected}
+										{/types}
 									</select>
 								{/type}
 							</div>
@@ -52,10 +38,10 @@
 							<label for="configuration">Configuration</label>
 							<div class="input">
 								{?configuration}
-									<textarea id="configuration" class="span6 disabled" name="configuration" disabled="true">{configuration}</textarea>
+									<textarea id="configuration" class="span6 disabled" name="configuration" disabled="true" rows="8">{configuration}</textarea>
 									<input type="hidden" name="configuration" value="{configuration}" />
 								{:else}
-									<textarea id="configuration" class="span6" name="configuration">null</textarea>
+									<textarea id="configuration" class="span6" name="configuration" rows="8">{?templateConfiguration}{templateConfiguration}{:else}null{/templateConfiguration}</textarea>
 								{/configuration}
 							</div>
 						</div>

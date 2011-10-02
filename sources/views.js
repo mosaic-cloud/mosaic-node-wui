@@ -12,6 +12,7 @@ var printf = require ("printf");
 var querystring = require ("querystring");
 
 var controller = require ("./controller");
+var schemas = require ("./schemas");
 
 var configuration = require ("./configuration");
 var transcript = require ("./transcript") (module, configuration.libTranscriptLevel);
@@ -86,8 +87,12 @@ function _handleQueryProcesses (_request, _response) {
 }
 
 function _handleCreateProcessPre (_request, _response) {
+	var _templateType = _request.param ("templateType");
 	_response.render ("process_create.dust", _mixinContext (_request, false, {
 			type : _request.param ("type"), configuration : _request.param ("configuration"), count : _request.param ("count"),
+			types : _ (schemas.processTypes) .chain () .keys () .map (function (_type) { return ({type : _type, selected : (_type == _templateType)}); }) .value (),
+			templateType : _templateType,
+			templateConfiguration : JSON.stringify (schemas.processTypes[_templateType], null, 4),
 	}));
 }
 
