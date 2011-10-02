@@ -29,7 +29,7 @@
 						<li><a href="/about">About</a></li>
 					</ul>
 					<ul class="nav secondary-nav pull-right">
-						{?return}<li><a href="{return|uc}">Return</a></li>{/return}
+						{?return}<li><a href="{return|u}">Return</a></li>{/return}
 						<li><a href="javascript:window.location.reload()">Refresh</a></li>
 					</ul>
 				</div>

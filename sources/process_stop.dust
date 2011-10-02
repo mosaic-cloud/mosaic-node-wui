@@ -29,7 +29,7 @@
 							<input class="btn danger large" type="submit" value="Stop" />
 							<button class="btn large" type="reset">Reset</button>
 							{?return}<a class="btn large" href="{return|u}">Return</a>{/return}
-							<input type="hidden" name="return" value="{returnStacked|uc}" />
+							<input type="hidden" name="return" value="{returnStacked|u}" />
 						</div>
 						
 					</fieldset>
