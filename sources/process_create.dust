@@ -20,19 +20,31 @@
 									<input id="type" type="text" class="span6 disable" name="type" disabled="true" value="{type}" />
 									<input type="hidden" name="type" value="{type}" />
 								{:else}
-									<select id="type" class="span6" name="type" onchange="window.location.assign('/process/create?templateType='+escape(window.document.getElementById(this.id).options[window.document.getElementById(this.id).selectedIndex].text)+'&return={return|uc}');">
-										<option>[Select...]</option>
-										{#types}
+									{^typeInputable}
+									<select id="type" class="span6" name="type" onchange="window.location.assign('/process/create?typeTemplate='+escape(window.document.getElementById(this.id).options[window.document.getElementById(this.id).selectedIndex].text)+'&return={return|uc}');">
+									{:else}
+									<select id="type" class="span6" onchange="window.location.assign('/process/create?typeTemplate='+escape(window.document.getElementById(this.id).options[window.document.getElementById(this.id).selectedIndex].text)+'&return={return|uc}');">
+									{/typeInputable}
+										{#typeOptions}
 											{?selected}
-												<option selected="true">{type}</option>
+												<option selected="true">{name}</option>
 											{:else}
-												<option>{type}</option>
+												<option>{name}</option>
 											{/selected}
-										{/types}
+										{/typeOptions}
 									</select>
 								{/type}
 							</div>
 						</div>
+						
+						{?typeInputable}
+						<div class="clearfix">
+							<label for="typeCustom">Type (Custom)</label>
+							<div class="input">
+									<input id="typeCustom" class="span6" type="text" name="type" />
+							</div>
+						</div>
+						{/typeInputable}
 						
 						<div class="clearfix">
 							<label for="configuration">Configuration</label>
@@ -41,7 +53,7 @@
 									<textarea id="configuration" class="span6 disabled" name="configuration" rows="8" disabled="true">{configuration}</textarea>
 									<input type="hidden" name="configuration" value="{configuration}" />
 								{:else}
-									<textarea id="configuration" class="span6" name="configuration" rows="8">{?templateConfiguration}{templateConfiguration}{:else}null{/templateConfiguration}</textarea>
+									<textarea id="configuration" class="span6" name="configuration" rows="8">{?configurationTemplate}{configurationTemplate}{:else}null{/configurationTemplate}</textarea>
 								{/configuration}
 							</div>
 						</div>
@@ -65,6 +77,17 @@
 				</form>
 			</div>
 		</div>
+		
+		{?description}
+			<div class="row">
+				<div class="span12">
+					<h2>Help</h2>
+					<div class="alert-message block-message info">
+						{description|s}
+					</div>
+				</div>
+			</div>
+		{/description}
 		
 	</div>
 	

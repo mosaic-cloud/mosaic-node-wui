@@ -8,6 +8,7 @@ if (require.main === module)
 var _processTypes = {
 		"#mosaic-components:rabbitmq" : {
 			configurationTemplate : null,
+			description : "<p>Some text here...</p><p>Some other text there...</p>",
 		},
 		"#mosaic-components:riak-kv" : {
 			configurationTemplate : null,

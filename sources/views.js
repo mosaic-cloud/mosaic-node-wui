@@ -87,16 +87,30 @@ function _handleQueryProcesses (_request, _response) {
 }
 
 function _handleCreateProcessPre (_request, _response) {
-	var _templateType = _request.param ("templateType");
-	var _templateConfiguration = schemas.processTypes[_request.param ("type", _templateType)];
-	if (_templateConfiguration !== undefined)
-		_templateConfiguration = _templateConfiguration.configurationTemplate;
-	_templateConfiguration = JSON.stringify (_templateConfiguration, null, 4)
+	var _type = _request.param ("type");
+	var _typeTemplate = _request.param ("typeTemplate");
+	if (_typeTemplate === undefined)
+		_typeTemplate = "[Select...]";
+	var _schema = schemas.processTypes[_type];
+	if (_schema === undefined)
+		_schema = schemas.processTypes[_typeTemplate];
+	if (_schema !== undefined) {
+		var _configurationTemplate = _schema.configurationTemplate;
+		var _description = _schema.description;
+	} else {
+		var _configurationTemplate = null;
+		var _description = null;
+	}
+	_configurationTemplate = JSON.stringify (_configurationTemplate, null, 4);
+	var _typeOptions = _ ({"[Select...]" : null, "[Custom...]" : null}) .chain () .extend (schemas.processTypes) .keys () .map (function (_type) { return ({name : _type, selected : (_type == _typeTemplate)}); }) .value ();
+	var _typeInputable = (_typeTemplate == "[Custom...]");
 	_response.render ("process_create.dust", _mixinContext (_request, false, {
-			type : _request.param ("type"), configuration : _request.param ("configuration"), count : _request.param ("count"),
-			types : _ (schemas.processTypes) .chain () .keys () .map (function (_type) { return ({type : _type, selected : (_type == _templateType)}); }) .value (),
-			templateType : _templateType,
-			templateConfiguration : _templateConfiguration,
+			type : _type, configuration : _request.param ("configuration"), count : _request.param ("count"),
+			typeOptions : _typeOptions,
+			typeInputable : _typeInputable,
+			typeTemplate : _typeTemplate,
+			configurationTemplate : _configurationTemplate,
+			description : _description,
 	}));
 }
 
