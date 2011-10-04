@@ -8,7 +8,6 @@ if (require.main !== module)
 var _ = require ("underscore");
 var dust = require ("dust");
 var express = require ("express");
-var express_dust = require ("express-dust");
 var path = require ("path");
 
 var views = require ("./views");
@@ -18,8 +17,8 @@ var transcript = require ("./transcript") (module, configuration.mainTranscriptL
 
 // ---------------------------------------
 
-function _main () {
-	
+function _main ()
+{
 	if (process.argv.length != 2) {
 		transcript.traceError ("invalid arguments; aborting!");
 		process.exit (1);
@@ -37,18 +36,15 @@ function _main () {
 
 // ---------------------------------------
 
-express_dust.getViewPathBase = path.dirname (module.filename);
-express_dust.getViewPartialPathBase = path.dirname (module.filename);
-
-express_dust.filters.json = function (_value) {
+dust.filters.json = function (_value) {
 	return (JSON.stringify (_value));
 };
 
-express_dust.filters.jsonp = function (_value) {
+dust.filters.jsonp = function (_value) {
 	return (JSON.stringify (_value, null, 4));
 };
 
-express_dust.filters.htmlpre = function (_value) {
+dust.filters.htmlpre = function (_value) {
 	return (_value.replace (/</g, "&lt;") .replace (/>/g, "&gt;"));
 };
 

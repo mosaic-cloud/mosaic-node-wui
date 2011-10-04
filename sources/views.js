@@ -8,6 +8,8 @@ if (require.main === module)
 var _ = require ("underscore");
 var dust = require ("dust");
 var express = require ("express");
+var fs = require ("fs");
+var path = require ("path");
 var printf = require ("printf");
 var querystring = require ("querystring");
 
@@ -19,53 +21,60 @@ var transcript = require ("./transcript") (module, configuration.libTranscriptLe
 
 // ---------------------------------------
 
-function _handleFront (_request, _response) {
-	_response.render ("front.dust", _mixinContext (_request, true, {}));
+function _handleFront (_request, _response, _next)
+{
+	_renderView ("front", _request, _response, _next, _mixinContext (_request, true, {}));
 }
 
-function _handleConsole (_request, _response) {
-	_response.render ("console.dust", _mixinContext (_request, true, {}));
+function _handleConsole (_request, _response, _next)
+{
+	_renderView ("console", _request, _response, _next, _mixinContext (_request, true, {}));
 }
 
-function _handleLog (_request, _response) {
-	_response.render ("log.dust", _mixinContext (_request, true, {}));
+function _handleLog (_request, _response, _next)
+{
+	_renderView ("log", _request, _response, _next, _mixinContext (_request, true, {}));
 }
 
-function _handleAbout (_request, _response) {
-	_response.render ("about.dust", _mixinContext (_request, true, {}));
+function _handleAbout (_request, _response, _next)
+{
+	_renderView ("about", _request, _response, _next, _mixinContext (_request, true, {}));
 }
 
 // ---------------------------------------
 
-function _handleInvalid (_request, _response) {
-	_response.render ("invalid.dust", _mixinContext (_request, false, {
+function _handleInvalid (_request, _response, _next)
+{
+	_renderView ("invalid", _request, _response, _next, _mixinContext (_request, false, {
 			path : _request.url, query : _request.query, method : _request.method, body : _request.body,
 	}));
 }
 
 // ---------------------------------------
 
-function _handleQueryClusterNodes (_request, _response) {
+function _handleQueryClusterNodes (_request, _response, _next)
+{
 	controller.getClusterNodes (function (_error, _outcome) {
 		if (_error === null)
-			_response.render ("cluster_nodes.dust", _mixinContext (_request, true, {
+			_renderView ("cluster_nodes", _request, _response, _next, _mixinContext (_request, true, {
 					outcome : _outcome,
 			}));
 		else
-			_response.render ("failed.dust", _mixinContext (_request, false, {
+			_renderView ("failed", _request, _response, _next, _mixinContext (_request, false, {
 					error : _error,
 			}));
 	});
 }
 
-function _handleQueryClusterRing (_request, _response) {
+function _handleQueryClusterRing (_request, _response, _next)
+{
 	controller.getClusterRing (function (_error, _outcome) {
 		if (_error === null)
-			_response.render ("cluster_ring.dust", _mixinContext (_request, true, {
+			_renderView ("cluster_ring", _request, _response, _next, _mixinContext (_request, true, {
 					outcome : _outcome,
 			}));
 		else
-			_response.render ("failed.dust", _mixinContext (_request, false, {
+			_renderView ("failed", _request, _response, _next, _mixinContext (_request, false, {
 					error : _error,
 			}));
 	});
@@ -73,20 +82,22 @@ function _handleQueryClusterRing (_request, _response) {
 
 // ---------------------------------------
 
-function _handleQueryProcesses (_request, _response) {
+function _handleQueryProcesses (_request, _response, _next)
+{
 	controller.getProcesses (function (_error, _outcome) {
 		if (_error === null)
-			_response.render ("processes.dust", _mixinContext (_request, true, {
+			_renderView ("processes", _request, _response, _next, _mixinContext (_request, true, {
 					outcome : _outcome,
 			}));
 		else
-			_response.render ("failed.dust", _mixinContext (_request, false, {
+			_renderView ("failed", _request, _response, _next, _mixinContext (_request, false, {
 					error : _error,
 			}));
 	});
 }
 
-function _handleCreateProcessPre (_request, _response) {
+function _handleCreateProcessPre (_request, _response, _next)
+{
 	var _type = _request.param ("type");
 	var _configuration = _request.param ("configuration");
 	var _count = _request.param ("count");
@@ -112,7 +123,7 @@ function _handleCreateProcessPre (_request, _response) {
 			_ (["[Custom...]"] .concat (_ (schemas.processes) .keys () .sort ()))
 					.map (function (_type) { return ({name : _type, selected : (_type == _typeTemplate)}); });
 	var _typeInputable = (_typeTemplate == "[Custom...]");
-	_response.render ("process_create.dust", _mixinContext (_request, false, {
+	_renderView ("process_create", _request, _response, _next, _mixinContext (_request, false, {
 			type : _type, configuration : _configuration, count : _count,
 			typeOptions : _typeOptions, typeInputable : _typeInputable,
 			typeTemplate : _typeTemplate, configurationTemplate : _configurationTemplate,
@@ -120,36 +131,42 @@ function _handleCreateProcessPre (_request, _response) {
 	}));
 }
 
-function _handleCreateProcess (_request, _response) {
+function _handleCreateProcess (_request, _response, _next)
+{
 	controller.createProcess (_request.param ("type"), _request.param ("configuration"), _request.param ("count", 1), function (_error, _outcome) {
 		if (_error === null)
-			_response.render ("succeeded.dust", _mixinContext (_request, false, {
+			_renderView ("succeeded", _request, _response, _next, _mixinContext (_request, false, {
 					outcome : _outcome,
 			}));
 		else
-			_response.render ("failed.dust", _mixinContext (_request, false, {
+			_renderView ("failed", _request, _response, _next, _mixinContext (_request, false, {
 					error : _error,
 			}));
 	});
 }
 
-function _handleCallProcessPre (_request, _response) {
-	_handleCallCastProcessPre ("call", _request, _response);
+function _handleCallProcessPre (_request, _response, _next)
+{
+	_handleCallCastProcessPre ("call", _request, _response, _next);
 }
 
-function _handleCallProcess (_request, _response) {
-	_handleCallCastProcess ("call", _request, _response);
+function _handleCallProcess (_request, _response, _next)
+{
+	_handleCallCastProcess ("call", _request, _response, _next);
 }
 
-function _handleCastProcessPre (_request, _response) {
-	_handleCallCastProcessPre ("cast", _request, _response);
+function _handleCastProcessPre (_request, _response, _next)
+{
+	_handleCallCastProcessPre ("cast", _request, _response, _next);
 }
 
-function _handleCastProcess (_request, _response) {
-	_handleCallCastProcess ("cast", _request, _response);
+function _handleCastProcess (_request, _response, _next)
+{
+	_handleCallCastProcess ("cast", _request, _response, _next);
 }
 
-function _handleCallCastProcessPre (_action, _request, _response) {
+function _handleCallCastProcessPre (_action, _request, _response, _next)
+{
 	var _key = _request.param ("key");
 	var _operation = _request.param ("operation");
 	var _inputs = _request.param ("inputs");
@@ -201,7 +218,7 @@ function _handleCallCastProcessPre (_action, _request, _response) {
 	} else
 		_operationOptions = [{name : "[Custom...]", selected : true}];
 	_operationInputable = (_operationTemplate == "[Custom...]");
-	_response.render ("process_call_cast.dust", _mixinContext (_request, false, {
+	_renderView ("process_call_cast", _request, _response, _next, _mixinContext (_request, false, {
 			key : _key, operation : _operation, inputs : _inputs, type : _type,
 			typeOptions : _typeOptions, operationOptions : _operationOptions, operationInputable : _operationInputable,
 			typeTemplate : _typeTemplate, operationTemplate : _operationTemplate, inputsTemplate : _inputsTemplate,
@@ -210,14 +227,15 @@ function _handleCallCastProcessPre (_action, _request, _response) {
 	}));
 }
 
-function _handleCallCastProcess (_action, _request, _response) {
+function _handleCallCastProcess (_action, _request, _response, _next)
+{
 	var _callback = function (_error, _outcome) {
 		if (_error === null)
-			_response.render ("succeeded.dust", _mixinContext (_request, false, {
+			_renderView ("succeeded", _request, _response, _next, _mixinContext (_request, false, {
 					outcome : _outcome,
 			}));
 		else
-			_response.render ("failed.dust", _mixinContext (_request, false, {
+			_renderView ("failed", _request, _response, _next, _mixinContext (_request, false, {
 					error : _error,
 			}));
 	};
@@ -227,20 +245,22 @@ function _handleCallCastProcess (_action, _request, _response) {
 		controller.castProcess (_request.param ("key"), _request.param ("operation"), _request.param ("inputs"), _callback);
 }
 
-function _handleStopProcessPre (_request, _response) {
-	_response.render ("process_stop.dust", _mixinContext (_request, false, {
+function _handleStopProcessPre (_request, _response, _next)
+{
+	_renderView ("process_stop", _request, _response, _next, _mixinContext (_request, false, {
 			key : _request.param ("key"),
 	}));
 }
 
-function _handleStopProcess (_request, _response) {
+function _handleStopProcess (_request, _response, _next)
+{
 	controller.stopProcess (_request.param ("key"), function (_error, _outcome) {
 		if (_error === null)
-			_response.render ("succeeded.dust", _mixinContext (_request, false, {
+			_renderView ("succeeded", _request, _response, _next, _mixinContext (_request, false, {
 					outcome : _outcome,
 			}));
 		else
-			_response.render ("failed.dust", _mixinContext (_request, false, {
+			_renderView ("failed", _request, _response, _next, _mixinContext (_request, false, {
 					error : _error,
 			}));
 	});
@@ -248,7 +268,8 @@ function _handleStopProcess (_request, _response) {
 
 // ---------------------------------------
 
-function _mixinContext (_request, _pushReturn, _context) {
+function _mixinContext (_request, _pushReturn, _context)
+{
 	var _back = _request.param ("return");
 	if (_back)
 		_back = querystring.unescape (_back);
@@ -266,25 +287,40 @@ function _mixinContext (_request, _pushReturn, _context) {
 	if (_pushReturn)
 		return (_.extend (_context, {
 			"return" : _back,
-			"returnStacked" : _stacked
+			"returnStacked" : _stacked,
 		}));
 	else
 		return (_.extend (_context, {
 			"return" : _back,
-			"returnStacked" : _back
+			"returnStacked" : _back,
 		}));
 }
 
 // ---------------------------------------
 
-var _configureApplication = function  (_application) {
-	
+function _renderView (_view, _request, _response, _next, _attributes)
+{
+	var _context = dust.makeBase ({}) .push (_attributes);
+	dust.render (_view, _context, function (_error, _output) {
+		if (_error)
+			_next (_error);
+		else
+			_response.send (_output, {}, 200);
+	});
+}
+
+// ---------------------------------------
+
+function _configureApplication (_application)
+{
 	_application.use (express.bodyParser ());
+	_application.use (_application.router);
 	_application.use (function (_error, _request, _response, _next) {
-		_response.render ("failed.dust", {
+		_renderView ("failed", _request, _response, _next, {
 				error : {reason : "unexpected-internal-error", message : _error.toString (), messageExtra : _error.stack.toString ()},
 		});
 	});
+	_application.use (express.errorHandler ({showStack: true, dumpExceptions: false}));
 	
 	_application.get ("/", _handleFront);
 	_application.get ("/console", _handleConsole);
@@ -315,7 +351,28 @@ var _configureApplication = function  (_application) {
 	_application.put ("*", _handleInvalid);
 	_application.post ("*", _handleInvalid);
 	_application.delete ("*", _handleInvalid);
-};
+	
+	dust.onLoad = function (_view, _callback) {
+		fs.readFile (path.join (path.dirname (module.filename), _view + ".dust"), "utf8", function (_error, _output) {
+			if (_error)
+				_callback (_error);
+			try {
+				_callback (undefined, _output);
+			} catch (_error) {
+				_callback (_error);
+			}
+		});
+	};
+	dust.register = function (_view, _renderer) {
+		dust.cache[_view] = _renderer;
+		process.nextTick (function () {
+			delete dust.cache[_view];
+		});
+	};
+	dust.optimizers.format = function (_context, _node) {
+		return _node;
+	};
+}
 
 // ---------------------------------------
 
