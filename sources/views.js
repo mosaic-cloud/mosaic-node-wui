@@ -88,28 +88,34 @@ function _handleQueryProcesses (_request, _response) {
 
 function _handleCreateProcessPre (_request, _response) {
 	var _type = _request.param ("type");
+	var _configuration = _request.param ("configuration");
+	var _count = _request.param ("count");
 	var _typeTemplate = _request.param ("typeTemplate");
+	var _configurationTemplate = _request.param ("configurationTemplate");
+	var _description = undefined;
+	if (_type !== undefined)
+		_typeTemplate = _type;
+	if (_configuration !== undefined)
+		_configurationTemplate = _configuration;
 	if (_typeTemplate === undefined)
-		_typeTemplate = "[Select...]";
-	var _schema = schemas.processTypes[_type];
-	if (_schema === undefined)
-		_schema = schemas.processTypes[_typeTemplate];
-	if (_schema !== undefined) {
-		var _configurationTemplate = _schema.configurationTemplate;
-		var _description = _schema.description;
+		_typeTemplate = "[Custom...]";
+	var _processSchema = schemas.processes[_typeTemplate];
+	if (_processSchema !== undefined) {
+		if (_configurationTemplate === undefined)
+			_configurationTemplate = JSON.stringify (_processSchema.configurationTemplate, null, 4);
+		_description = _processSchema.description;
 	} else {
-		var _configurationTemplate = null;
-		var _description = null;
+		if (_configurationTemplate === undefined)
+			_configurationTemplate = JSON.stringify (null, null, 4);
 	}
-	_configurationTemplate = JSON.stringify (_configurationTemplate, null, 4);
-	var _typeOptions = _ ({"[Select...]" : null, "[Custom...]" : null}) .chain () .extend (schemas.processTypes) .keys () .map (function (_type) { return ({name : _type, selected : (_type == _typeTemplate)}); }) .value ();
+	var _typeOptions =
+			_ (["[Custom...]"] .concat (_ (schemas.processes) .keys () .sort ()))
+					.map (function (_type) { return ({name : _type, selected : (_type == _typeTemplate)}); });
 	var _typeInputable = (_typeTemplate == "[Custom...]");
 	_response.render ("process_create.dust", _mixinContext (_request, false, {
-			type : _type, configuration : _request.param ("configuration"), count : _request.param ("count"),
-			typeOptions : _typeOptions,
-			typeInputable : _typeInputable,
-			typeTemplate : _typeTemplate,
-			configurationTemplate : _configurationTemplate,
+			type : _type, configuration : _configuration, count : _count,
+			typeOptions : _typeOptions, typeInputable : _typeInputable,
+			typeTemplate : _typeTemplate, configurationTemplate : _configurationTemplate,
 			description : _description,
 	}));
 }
@@ -128,32 +134,84 @@ function _handleCreateProcess (_request, _response) {
 }
 
 function _handleCallProcessPre (_request, _response) {
-	_response.render ("process_call_cast.dust", _mixinContext (_request, false, {
-			call : true, key : _request.param ("key"), operation : _request.param ("operation"), inputs : _request.param ("inputs"),
-	}));
+	_handleCallCastProcessPre ("call", _request, _response);
 }
 
 function _handleCallProcess (_request, _response) {
-	controller.callProcess (_request.param ("key"), _request.param ("operation"), _request.param ("inputs"), function (_error, _outcome) {
-		if (_error === null)
-			_response.render ("succeeded.dust", _mixinContext (_request, false, {
-					outcome : _outcome,
-			}));
-		else
-			_response.render ("failed.dust", _mixinContext (_request, false, {
-					error : _error,
-			}));
-	});
+	_handleCallCastProcess ("call", _request, _response);
 }
 
 function _handleCastProcessPre (_request, _response) {
-	_response.render ("process_call_cast.dust", _mixinContext (_request, false, {
-			cast : true, key : _request.param ("key"), operation : _request.param ("operation"), inputs : _request.param ("inputs"),
-	}));
+	_handleCallCastProcessPre ("cast", _request, _response);
 }
 
 function _handleCastProcess (_request, _response) {
-	controller.castProcess (_request.param ("key"), _request.param ("operation"), _request.param ("inputs"), function (_error, _outcome) {
+	_handleCallCastProcess ("cast", _request, _response);
+}
+
+function _handleCallCastProcessPre (_action, _request, _response) {
+	var _key = _request.param ("key");
+	var _operation = _request.param ("operation");
+	var _inputs = _request.param ("inputs");
+	var _type = _request.param ("type");
+	var _typeTemplate = _request.param ("typeTemplate");
+	var _operationTemplate = _request.param ("operationTemplate");
+	var _inputsTemplate = _request.param ("inputsTemplate");
+	var _description = undefined;
+	if (_type !== undefined)
+		_typeTemplate = _type;
+	if (_operation !== undefined)
+		_operationTemplate = _operation;
+	if (_inputs !== undefined)
+		_inputsTemplate = _inputs;
+	if (_typeTemplate === undefined)
+		_typeTemplate = "[Custom...]";
+	if (_operationTemplate === undefined)
+		_operationTemplate = "[Custom...]";
+	var _processSchema = schemas.processes[_typeTemplate];
+	var _operationSchemas = undefined;
+	var _operationSchema = undefined;
+	if (_processSchema !== undefined) {
+		if (_action == "call")
+			_operationSchemas = _processSchema.callOperations;
+		else
+			_operationSchemas = _processSchema.castOperations;
+	}
+	if (_operationSchemas !== undefined)
+		_operationSchema = _operationSchemas[_operationTemplate];
+	if (_operationSchema !== undefined) {
+		if (_operationSchema !== null) {
+			if (_inputsTemplate === undefined)
+				_inputsTemplate = JSON.stringify (_operationSchema.inputsTemplate, null, 4);
+			_description = _operationSchema.description;
+		}
+	} else {
+		if (_inputsTemplate === undefined)
+			_inputsTemplate = JSON.stringify (null, null, 4);
+	}
+	var _typeOptions =
+			_ (["[Custom...]"] .concat (_ (schemas.processes) .keys () .sort ()))
+					.map (function (_type) { return ({name : _type, selected : (_type == _typeTemplate)}); });
+	var _operationOptions = undefined;
+	var _operationInputable = undefined;
+	if (_operationSchemas !== undefined && ! _ (_operationSchemas) .isEmpty ()) {
+		_operationOptions =
+				_ (["[Custom...]"] .concat (_ (_operationSchemas) .keys () .sort ()))
+						.map (function (_operation) { return ({name : _operation, selected : (_operation == _operationTemplate)}); });
+	} else
+		_operationOptions = [{name : "[Custom...]", selected : true}];
+	_operationInputable = (_operationTemplate == "[Custom...]");
+	_response.render ("process_call_cast.dust", _mixinContext (_request, false, {
+			key : _key, operation : _operation, inputs : _inputs, type : _type,
+			typeOptions : _typeOptions, operationOptions : _operationOptions, operationInputable : _operationInputable,
+			typeTemplate : _typeTemplate, operationTemplate : _operationTemplate, inputsTemplate : _inputsTemplate,
+			description : _description,
+			call : (_action == "call"), cast : (_action == "cast")
+	}));
+}
+
+function _handleCallCastProcess (_action, _request, _response) {
+	var _callback = function (_error, _outcome) {
 		if (_error === null)
 			_response.render ("succeeded.dust", _mixinContext (_request, false, {
 					outcome : _outcome,
@@ -162,7 +220,11 @@ function _handleCastProcess (_request, _response) {
 			_response.render ("failed.dust", _mixinContext (_request, false, {
 					error : _error,
 			}));
-	});
+	};
+	if (_action == "call")
+		controller.callProcess (_request.param ("key"), _request.param ("operation"), _request.param ("inputs"), _callback);
+	else
+		controller.castProcess (_request.param ("key"), _request.param ("operation"), _request.param ("inputs"), _callback);
 }
 
 function _handleStopProcessPre (_request, _response) {

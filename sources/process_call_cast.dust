@@ -25,25 +25,64 @@
 						</div>
 						
 						<div class="clearfix">
+							<label for="type">Type</label>
+							<div class="input">
+								{?type}
+									<input id="type" type="text" class="span6 disable" disabled="disabled" value="{type}" />
+								{:else}
+									<select id="type" class="span6" onchange="window.location.assign('/process/{?call}call{/call}{?cast}cast{/cast}?key={key|uc}&amp;typeTemplate='+escape(window.document.getElementById('type').options[window.document.getElementById('type').selectedIndex].text)+'&amp;return={return|uc}');">
+										{#typeOptions}
+											{?selected}
+												<option selected="selected">{name}</option>
+											{:else}
+												<option>{name}</option>
+											{/selected}
+										{/typeOptions}
+									</select>
+								{/type}
+							</div>
+						</div>
+						
+						<div class="clearfix">
 							<label for="operation">Operation</label>
 							<div class="input">
 								{?operation}
-									<input id="operation" class="span6 disabled" type="text" name="operation" disabled="disabled" value="{operation}" />
-									<input type="hidden" name="operation" value="{operation}" />
+									<input id="operation" type="text" class="span6 disable" disabled="disabled" value="{operation}" />
 								{:else}
-									<input id="operation" class="span6" type="text" name="operation" />
+										{^operationInputable}
+									<select id="operation" class="span6" name="operation" onchange="window.location.assign('/process/{?call}call{/call}{?cast}cast{/cast}?key={key|uc}&amp;type={type|uc}&amp;typeTemplate={typeTemplate|uc}&amp;operationTemplate='+escape(window.document.getElementById('operation').options[window.document.getElementById('operation').selectedIndex].text)+'&amp;return={return|uc}');">
+										{:else}
+									<select id="operation" class="span6" onchange="window.location.assign('/process/{?call}call{/call}{?cast}cast{/cast}?key={key|uc}&amp;type={type|uc}&amp;typeTemplate={typeTemplate|uc}&amp;operationTemplate='+escape(window.document.getElementById('operation').options[window.document.getElementById('operation').selectedIndex].text)+'&amp;return={return|uc}');">
+										{/operationInputable}
+										{#operationOptions}
+											{?selected}
+												<option selected="selected">{name}</option>
+											{:else}
+												<option>{name}</option>
+											{/selected}
+										{/operationOptions}
+									</select>
 								{/operation}
 							</div>
 						</div>
+						
+						{?operationInputable}
+						<div class="clearfix">
+							<label for="typeCustom">Operation (Custom)</label>
+							<div class="input">
+									<input id="operationCustom" class="span6" type="text" name="operation" />
+							</div>
+						</div>
+						{/operationInputable}
 						
 						<div class="clearfix">
 							<label for="inputs">Inputs</label>
 							<div class="input">
 								{?inputs}
-									<textarea id="inputs" class="span6 disabled" name="inputs" rows="8" cols="40" disabled="disabled">{inputs}</textarea>
+									<textarea id="inputs" class="span6 disabled" name="inputs" rows="8" cols="40" disabled="disabled">{inputs|htmlpre|s}</textarea>
 									<input type="hidden" name="inputs" value="{inputs}" />
 								{:else}
-									<textarea id="inputs" class="span6" name="inputs" rows="8" cols="40">null</textarea>
+									<textarea id="inputs" class="span6" name="inputs" rows="8" cols="40">{?inputsTemplate}{inputsTemplate|htmlpre|s}{:else}null{/inputsTemplate}</textarea>
 								{/inputs}
 							</div>
 						</div>

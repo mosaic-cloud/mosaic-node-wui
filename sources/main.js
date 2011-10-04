@@ -48,6 +48,10 @@ express_dust.filters.jsonp = function (_value) {
 	return (JSON.stringify (_value, null, 4));
 };
 
+express_dust.filters.htmlpre = function (_value) {
+	return (_value.replace (/</g, "&lt;") .replace (/>/g, "&gt;"));
+};
+
 // ---------------------------------------
 
 _main ();

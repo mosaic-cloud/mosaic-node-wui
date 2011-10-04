@@ -30,11 +30,11 @@
 									<td>
 										<a class="btn info tiny fade" href="/processes/{key|uc}/examine?return={returnStacked|uc}">Examine</a>
 										<a class="btn success tiny fade" href="/process/create?type={type|uc}&amp;configuration={?configuration}{configuration|json|uc}{:else}null{/configuration}&amp;return={returnStacked|uc}">Clone</a>
-										<a class="btn tiny fade" href="/processes/{key|uc}/call?templateType={type|uc}&amp;return={returnStacked|uc}">Call</a>
-										<a class="btn tiny fade" href="/processes/{key|uc}/cast?templateType={type|uc}&amp;return={returnStacked|uc}">Cast</a>
+										<a class="btn tiny fade" href="/processes/{key|uc}/call?type={type|uc}&amp;return={returnStacked|uc}">Call</a>
+										<a class="btn tiny fade" href="/processes/{key|uc}/cast?type={type|uc}&amp;return={returnStacked|uc}">Cast</a>
 										<a class="btn danger tiny fade" href="/processes/{key|uc}/stop?return={returnStacked|uc}">Stop</a>
 									</td>
-									<td>{?configuration}<code>{configuration|json|h}</code>{:else}<br/>{/configuration}</td>
+									<td>{?configuration}<code>{configuration|json|htmlpre|s}</code>{:else}<br/>{/configuration}</td>
 								</tr>
 							{/processes}
 						</tbody>

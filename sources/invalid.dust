@@ -13,10 +13,10 @@
 					<h4>Invalid request encountered!</h4>
 					
 					<dl>
-						<dt>Method:</dt><dd><code>{method}</code></dd>
-						<dt>Path:</dt><dd><code>{path}</code></dd>
-						<dt>Query:</dt><dd><pre>{query|jsonp|h}</pre></dd>
-						{?body}<dt>Body:</dt><dd><pre>{body|jsonp|h}</pre></dd>{/body}
+						<dt>Method:</dt><dd><code>{method|htmlpre|s}</code></dd>
+						<dt>Path:</dt><dd><code>{path|htmlpre|s}</code></dd>
+						<dt>Query:</dt><dd><pre>{query|jsonp|htmlpre|s}</pre></dd>
+						{?body}<dt>Body:</dt><dd><pre>{body|jsonp|htmlpre|s}</pre></dd>{/body}
 					</dl>
 					
 					<div class="alert-actions">

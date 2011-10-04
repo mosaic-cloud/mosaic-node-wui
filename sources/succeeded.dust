@@ -15,7 +15,7 @@
 							<p><strong>Succeeded executing action.</strong></p>
 							
 							{?outputs}
-							<pre>{outputs|jsonp|h}</pre>
+							<pre>{outputs|jsonp|htmlpre|s}</pre>
 							{/outputs}
 							
 							{?return}
@@ -37,7 +37,7 @@
 						<div class="alert-message block-message error">
 							
 							<p><strong>Failed executing action!</strong></p>
-							<pre>{error|jsonp|h}</pre>
+							<pre>{error|jsonp|htmlpre|s}</pre>
 							
 							<div class="alert-actions">
 								<a class="btn danger large" href="javascript:window.location.reload()">Retry</a>
