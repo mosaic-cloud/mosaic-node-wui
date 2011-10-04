@@ -32,7 +32,7 @@ function _main () {
 		views.configureApplication (_application);
 	});
 	
-	_application.listen (9999);
+	_application.listen (9999, "127.0.0.1");
 }
 
 // ---------------------------------------

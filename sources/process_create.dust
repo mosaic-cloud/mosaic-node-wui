@@ -1,4 +1,3 @@
-
 {>layout/}
 
 {<blocks__main_panel}
@@ -17,17 +16,17 @@
 							<label for="type">Type</label>
 							<div class="input">
 								{?type}
-									<input id="type" type="text" class="span6 disable" name="type" disabled="true" value="{type}" />
+									<input id="type" type="text" class="span6 disable" name="type" disabled="disabled" value="{type}" />
 									<input type="hidden" name="type" value="{type}" />
 								{:else}
 									{^typeInputable}
-									<select id="type" class="span6" name="type" onchange="window.location.assign('/process/create?typeTemplate='+escape(window.document.getElementById(this.id).options[window.document.getElementById(this.id).selectedIndex].text)+'&return={return|uc}');">
+									<select id="type" class="span6" name="type" onchange="window.location.assign('/process/create?typeTemplate='+escape(window.document.getElementById(this.id).options[window.document.getElementById(this.id).selectedIndex].text)+'&amp;return={return|uc}');">
 									{:else}
-									<select id="type" class="span6" onchange="window.location.assign('/process/create?typeTemplate='+escape(window.document.getElementById(this.id).options[window.document.getElementById(this.id).selectedIndex].text)+'&return={return|uc}');">
+									<select id="type" class="span6" onchange="window.location.assign('/process/create?typeTemplate='+escape(window.document.getElementById(this.id).options[window.document.getElementById(this.id).selectedIndex].text)+'&amp;return={return|uc}');">
 									{/typeInputable}
 										{#typeOptions}
 											{?selected}
-												<option selected="true">{name}</option>
+												<option selected="selected">{name}</option>
 											{:else}
 												<option>{name}</option>
 											{/selected}
@@ -50,10 +49,10 @@
 							<label for="configuration">Configuration</label>
 							<div class="input">
 								{?configuration}
-									<textarea id="configuration" class="span6 disabled" name="configuration" rows="8" disabled="true">{configuration}</textarea>
+									<textarea id="configuration" class="span6 disabled" name="configuration" rows="8" cols="40" disabled="disabled">{configuration}</textarea>
 									<input type="hidden" name="configuration" value="{configuration}" />
 								{:else}
-									<textarea id="configuration" class="span6" name="configuration" rows="8">{?configurationTemplate}{configurationTemplate}{:else}null{/configurationTemplate}</textarea>
+									<textarea id="configuration" class="span6" name="configuration" rows="8" cols="40">{?configurationTemplate}{configurationTemplate}{:else}null{/configurationTemplate}</textarea>
 								{/configuration}
 							</div>
 						</div>

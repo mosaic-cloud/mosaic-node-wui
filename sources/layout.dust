@@ -1,20 +1,15 @@
-<!DOCTYPE html>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml">
 	
 	<head>
 		
 		<title>mOSAIC WebUI</title>
 		
-		<link rel="stylesheet" href="http://twitter.github.com/bootstrap/1.3.0/bootstrap.min.css" />
+		<link rel="stylesheet" type="text/css" href="http://twitter.github.com/bootstrap/1.3.0/bootstrap.min.css" />
 		
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
-		<script src="http://twitter.github.com/bootstrap/1.3.0/bootstrap-twipsy.js"></script>
-		<script src="http://twitter.github.com/bootstrap/1.3.0/bootstrap-popover.js"></script>
-		
-		<meta http-equiv="Cache-Control" content="no-cache" />
-		
-		<style>
+		<style type="text/css">
 			
 			body {
 				padding-top : 60px;
@@ -38,7 +33,7 @@
 			
 			.center td, .tiny th {
 				text-align : center !important;
-				vertical-align : center !important;
+				vertical-align : middle !important;
 			}
 			
 		</style>
@@ -60,6 +55,7 @@
 					<ul class="nav secondary-nav pull-right">
 						{?return}<li><a href="{return|u}">Return</a></li>{/return}
 						<li><a href="javascript:window.location.reload()">Refresh</a></li>
+						<li><a href="http://validator.w3.org/check?uri=referer"><img src="http://www.w3.org/Icons/valid-xhtml11" alt="XHTML" height="50%" width="50%" /></a></li>
 					</ul>
 				</div>
 			</div>

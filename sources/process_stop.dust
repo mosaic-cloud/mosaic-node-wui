@@ -1,4 +1,3 @@
-
 {>layout/}
 
 {<blocks__main_panel}
@@ -17,7 +16,7 @@
 							<label for="key">Key</label>
 							<div class="input">
 								{?key}
-									<input id="key" type="text" class="span6 disabled" name="key" disabled="true" value="{key}" />
+									<input id="key" type="text" class="span6 disabled" name="key" disabled="disabled" value="{key}" />
 									<input type="hidden" name="key" value="{key}" />
 								{:else}
 									<input id="key" type="text" class="span6" name="key" />

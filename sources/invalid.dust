@@ -1,4 +1,3 @@
-
 {>layout/}
 
 {<blocks__main_panel}
@@ -11,13 +10,13 @@
 			<div class="span12">
 				<div class="alert-message block-message error">
 					
-					<h4>Invalid request encountered!</p>
+					<h4>Invalid request encountered!</h4>
 					
 					<dl>
 						<dt>Method:</dt><dd><code>{method}</code></dd>
 						<dt>Path:</dt><dd><code>{path}</code></dd>
-						<dt>Query:</dt><dd><pre>{query|jsonp}</pre></dd>
-						{?body}<dt>Body:</dt><dd><pre>{body|jsonp}</pre></dd>{/body}
+						<dt>Query:</dt><dd><pre>{query|jsonp|h}</pre></dd>
+						{?body}<dt>Body:</dt><dd><pre>{body|jsonp|h}</pre></dd>{/body}
 					</dl>
 					
 					<div class="alert-actions">
