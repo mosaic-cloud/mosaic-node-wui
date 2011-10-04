@@ -14,9 +14,38 @@
 		
 		<meta http-equiv="Cache-Control" content="no-cache" />
 		
+		<style>
+			
+			body {
+				padding-top : 60px;
+			}
+			
+			.fade {
+				opacity : 0.33;
+			}
+			
+			.fade-trigger:hover .fade {
+				opacity : 1.00;
+			}
+			
+			a.btn.tiny, input.btn.tiny {
+				padding : 4px !important;
+			}
+			
+			.tiny td, .tiny th {
+				padding : 4px !important;
+			}
+			
+			.center td, .tiny th {
+				text-align : center !important;
+				vertical-align : center !important;
+			}
+			
+		</style>
+		
 	</head>
 	
-	<body style="padding-top: 60px;">
+	<body>
 		
 		<div class="topbar">
 			<div class="topbar-inner">
@@ -38,8 +67,8 @@
 		
 		<div class="container-fluid">
 			
-			<div class="sidebar">
-				<div class="well">
+			<div class="sidebar fade-trigger">
+				<div class="well fade">
 					<div>
 						<h5>Processes</h5>
 						<ul>

@@ -10,7 +10,7 @@
 			
 			<div class="row">
 				<div class="span12">
-					<table class="zebra-striped">
+					<table class="zebra-striped center tiny">
 						<thead>
 							<tr>
 								<th>Key</th>
@@ -18,11 +18,11 @@
 							</tr>
 						</thead>
 						<tbody>{#partitions}
-							<tr>
+							<tr class="fade-trigger">
 								<td><code>{key}</code></td>
 								<td>
 									<code>{node}</code>
-									<span class="pull-right"><a class="btn small" href="/cluster/nodes/{node|uc}/examine?return={returnStacked|uc}">Examine</a></span>
+									<span class="pull-right fade"><a class="btn info tiny" href="/cluster/nodes/{node|uc}/examine?return={returnStacked|uc}">Examine</a></span>
 								</td>
 							</tr>
 						{/partitions}</tbody>

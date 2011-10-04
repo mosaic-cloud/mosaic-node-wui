@@ -14,29 +14,29 @@
 			
 			<div class="row">
 				<div class="span16">
-					<table class="zebra-striped">
+					<table class="zebra-striped tiny center">
 						<thead>
-							<tr>
-								<th>Actions</th>
-								<th>Key</th>
+							<tr class="center">
 								<th>Type</th>
+								<th>Key</th>
+								<th>Actions</th>
 								<th>Configuration</th>
 							</tr>
 						</thead>
 						<tbody>
 							{#processes}
-								<tr>
+								<tr class="fade-trigger">
+									<td><code>{type}</code></td>
+									<td><code>{key}</code></td>
 									<td>
-										<span class="pull-right">
-											<a class="btn info small" href="/processes/{key|uc}/examine?return={returnStacked|uc}">Examine</a>
-											<a class="btn danger small" href="/processes/{key|uc}/stop?return={returnStacked|uc}">Stop</a>
-											<a class="btn success small" href="/process/create?type={type|uc}&configuration={?configuration}{configuration|json|uc}{:else}null{/configuration}&return={returnStacked|uc}">Clone</a>
-											<a class="btn small" href="/processes/{key|uc}/call?templateType={type|uc}&return={returnStacked|uc}">Call</a>
-											<a class="btn small" href="/processes/{key|uc}/cast?templateType={type|uc}&return={returnStacked|uc}">Cast</a>
+										<span class="fade">
+											<a class="btn info tiny" href="/processes/{key|uc}/examine?return={returnStacked|uc}">Examine</a>
+											<a class="btn success tiny" href="/process/create?type={type|uc}&configuration={?configuration}{configuration|json|uc}{:else}null{/configuration}&return={returnStacked|uc}">Clone</a>
+											<a class="btn tiny" href="/processes/{key|uc}/call?templateType={type|uc}&return={returnStacked|uc}">Call</a>
+											<a class="btn tiny" href="/processes/{key|uc}/cast?templateType={type|uc}&return={returnStacked|uc}">Cast</a>
+											<a class="btn danger tiny" href="/processes/{key|uc}/stop?return={returnStacked|uc}">Stop</a>
 										</span>
 									</td>
-									<td><code>{key}</code></td>
-									<td><code>{type}</code></td>
 									<td>{?configuration}<code>{configuration|json}</code>{/configuration}</td>
 								</tr>
 							{/processes}
