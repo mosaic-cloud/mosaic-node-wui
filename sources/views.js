@@ -110,7 +110,10 @@ function _handleCreateProcessPre (_request, _response, _next)
 		_configurationTemplate = _configuration;
 	if (_typeTemplate === undefined)
 		_typeTemplate = "[Custom...]";
-	var _processSchema = schemas.processes[_typeTemplate];
+	var _processSchemas = schemas.processes ();
+	var _processSchema = undefined;
+	if (_processSchemas !== undefined)
+		_processSchema = _processSchemas [_typeTemplate];
 	if (_processSchema !== undefined) {
 		if (_configurationTemplate === undefined)
 			_configurationTemplate = JSON.stringify (_processSchema.configurationTemplate, null, 4);
@@ -119,9 +122,12 @@ function _handleCreateProcessPre (_request, _response, _next)
 		if (_configurationTemplate === undefined)
 			_configurationTemplate = JSON.stringify (null, null, 4);
 	}
-	var _typeOptions =
-			_ (["[Custom...]"] .concat (_ (schemas.processes) .keys () .sort ()))
-					.map (function (_type) { return ({name : _type, selected : (_type == _typeTemplate)}); });
+	var _typeOptions = undefined;
+	if (_processSchemas !== undefined)
+		_typeOptions = _ (["[Custom...]"] .concat (_ (_processSchemas) .keys () .sort ()))
+				.map (function (_type) { return ({name : _type, selected : (_type == _typeTemplate)}); });
+	else
+		_typeOptions = [{name : "[Custom...]", selected : true}];
 	var _typeInputable = (_typeTemplate == "[Custom...]");
 	_renderView ("process_create", _request, _response, _next, _mixinContext (_request, false, {
 			type : _type, configuration : _configuration, count : _count,
@@ -185,7 +191,10 @@ function _handleCallCastProcessPre (_action, _request, _response, _next)
 		_typeTemplate = "[Custom...]";
 	if (_operationTemplate === undefined)
 		_operationTemplate = "[Custom...]";
-	var _processSchema = schemas.processes[_typeTemplate];
+	var _processSchemas = schemas.processes ();
+	var _processSchema = undefined;
+	if (_processSchemas !== undefined)
+		_processSchema = _processSchemas[_typeTemplate];
 	var _operationSchemas = undefined;
 	var _operationSchema = undefined;
 	if (_processSchema !== undefined) {
@@ -206,15 +215,17 @@ function _handleCallCastProcessPre (_action, _request, _response, _next)
 		if (_inputsTemplate === undefined)
 			_inputsTemplate = JSON.stringify (null, null, 4);
 	}
-	var _typeOptions =
-			_ (["[Custom...]"] .concat (_ (schemas.processes) .keys () .sort ()))
-					.map (function (_type) { return ({name : _type, selected : (_type == _typeTemplate)}); });
+	var _typeOptions = undefined;
+	if (_processSchemas !== undefined)
+		_typeOptions = _ (["[Custom...]"] .concat (_ (schemas.processes) .keys () .sort ()))
+				.map (function (_type) { return ({name : _type, selected : (_type == _typeTemplate)}); });
+	else
+		_typeOptions = [{name : "[Custom...]", selected : true}];
 	var _operationOptions = undefined;
 	var _operationInputable = undefined;
 	if (_operationSchemas !== undefined && ! _ (_operationSchemas) .isEmpty ()) {
-		_operationOptions =
-				_ (["[Custom...]"] .concat (_ (_operationSchemas) .keys () .sort ()))
-						.map (function (_operation) { return ({name : _operation, selected : (_operation == _operationTemplate)}); });
+		_operationOptions = _ (["[Custom...]"] .concat (_ (_operationSchemas) .keys () .sort ()))
+				.map (function (_operation) { return ({name : _operation, selected : (_operation == _operationTemplate)}); });
 	} else
 		_operationOptions = [{name : "[Custom...]", selected : true}];
 	_operationInputable = (_operationTemplate == "[Custom...]");
