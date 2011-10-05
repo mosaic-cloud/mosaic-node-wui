@@ -1,5 +1,8 @@
 ---
 "#mosaic-components:rabbitmq" : &mosaic-components--rabbitmq
+    quickCreate : true
+    quickCreateName : RabbitMQ
+    quickCreateOrder : 50
     configurationTemplate :
     callOperations :
         mosaic-rabbitmq:get-management-endpoint :
@@ -22,6 +25,16 @@
                         <p>Returns the RabbitMQ broker endpoint (IP and port) which can be accessed with any <a href="http://www.rabbitmq.com/devtools.html">compatible client</a>.</p>
                     </div>
                 </div>
+        mosaic-rabbitmq:get-node-identifier :
+            inputsTemplate :
+            description : |
+                <div class="row">
+                    <div class="span2 center"><a href="http://www.rabbitmq.com/"><img src="/static/rabbitmq-logo-small.png" width="80px" alt="RabbitMQ" /></a></div>
+                    <div class="offset2">
+                        <h5>mosaic-rabbitmq:get-node-identifier</h5>
+                        <p>Returns the RabbitMQ Erlang node identifier (<code>erl -name</code> argument).</p>
+                    </div>
+                </div>
     castOperations : {}
     description : |
         <div class="row">
@@ -34,8 +47,51 @@
         </div>
 
 "#mosaic-components:riak-kv" : &mosaic-components--riak-kv
+    quickCreate : true
+    quickCreateName : RiakKV
+    quickCreateOrder : 50
     configurationTemplate :
-    callOperations : {}
+    callOperations :
+        mosaic-riak-kv:get-store-http-endpoint :
+            inputsTemplate :
+            description : |
+                <div class="row">
+                    <div class="span2 center"><a href="http://www.basho.com/products_riak_overview.php"><img src="/static/riak-logo-small.png" width="80px" alt="Riak" /></a></div>
+                    <div class="offset2">
+                        <h5>mosaic-riak-kv:get-store-http-endpoint</h5>
+                        <p>Returns the Riak HTTP endpoint (an URL also accessible through a web-browser) which can be accessed with any <a href="http://wiki.basho.com/Client-Libraries.html">compatible client</a>. (For further details about the protocol please consult the <a href="http://wiki.basho.com/HTTP-API.html">dedicated page</a>.)</p>
+                    </div>
+                </div>
+        mosaic-riak-kv:get-store-pb-endpoint :
+            inputsTemplate :
+            description : |
+                <div class="row">
+                    <div class="span2 center"><a href="http://www.basho.com/products_riak_overview.php"><img src="/static/riak-logo-small.png" width="80px" alt="Riak" /></a></div>
+                    <div class="offset2">
+                        <h5>mosaic-riak-kv:get-store-pb-endpoint</h5>
+                        <p>Returns the Riak ProtocolBuffers endpoint which can be accessed with any <a href="http://wiki.basho.com/Client-Libraries.html">compatible client</a>. (For further details about the protocol please consult the <a href="http://wiki.basho.com/PBC-API.html">dedicated page</a>.)</p>
+                    </div>
+                </div>
+        mosaic-riak-kv:get-handoff-endpoint :
+            inputsTemplate :
+            description : |
+                <div class="row">
+                    <div class="span2 center"><a href="http://www.basho.com/products_riak_overview.php"><img src="/static/riak-logo-small.png" width="80px" alt="Riak" /></a></div>
+                    <div class="offset2">
+                        <h5>mosaic-riak-kv:get-handoff-endpoint</h5>
+                        <p>Returns the Riak handoff endpoint (IP and port) which is used in key / value pairs handoff. (For details please consult the <a href="http://wiki.basho.com/Riak-Glossary.html">dedicated page</a>.</p>
+                    </div>
+                </div>
+        mosaic-riak-kv:get-node-identifier :
+            inputsTemplate :
+            description : |
+                <div class="row">
+                    <div class="span2 center"><a href="http://www.basho.com/products_riak_overview.php"><img src="/static/riak-logo-small.png" width="80px" alt="Riak" /></a></div>
+                    <div class="offset2">
+                        <h5>mosaic-riak-kv:get-node-identifier</h5>
+                        <p>Returns the Riak Erlang node identifier (<code>erl -name</code> argument).</p>
+                    </div>
+                </div>
     castOperations : {}
     description : |
         <div class="row">
@@ -48,8 +104,31 @@
         </div>
 
 "#mosaic-components:httpg" : &mosaic-components--httpg
+    quickCreate : true
+    quickCreateName : mOSAIC HTTP-G
+    quickCreateOrder : 10
     configurationTemplate :
-    callOperations : {}
+    callOperations :
+        mosaic-httpg:get-gateway-endpoint :
+            inputsTemplate :
+            description : |
+                <div class="row">
+                    <div class="span2 center"><a href="http://www.mosaic-cloud.eu/"><img src="/static/mosaic-logo-small.png" width="80px" alt="mOSAIC" /></a></div>
+                    <div class="offset2">
+                        <h5>mosaic-httpg:get-gateway-identifier</h5>
+                        <p>Returns the mOSAIC Gateway HTTP endpoint which should be accessed by web-clients to reach the backend components.</p>
+                    </div>
+                </div>
+        mosaic-httpg:get-node-identifier :
+            inputsTemplate :
+            description : |
+                <div class="row">
+                    <div class="span2 center"><a href="http://www.mosaic-cloud.eu/"><img src="/static/mosaic-logo-small.png" width="80px" alt="mOSAIC" /></a></div>
+                    <div class="offset2">
+                        <h5>mosaic-httpg:get-node-identifier</h5>
+                        <p>Returns the mOSAIC Gateway Erlang node identifier (<code>erl -name</code> argument).</p>
+                    </div>
+                </div>
     castOperations : {}
     description : |
         <div class="row">
@@ -60,9 +139,17 @@
             </div>
         </div>
 
-"#mosaic-tests:rabbitmq" : *mosaic-components--rabbitmq
-"#mosaic-tests:riak-kv" : *mosaic-components--riak-kv
-"#mosaic-tests:httpg" : *mosaic-components--httpg
+"#mosaic-tests:rabbitmq" :
+    quickCreate : false
+    << : *mosaic-components--rabbitmq
+
+"#mosaic-tests:riak-kv" :
+    << : *mosaic-components--riak-kv
+    quickCreate : false
+
+"#mosaic-tests:httpg" :
+    quickCreate : false
+    << : *mosaic-components--httpg
 
 "#mosaic-components:java-container" :
     configurationTemplate : ["<<ComponentCallback>>", "http://<<host>>/<<component>>.jar"]
@@ -70,31 +157,49 @@
     castOperations : {}
 
 "#mosaic-components:java-cloudlet-container" :
+    quickCreate : true
+    quickCreateName : mOSAIC Cloudlet
+    quickCreateOrder : 10
     configurationTemplate : ["<<http://<host>/<<cloudlet>>.jar", "<<configuration.properties>>"]
     callOperations : {}
     castOperations : {}
 
 "#mosaic-components:java-driver" :
+    quickCreate : true
+    quickCreateName : mOSAIC Driver
+    quickCreateOrder : 10
     configurationTemplate : "<<type>>"
     callOperations : {}
     castOperations : {}
 
 "#mosaic-examples-realtime-feeds:fetcher" :
+    quickCreate : true
+    quickCreateName : Feeds Fetcher
+    quickCreateOrder : 100
     configurationTemplate :
     callOperations : {}
     castOperations : {}
 
 "#mosaic-examples-realtime-feeds:indexer" :
+    quickCreate : true
+    quickCreateName : Feeds Indexer
+    quickCreateOrder : 100
     configurationTemplate :
     callOperations : {}
     castOperations : {}
 
 "#mosaic-examples-realtime-feeds:frontend" :
+    quickCreate : true
+    quickCreateName : Feeds Frontend
+    quickCreateOrder : 100
     configurationTemplate :
     callOperations : {}
     castOperations : {}
 
 "#mosaic-examples-realtime-feeds:scavanger" :
+    quickCreate : true
+    quickCreateName : Feeds Scavanger
+    quickCreateOrder : 100
     configurationTemplate :
     callOperations : {}
     castOperations : {}
@@ -126,3 +231,7 @@
 
 "#mosaic-tests:jetty-hello-world" :
     configurationTemplate :
+    callOperations : {}
+    castOperations : {}
+
+...

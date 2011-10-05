@@ -19,8 +19,16 @@
 				opacity : 0.33;
 			}
 			
-			.fade-trigger:hover .fade {
-				opacity : 1.00;
+			.fade-trigger:hover .fade, .fade-trigger.fade:hover {
+				opacity : 1.00 !important;
+			}
+			
+			.shy {
+				display : none;
+			}
+			
+			.shy-trigger:hover li.shy, .shy-trigger.shy:hover {
+				display : list-item !important;
 			}
 			
 			a.btn.tiny, input.btn.tiny {
@@ -63,26 +71,9 @@
 		
 		<div class="container-fluid">
 			
-			<div class="sidebar fade-trigger">
-				<div class="well fade">
-					<div>
-						<h5>Processes</h5>
-						<ul>
-							<li><a href="/processes">List</a></li>
-							<li><a href="/process/create">Create</a>
-								<ul>
-									<li><a href="/process/create?type=%23mosaic-components:rabbitmq">RabbitMQ</a></li>
-									<li><a href="/process/create?type=%23mosaic-components:riak-kv">RiakKV</a></li>
-									<li><a href="/process/create?type=%23mosaic-components:httpg">mOSAIC HTTP-G</a></li>
-									<li><a href="/process/create?type=%23mosaic-components:java-driver">mOSAIC Driver</a></li>
-									<li><a href="/process/create?type=%23mosaic-components:java-cloudlet-container">mOSAIC Cloudlet</a></li>
-								</ul>
-							</li>
-							<li><a href="/process/call">Call</a></li>
-							<li><a href="/process/cast">Cast</a></li>
-							<li><a href="/process/stop">Stop</a></li>
-						</ul>
-					</div>
+			<div class="sidebar">
+				
+				<div class="well fade fade-trigger shy-trigger">
 					<div>
 						<h5>Cluster</h5>
 						<ul>
@@ -91,6 +82,26 @@
 						</ul>
 					</div>
 				</div>
+				
+				<div class="well fade fade-trigger shy-trigger">
+					<div>
+						<h5>Processes</h5>
+						<ul>
+							<li><a href="/processes">List</a></li>
+							<li><a href="/process/create">Create</a>
+								<ul>
+									{#quickCreate}
+										<li class="shy"><a href="/process/create?type={type|uc}">{name}</a></li>
+									{/quickCreate}
+								</ul>
+							</li>
+							<li><a href="/process/call">Call</a></li>
+							<li><a href="/process/cast">Cast</a></li>
+							<li><a href="/process/stop">Stop</a></li>
+						</ul>
+					</div>
+				</div>
+				
 			</div>
 			
 			<div class="content">

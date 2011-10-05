@@ -85,11 +85,16 @@ function _handleQueryClusterRing (_request, _response, _next)
 function _handleQueryProcesses (_request, _response, _next)
 {
 	controller.getProcesses (function (_error, _outcome) {
-		if (_error === null)
+		if (_error === null) {
+			_outcome.processes = _ (_outcome.processes)
+					.chain ()
+					.sortBy (function (_process) { return (_process.key); })
+					.sortBy (function (_process) { return (_process.type); })
+					.value ();
 			_renderView ("processes", _request, _response, _next, _mixinContext (_request, true, {
 					outcome : _outcome,
 			}));
-		else
+		} else
 			_renderView ("failed", _request, _response, _next, _mixinContext (_request, false, {
 					error : _error,
 			}));
@@ -281,6 +286,13 @@ function _handleStopProcess (_request, _response, _next)
 
 function _mixinContext (_request, _pushReturn, _context)
 {
+	var _quickCreate = _ (schemas.processes ())
+			.chain ()
+			.map (function (_schema, _type) { return ({type : _type, name : _schema.quickCreateName, enabled : (_schema.quickCreate || false), order : (_schema.quickCreateOrder || 0)}); })
+			.select (function (_option) { return (_option.enabled); })
+			.sortBy (function (_option) { return (_option.name); })
+			.sortBy (function (_option) { return (_option.order); })
+			.value ();
 	var _back = _request.param ("return") || undefined;
 	if (_back)
 		_back = querystring.unescape (_back);
@@ -297,11 +309,13 @@ function _mixinContext (_request, _pushReturn, _context)
 			var _stacked = printf ("%s?%s", _self, querystring.stringify (_request.query));
 	if (_pushReturn)
 		return (_.extend (_context, {
+			"quickCreate" : _quickCreate,
 			"return" : _back,
 			"returnStacked" : _stacked,
 		}));
 	else
 		return (_.extend (_context, {
+			"quickCreate" : _quickCreate,
 			"return" : _back,
 			"returnStacked" : _back,
 		}));
