@@ -32,6 +32,11 @@ function _handleConsole (_request, _response, _next)
 	_renderView ("console", _request, _response, _next, _mixinContext (_request, true, {}));
 }
 
+function _handleConsoleProxy (_request, _response, _next)
+{
+	_handleProxy (_request.url.replace (/^\/console\/proxy\//, "/"), _request, _response, _next);
+}
+
 function _handleLog (_request, _response, _next)
 {
 	_renderView ("log", _request, _response, _next, _mixinContext (_request, true, {}));
@@ -377,6 +382,7 @@ function _configureApplication (_application)
 	
 	_application.get ("/", _handleFront);
 	_application.get ("/console", _handleConsole);
+	_application.get ("/console/proxy/*", _handleConsoleProxy);
 	_application.get ("/log", _handleLog);
 	_application.get ("/log/stream", _handleLogStream);
 	_application.get ("/log/content", _handleLogContent);

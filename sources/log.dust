@@ -28,7 +28,7 @@
 {/blocks__main_panel}
 
 {<layout__extra_head}
-
-<script src="/static/log.js" type="text/javascript"></script>
-
+	
+	<script type="text/javascript" src="/static/log.js"></script>
+	
 {/layout__extra_head}
