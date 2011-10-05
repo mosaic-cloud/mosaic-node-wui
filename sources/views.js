@@ -249,7 +249,7 @@ function _handleCallCastProcessPre (_action, _request, _response, _next)
 	}
 	var _typeOptions = undefined;
 	if (_processSchemas !== undefined)
-		_typeOptions = _ (["[Custom...]"] .concat (_ (schemas.processes) .keys () .sort ()))
+		_typeOptions = _ (["[Custom...]"] .concat (_ (_processSchemas) .keys () .sort ()))
 				.map (function (_type) { return ({name : _type, selected : (_type == _typeTemplate)}); });
 	else
 		_typeOptions = [{name : "[Custom...]", selected : true}];

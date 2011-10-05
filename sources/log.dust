@@ -4,12 +4,21 @@
 	
 	<div>
 		
-		<h1>Log</h1>
+		<h1>Log
+			<span class="pull-right">
+				<a id="btn" class="btn success">Fetch</a>
+				<a id="autoscroll" class="btn">Auto-scroll (On)</a>
+				<a id="clear_btn" class="btn danger">Clear</a>
+			</span>
+		</h1>
 		
 		<div class="row">
 			<div class="span12">
 				
-				<p>...</p>
+				<div id="logs">
+					<ol id="list">
+					</ol>
+				</div>
 				
 			</div>
 		</div>
@@ -17,3 +26,9 @@
 	</div>
 	
 {/blocks__main_panel}
+
+{<layout__extra_head}
+
+<script src="/static/log.js" type="text/javascript"></script>
+
+{/layout__extra_head}
