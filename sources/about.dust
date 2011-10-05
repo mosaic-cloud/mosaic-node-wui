@@ -2,17 +2,13 @@
 
 {<blocks__main_panel}
 	
-	<div class="hero-unit">
+	<div class="hero-unit span12">
 		
 		<h1>mOSAIC WebUI <small>About</small></h1>
+		<h2>Welcome to a new <em>distributed experience</em>!</h2>
+		<hr/>
 		
-		<div class="row">
-			<div class="span12">
-				
-				<p>...</p>
-				
-			</div>
-		</div>
+		<p>...</p>
 		
 	</div>
 	

@@ -71,7 +71,7 @@
 					<ul class="nav secondary-nav pull-right">
 						{?return}<li><a href="{return|u}">Return</a></li>{/return}
 						<li><a href="javascript:window.location.reload()">Refresh</a></li>
-						<li><a href="http://validator.w3.org/check?uri=referer"><img src="http://www.w3.org/Icons/valid-xhtml11" alt="XHTML" height="50%" width="50%" /></a></li>
+						<li><a href="http://validator.w3.org/check?uri=referer"><img src="http://www.w3.org/Icons/valid-xhtml11" alt="XHTML" height="14px" /></a></li>
 					</ul>
 				</div>
 			</div>
@@ -80,17 +80,13 @@
 		<div class="container-fluid">
 			
 			<div class="sidebar">
-					
-				<div class="well fade fade-trigger shy-trigger">
-					<h5>Cluster</h5>
-					<ul>
-						<li><a href="/cluster/nodes">Nodes</a></li>
-						<li><a href="/cluster/ring">Ring</a></li>
-					</ul>
+				
+				<div class="center">
+					<img src="/static/mosaic-logo-small.png" alt="mOSAIC" height="80px" />
 				</div>
 				
 				<div class="well fade fade-trigger shy-trigger">
-					<h5>Processes</h5>
+					<h5>Components</h5>
 					<ul>
 						<li><a href="/processes">List</a></li>
 						<li><a href="/process/create">Create</a>
@@ -104,8 +100,16 @@
 						<li><a href="/process/cast">Cast</a></li>
 						<li><a href="/process/stop">Stop</a></li>
 					</ul>
-					
 				</div>
+				
+				<div class="well fade fade-trigger shy-trigger">
+					<h5>Cluster</h5>
+					<ul>
+						<li><a href="/cluster/nodes">Nodes</a></li>
+						<li><a href="/cluster/ring">Ring</a></li>
+					</ul>
+				</div>
+				
 			</div>
 			
 			<div class="content">

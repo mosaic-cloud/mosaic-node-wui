@@ -2,24 +2,35 @@
 
 {<blocks__main_panel}
 	
-	<div class="hero-unit">
+	<div class="hero-unit span12">
 		
 		<h1>mOSAIC WebUI <small>Front</small></h1>
+		<h2>Welcome to a new <em>distributed experience</em>!</h2>
+		<hr/>
 		
 		<div class="row">
-			<div class="span12">
-				
-				<p>Welcome!</p>
-				
-				<div>
-					<a class="btn primary large btn_popover" href="/processes">Processes</a>
-					<a class="btn large btn_popover" href="/cluster/nodes">Cluster nodes</a>
-					<a class="btn large btn_popover" href="/cluster/ring">Cluster ring</a>
-				</div>
-				
+			
+			<div class="span3 center">
+				<h5>Components</h5>
+				<a class="btn primary large btn_popover" href="/processes">List</a>
+				<a class="btn success large btn_popover" href="/process/create">Create</a>
 			</div>
+			
+			<div class="span6 center">
+				<h5>Cluster</h5>
+				<a class="btn large btn_popover" href="/cluster/nodes">Nodes</a>
+				<a class="btn large btn_popover" href="/cluster/ring">Ring</a>
+			</div>
+			
+			<div class="span3 center">
+				<h5>Debugging</h5>
+				<a class="btn large btn_popover" href="/console">Console</a>
+				<a class="btn large btn_popover" href="/log">Log</a>
+			</div>
+			
 		</div>
 		
 	</div>
+	
 	
 {/blocks__main_panel}
