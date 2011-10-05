@@ -98,11 +98,11 @@ function _handleQueryProcesses (_request, _response, _next)
 
 function _handleCreateProcessPre (_request, _response, _next)
 {
-	var _type = _request.param ("type");
-	var _configuration = _request.param ("configuration");
-	var _count = _request.param ("count");
-	var _typeTemplate = _request.param ("typeTemplate");
-	var _configurationTemplate = _request.param ("configurationTemplate");
+	var _type = _request.param ("type") || undefined;
+	var _configuration = _request.param ("configuration") || undefined;
+	var _count = _request.param ("count") || undefined;
+	var _typeTemplate = _request.param ("typeTemplate") || undefined;
+	var _configurationTemplate = _request.param ("configurationTemplate") || undefined;
 	var _description = undefined;
 	if (_type !== undefined)
 		_typeTemplate = _type;
@@ -167,13 +167,13 @@ function _handleCastProcess (_request, _response, _next)
 
 function _handleCallCastProcessPre (_action, _request, _response, _next)
 {
-	var _key = _request.param ("key");
-	var _operation = _request.param ("operation");
-	var _inputs = _request.param ("inputs");
-	var _type = _request.param ("type");
-	var _typeTemplate = _request.param ("typeTemplate");
-	var _operationTemplate = _request.param ("operationTemplate");
-	var _inputsTemplate = _request.param ("inputsTemplate");
+	var _key = _request.param ("key") || undefined;
+	var _operation = _request.param ("operation") || undefined;
+	var _inputs = _request.param ("inputs") || undefined;
+	var _type = _request.param ("type") || undefined;
+	var _typeTemplate = _request.param ("typeTemplate") || undefined;
+	var _operationTemplate = _request.param ("operationTemplate") || undefined;
+	var _inputsTemplate = _request.param ("inputsTemplate") || undefined;
 	var _description = undefined;
 	if (_type !== undefined)
 		_typeTemplate = _type;
@@ -270,7 +270,7 @@ function _handleStopProcess (_request, _response, _next)
 
 function _mixinContext (_request, _pushReturn, _context)
 {
-	var _back = _request.param ("return");
+	var _back = _request.param ("return") || undefined;
 	if (_back)
 		_back = querystring.unescape (_back);
 	else
@@ -314,6 +314,7 @@ function _renderView (_view, _request, _response, _next, _attributes)
 function _configureApplication (_application)
 {
 	_application.use (express.bodyParser ());
+	_application.use ("/static", express.static (path.join (path.dirname (module.filename), "../static")));
 	_application.use (_application.router);
 	_application.use (function (_error, _request, _response, _next) {
 		_renderView ("failed", _request, _response, _next, {

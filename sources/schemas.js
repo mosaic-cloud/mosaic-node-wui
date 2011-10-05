@@ -9,21 +9,61 @@ var _processes = {
 		"#mosaic-components:rabbitmq" : {
 			configurationTemplate : null,
 			callOperations : {
-				"mosaic-rabbitmq:get-management-endpoint" : null,
-				"mosaic-rabbitmq:get-broker-endpoint" : null,
+				"mosaic-rabbitmq:get-management-endpoint" : {
+					inputsTemplate : null,
+					description : "<div class='row'>\
+						<div class='span2 center'><a href='http://www.rabbitmq.com/'><img src='/static/rabbitmq-logo-small.png' width='80px' alt='RabbitMQ' /></a></div>\
+						<div class='offset2'>\
+							<h5>mosaic-rabbitmq:get-management-endpoint</h5>\
+							<p>Returns the RabbitMQ management plug-in endpoint (an URL accessible through a web-browser). (For details please consult the <a href='http://www.rabbitmq.com/management.html'>dedicated page</a>.)</p>\
+						</div>\
+					</div>",
+				},
+				"mosaic-rabbitmq:get-broker-endpoint" : {
+					inputsTemplate : null,
+					description : "<div class='row'>\
+						<div class='span2 center'><a href='http://www.rabbitmq.com/'><img src='/static/rabbitmq-logo-small.png' width='80px' alt='RabbitMQ' /></a></div>\
+						<div class='offset2'>\
+							<h5>mosaic-rabbitmq:get-broker-endpoint</h5>\
+							<p>Returns the RabbitMQ broker endpoint (IP and port) which can be accessed with any <a href='http://www.rabbitmq.com/devtools.html'>compatible client</a>.</p>\
+						</div>\
+					</div>",
+				},
 			},
 			castOperations : {},
-			description : "<p>Some text here...</p><p>Some other text there...</p>",
+			description : "<div class='row'>\
+				<div class='span2 center'><a href='http://www.rabbitmq.com/'><img src='/static/rabbitmq-logo-small.png' width='80px' alt='RabbitMQ' /></a></div>\
+				<div class='offset2'>\
+					<h5>mosaic-components:rabbitmq</h5>\
+					<p>RabbitMQ is an <a href='http://amqp.org/'>AMQP</a> compliant message queue broker. (For details please consult the <a href='http://www.rabbitmq.com/'>dedicated page</a>.)</p>\
+					<p>This is a customized version of RabbitMQ which presents itself as an integrated mOSAIC component, allowing the user to easily control and monitor the broker as a uniform mOSAIC component.</p>\
+				</div>\
+			</div>",
 		},
 		"#mosaic-components:riak-kv" : {
 			configurationTemplate : null,
 			callOperations : {},
 			castOperations : {},
+			description : "<div class='row'>\
+				<div class='span2 center'><a href='http://www.basho.com/products_riak_overview.php'><img src='/static/riak-logo-small.png' width='80px' alt='Riak' /></a></div>\
+				<div class='offset2'>\
+					<h5>mosaic-components:riak-kv</h5>\
+					<p>Riak is a Dynamo-inspired key / value store. (For details please consult the <a href='http://www.basho.com/products_riak_overview.php'>dedicated page</a>.)</p>\
+					<p>This is a customized version of Riak which presents itself as an integrated mOSAIC component, allowing the user to easily control and monitor the broker as a uniform mOSAIC component.</p>\
+				</div>\
+			</div>",
 		},
 		"#mosaic-components:httpg" : {
 			configurationTemplate : null,
 			callOperations : {},
 			castOperations : {},
+			description : "<div class='row'>\
+				<div class='span2 center'><a href='http://www.mosaic-cloud.eu/'><img src='/static/mosaic-logo-small.png' width='80px' alt='mOSAIC' /></a></div>\
+				<div class='offset2'>\
+					<h5>mosaic-components:httpg</h5>\
+					<p>...</p>\
+				</div>\
+			</div>",
 		},
 		"#mosaic-components:java-container" : {
 			configurationTemplate : ["<<ComponentCallback>>", "http://<<host>>/<<component>>.jar"],
