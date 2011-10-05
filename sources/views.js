@@ -12,6 +12,7 @@ var fs = require ("fs");
 var path = require ("path");
 var printf = require ("printf");
 var querystring = require ("querystring");
+var request = require ("request");
 
 var controller = require ("./controller");
 var schemas = require ("./schemas");
@@ -36,9 +37,35 @@ function _handleLog (_request, _response, _next)
 	_renderView ("log", _request, _response, _next, _mixinContext (_request, true, {}));
 }
 
+function _handleLogStream (_request, _response, _next)
+{
+	_handleProxy ("/log/stream", _request, _response, _next);
+}
+
+function _handleLogContent (_request, _response, _next)
+{
+	_handleProxy ("/log/content", _request, _response, _next);
+}
+
 function _handleAbout (_request, _response, _next)
 {
 	_renderView ("about", _request, _response, _next, _mixinContext (_request, true, {}));
+}
+
+function _handleProxy (_path, _request, _response, _next)
+{
+	request.get (printf ("http://mosaic-1.loopback.vnet:31808%s", _path), function (_error) {
+		if (_error)
+			_renderView ("failed", _request, _response, _next, _mixinContext (_request, false, {
+				error : {
+						reason : "unexpected-http-client-error",
+						message : _error.toString (),
+						messageExtra : _error.stack.toString (),
+						error : _error,
+						path : _path,
+				},
+		}));
+	}) .pipe (_response);
 }
 
 // ---------------------------------------
@@ -351,6 +378,8 @@ function _configureApplication (_application)
 	_application.get ("/", _handleFront);
 	_application.get ("/console", _handleConsole);
 	_application.get ("/log", _handleLog);
+	_application.get ("/log/stream", _handleLogStream);
+	_application.get ("/log/content", _handleLogContent);
 	_application.get ("/about", _handleAbout);
 	
 	_application.get ("/cluster/nodes", _handleQueryClusterNodes);
