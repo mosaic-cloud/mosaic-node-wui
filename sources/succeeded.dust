@@ -15,7 +15,7 @@
 							<p><strong>Succeeded executing action.</strong></p>
 							
 							{?outputs}
-							<pre>{outputs|jsonp|htmlpre|s}</pre>
+							<pre>{outputs|jsonp|htmlpre|insa|s}</pre>
 							{/outputs}
 							
 							{?return}
