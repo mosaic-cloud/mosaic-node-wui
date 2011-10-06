@@ -13,7 +13,7 @@
 		</h1>
 		
 		<div class="row">
-			<div class="">
+			<div class="span16">
 				
 				<div id="logs" class="well">
 					<ol id="list">
@@ -54,30 +54,12 @@
 		
 	</style>
 	
+	<script type="text/javascript" src="/static/div-resize.js"></script>
+	
 	<script type="text/javascript">
 		
-		function _jsconsoleDivResize () {
-			var _div = document.getElementById ("logs");
-			var _top = 0;
-			var _left = 0;
-			var _parentDiv = _div;
-			while (true) {
-				if (_parentDiv.y)
-					_top += _parentDiv.y;
-				if (_parentDiv.x)
-					_left += _parentDiv.x;
-				_top += _parentDiv.offsetTop;
-				_left += _parentDiv.offsetLeft;
-				if (!_parentDiv.offsetParent)
-					break;
-				_parentDiv = _parentDiv.offsetParent;
-			}
-			_div.style.height = (window.innerHeight - _top - 64) + "px";
-			_div.style.width = (window.innerWidth - _left - 64) + "px";
-			setTimeout (_jsconsoleDivResize, 1000);
-		}
-		
-		setTimeout (_jsconsoleDivResize, 100);
+		_divResizeId = "logs";
+		setTimeout (_divResize, 0);
 		
 	</script>
 	
