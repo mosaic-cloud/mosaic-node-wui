@@ -2,14 +2,96 @@
 
 {<blocks__main_panel}
 	
-	<div class="hero-unit span12">
-		
-		<h1>mOSAIC WebUI <small>About</small></h1>
-		<h2>Welcome to a new <em>distributed experience</em>!</h2>
-		<hr/>
-		
-		<p>...</p>
-		
+	<div class="row">
+		<div class="span12">
+			<div class="hero-unit">
+				
+				<h1>mOSAIC <small>About</small></h1>
+				<h2>Welcome to a new <em>distributed experience</em>!</h2>
+				
+			</div>
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="span12">
+			
+			<h3>Incorporated technologies</h3>
+			
+			<div class="row center">
+			<div class="span">
+				<div class="span">
+					<a href="http://erlang.org/"><img src="http://www.erlang.org/images/logo.gif" alt="Erlang" height="80px" /></a>
+				</div>
+				<div class="span">
+					<a href="http://nodejs.org/"><img src="http://nodejs.org/logos/nodejs-green.png" alt="NodeJS" width="120px" /></a>
+				</div>
+				<div class="span">
+					<a href="http://rabbitmq.com/"><img src="https://dev.rabbitmq.com/res/rabbitmqlogonostrap.png" alt="RabbitMQ" width="160px" /></a>
+				</div>
+				<div class="span">
+					<a href="http://basho.com/"><img src="http://www.basho.com/images/riaklogo.png" alt="Riak" width="160px" /></a>
+				</div>
+				<div class="span">
+					<a href="http://zeromq.org/"><img src="http://download.zeromq.org/include/logo.gif" alt="ZeroMQ" width="120px" /></a>
+				</div>
+			</div>
+			<div class="span">
+				<div class="span">
+					<a href="http://python.org/"><img src="http://www.python.org/images/python-logo.gif" alt="Python" width="160px" /></a>
+				</div>
+				<div class="span">
+					<a href="http://java.com/"><img src="http://download.oracle.com/javase/webdesign/other/im/Java_clr_hori.gif" alt="Java" width="160px" /></a>
+				</div>
+				<div class="span">
+					<a href="http://eucalyptus.com/"><img src="http://open.eucalyptus.com/themes/eucalyptus/img/eucalyptus_logo_awh.png" alt="Eucalyptus" width="160px" /></a>
+				</div>
+				<div class="span">
+					<a href="http://virtualbox.org/"><img src="http://upload.wikimedia.org/wikipedia/en/thumb/d/d5/Virtualbox_logo.png/96px-Virtualbox_logo.png" alt="VirtualBox" width="80px" /></a>
+				</div>
+			</div>
+			<div class="span">
+				<div class="span">
+					<a href="http://github.com/mochi/mochiweb"><img src="http://mochi.github.com/mochilogo.png" alt="Mochiweb" width="80px" /></a>
+				</div>
+				<div class="span">
+					<a href="http://webmachine.basho.com/"><img src="http://webmachine.basho.com/images/webmachinelogo.png" alt="Webmachine" width="120px" /></a>
+				</div>
+				<div class="span">
+					<a href="http://github.com/ostinelli/misultin"><img src="http://code.google.com/p/misultin/logo?cct=1248707613" alt="Misultin" width="120px" /></a>
+				</div>
+				<div class="span">
+					<a href="http://slitaz.org/"><img src="http://www.slitaz.org/images/artwork/slitaz-logo-whitebg-320x118.png" alt="Slitaz" width="160px" /></a>
+				</div>
+			</div>
+			<div class="span">
+				<div class="span">
+					<a href="http://jetty.codehaus.org/"><img src="http://jetty.codehaus.org/jetty/images/jetty_logo.png" alt="Jetty" width="120px" /></a>
+				</div>
+				<div class="span">
+					<a href="http://jsconsole.com/"><img src="http://jsconsole.com/favicon.png" alt="JsConsole" height="80px" /></a>
+				</div>
+				<div class="span">
+					<a href="http://jquery.com/"><img src="http://jquery.org/wp-content/uploads/2010/01/JQuery_logo_color_onwhite-300x74.png" alt="JQuery" width="160px" /></a>
+				</div>
+				<div class="span">
+					<a href="http://expressjs.com/"><img src="http://expressjs.com/images/logo.png" alt="Express" width="160px" /></a>
+				</div>
+				<div class="span">
+					<a href="http://maven.apache.org/"><img src="http://maven.apache.org/maven-1.x/plugins/sandbox/images/logos/mavenlogo_builtby_w.png" alt="Maven" width="80px" /></a>
+				</div>
+			</div>
+				<!--
+				<div class="span">
+					<a href="???"><img src="???" alt="???" height="80px" /></a>
+				</div>
+				<div class="span">
+					<a href="???"><img src="???" alt="???" width="160px" /></a>
+				</div>
+				-->
+			</div>
+			</div>
+		</div>
 	</div>
 	
 {/blocks__main_panel}

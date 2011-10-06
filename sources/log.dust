@@ -40,6 +40,7 @@
 			min-width : 400px;
 			overflow-x : auto;
 			overflow-y : overflow;
+			background-color: #FEE9CC;
 		}
 		
 		div#logs, div#logs > ol, div#logs > ol > li {
@@ -50,6 +51,7 @@
 		div#logs > ol > li {
 			margin-left : 4em;
 			list-style-position : outside;
+			width : auto;
 		}
 		
 	</style>

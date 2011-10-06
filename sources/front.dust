@@ -2,35 +2,39 @@
 
 {<blocks__main_panel}
 	
-	<div class="hero-unit span12">
-		
-		<h1>mOSAIC WebUI <small>Front</small></h1>
-		<h2>Welcome to a new <em>distributed experience</em>!</h2>
-		<hr/>
-		
-		<div class="row">
-			
-			<div class="span4 center">
-				<h5>Components</h5>
-				<a class="btn primary large btn_popover" href="/processes">List</a>
-				<a class="btn success large btn_popover" href="/process/create">Create</a>
+	<div class="row">
+		<div class="span12">
+			<div class="hero-unit">
+				
+				<h1>mOSAIC <small>WebUI</small></h1>
+				<h2>Welcome to a new <em>distributed experience</em>!</h2>
+				<hr/>
+				
+				<div class="row">
+					
+					<div class="span3 center">
+						<h5>Components</h5>
+						<a class="btn primary large small" href="/processes">List</a>
+						<a class="btn success large small" href="/process/create">Create</a>
+					</div>
+					
+					<div class="span3 center">
+						<h5>Cluster</h5>
+						<a class="btn large small" href="/cluster/nodes">Nodes</a>
+						<a class="btn large small" href="/cluster/ring">Ring</a>
+					</div>
+					
+					<div class="span4 center">
+						<h5>Debugging</h5>
+						<a class="btn large small" href="/console">Console</a>
+						<a class="btn large small" href="/log">Log</a>
+						<a class="btn large small" href="http://developers.mosaic-cloud.eu/">Docs</a>
+					</div>
+					
+				</div>
+				
 			</div>
-			
-			<div class="span4 center">
-				<h5>Cluster</h5>
-				<a class="btn large btn_popover" href="/cluster/nodes">Nodes</a>
-				<a class="btn large btn_popover" href="/cluster/ring">Ring</a>
-			</div>
-			
-			<div class="span4 center">
-				<h5>Debugging</h5>
-				<a class="btn large btn_popover" href="/console">Console</a>
-				<a class="btn large btn_popover" href="/log">Log</a>
-				<a class="btn large btn_popover" href="http://developers.mosaic-cloud.eu/">Docs</a>
-			</div>
-			
 		</div>
-		
 	</div>
 	
 	
