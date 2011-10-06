@@ -5,7 +5,7 @@ if (require.main === module)
 
 // ---------------------------------------
 
-var _defaultTranscriptLevel = "debugging";
+var _defaultTranscriptLevel = "information";
 module.exports.mainTranscriptLevel = _defaultTranscriptLevel;
 module.exports.libTranscriptLevel = _defaultTranscriptLevel;
 
