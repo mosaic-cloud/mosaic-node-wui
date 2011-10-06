@@ -12,7 +12,6 @@ var fs = require ("fs");
 var path = require ("path");
 var printf = require ("printf");
 var querystring = require ("querystring");
-var request = require ("request");
 
 var controller = require ("./controller");
 var schemas = require ("./schemas");
@@ -59,18 +58,12 @@ function _handleAbout (_request, _response, _next)
 
 function _handleProxy (_path, _request, _response, _next)
 {
-	request.get (printf ("http://mosaic-1.loopback.vnet:31808%s", _path), function (_error) {
+	controller.proxy (_path, _response, function (_error) {
 		if (_error)
 			_renderView ("failed", _request, _response, _next, _mixinContext (_request, false, {
-				error : {
-						reason : "unexpected-http-client-error",
-						message : _error.toString (),
-						messageExtra : _error.stack.toString (),
-						error : _error,
-						path : _path,
-				},
-		}));
-	}) .pipe (_response);
+				error : _error,
+			}));
+	});
 }
 
 // ---------------------------------------

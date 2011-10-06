@@ -25,6 +25,11 @@ function _main ()
 		return;
 	}
 	
+	if (process.env["mosaic_node_ip"] !== undefined)
+		configuration.nodeIp = process.env["mosaic_node_ip"];
+	if (process.env["mosaic_node_port"] !== undefined)
+		configuration.nodePort = process.env["moasic_node_port"];
+	
 	var _application = express.createServer ();
 	
 	_application.configure (function () {

@@ -61,7 +61,7 @@ function _stopProcess (_key, _callback) {
 
 function _invokeGetJson (_path, _query, _callback) {
 	var _options = {
-			uri : printf ("http://mosaic-1.loopback.vnet:31808%s?%s", _path, querystring.stringify (_query)),
+			uri : printf ("http://%s:%ds?%s", configuration.nodeIp, configuration.nodePort, _path, querystring.stringify (_query)),
 			method : "GET",
 			headers : {
 				"Accept-Type" : "application/json",
@@ -111,6 +111,27 @@ function _invokeGetJson (_path, _query, _callback) {
 
 // ---------------------------------------
 
+function _proxy (_path, _response, _callback)
+{
+	request.get (printf ("http://%s:%d%s", configuration.nodeIp, configuration.nodePort, _path), function (_error) {
+		if (_callback === undefined)
+			return;
+		if (_error) {
+			var _outcome = {
+					reason : "unexpected-http-client-error",
+					message : _error.toString (),
+					messageExtra : _error.stack.toString (),
+					error : _error,
+					path : _path,
+			};
+			_callback (_outcome);
+			_callback = undefined;
+		}
+	}) .pipe (_response);
+}
+
+// ---------------------------------------
+
 module.exports.getClusterNodes = _getClusterNodes;
 module.exports.getClusterRing = _getClusterRing;
 module.exports.getProcesses = _getProcesses;
@@ -118,5 +139,6 @@ module.exports.createProcess = _createProcess;
 module.exports.callProcess = _callProcess;
 module.exports.castProcess = _castProcess;
 module.exports.stopProcess = _stopProcess;
+module.exports.proxy = _proxy;
 
 // ---------------------------------------
