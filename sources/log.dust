@@ -6,16 +6,16 @@
 		
 		<h1>Log
 			<span class="pull-right">
-				<a id="btn" class="btn success">Fetch</a>
-				<a id="autoscroll" class="btn">Auto-scroll (On)</a>
-				<a id="clear_btn" class="btn danger">Clear</a>
+				<a id="fetch" class="btn success" href="#">Fetch (Off)</a>
+				<a id="autoscroll" class="btn" href="#">Auto-scroll (On)</a>
+				<a id="clear" class="btn danger" href="#">Clear</a>
 			</span>
 		</h1>
 		
 		<div class="row">
-			<div class="span12">
+			<div class="">
 				
-				<div id="logs">
+				<div id="logs" class="well">
 					<ol id="list">
 					</ol>
 				</div>
@@ -28,6 +28,58 @@
 {/blocks__main_panel}
 
 {<layout__extra_head}
+	
+	<style type="text/css">
+		
+		div#logs {
+			margin : 0px;
+			padding : 4px;
+			height : 100%;
+			width : 100%;
+			min-height : 200px;
+			min-width : 400px;
+			overflow-x : auto;
+			overflow-y : overflow;
+		}
+		
+		div#logs, div#logs > ol, div#logs > ol > li {
+			margin : 0px;
+			padding : 0px;
+		}
+		
+		div#logs > ol > li {
+			margin-left : 4em;
+			list-style-position : outside;
+		}
+		
+	</style>
+	
+	<script type="text/javascript">
+		
+		function _jsconsoleDivResize () {
+			var _div = document.getElementById ("logs");
+			var _top = 0;
+			var _left = 0;
+			var _parentDiv = _div;
+			while (true) {
+				if (_parentDiv.y)
+					_top += _parentDiv.y;
+				if (_parentDiv.x)
+					_left += _parentDiv.x;
+				_top += _parentDiv.offsetTop;
+				_left += _parentDiv.offsetLeft;
+				if (!_parentDiv.offsetParent)
+					break;
+				_parentDiv = _parentDiv.offsetParent;
+			}
+			_div.style.height = (window.innerHeight - _top - 64) + "px";
+			_div.style.width = (window.innerWidth - _left - 64) + "px";
+			setTimeout (_jsconsoleDivResize, 1000);
+		}
+		
+		setTimeout (_jsconsoleDivResize, 100);
+		
+	</script>
 	
 	<script type="text/javascript" src="/static/log.js"></script>
 	
