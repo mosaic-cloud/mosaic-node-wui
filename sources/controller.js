@@ -60,8 +60,10 @@ function _stopProcess (_key, _callback) {
 // ---------------------------------------
 
 function _invokeGetJson (_path, _query, _callback) {
+	var _url = printf ("http://%s:%d%s?%s", configuration.nodeIp, configuration.nodePort, _path, querystring.stringify (_query));
+	transcript.traceDebugging ("invocking get request for: `%s`...", _url);
 	var _options = {
-			uri : printf ("http://%s:%ds?%s", configuration.nodeIp, configuration.nodePort, _path, querystring.stringify (_query)),
+			uri : _url,
 			method : "GET",
 			headers : {
 				"Accept-Type" : "application/json",
@@ -113,7 +115,9 @@ function _invokeGetJson (_path, _query, _callback) {
 
 function _proxy (_path, _response, _callback)
 {
-	request.get (printf ("http://%s:%d%s", configuration.nodeIp, configuration.nodePort, _path), function (_error) {
+	var _url = printf ("http://%s:%d%s", configuration.nodeIp, configuration.nodePort, _path);
+	transcript.traceDebugging ("proxying get request for: `%s`...", _url);
+	request.get (_url, function (_error) {
 		if (_callback === undefined)
 			return;
 		if (_error) {

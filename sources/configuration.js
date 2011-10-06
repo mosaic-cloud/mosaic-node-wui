@@ -17,3 +17,10 @@ module.exports.nodeIp = _nodeIp;
 module.exports.nodePort = _nodePort;
 
 // ---------------------------------------
+
+var _serverIp = "127.0.0.1";
+var _serverPort = 31806;
+module.exports.serverIp = _serverIp;
+module.exports.serverPort = _serverPort;
+
+// ---------------------------------------

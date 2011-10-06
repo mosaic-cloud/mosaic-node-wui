@@ -23,12 +23,12 @@ var transcript = require ("./transcript") (module, configuration.libTranscriptLe
 
 function _handleFront (_request, _response, _next)
 {
-	_renderView ("front", _request, _response, _next, _mixinContext (_request, true, {}));
+	_renderView (200, "front", _request, _response, _next, _mixinContext (_request, true, {}));
 }
 
 function _handleConsole (_request, _response, _next)
 {
-	_renderView ("console", _request, _response, _next, _mixinContext (_request, true, {}));
+	_renderView (200, "console", _request, _response, _next, _mixinContext (_request, true, {}));
 }
 
 function _handleConsoleProxy (_request, _response, _next)
@@ -38,7 +38,7 @@ function _handleConsoleProxy (_request, _response, _next)
 
 function _handleLog (_request, _response, _next)
 {
-	_renderView ("log", _request, _response, _next, _mixinContext (_request, true, {}));
+	_renderView (200, "log", _request, _response, _next, _mixinContext (_request, true, {}));
 }
 
 function _handleLogStream (_request, _response, _next)
@@ -53,14 +53,14 @@ function _handleLogContent (_request, _response, _next)
 
 function _handleAbout (_request, _response, _next)
 {
-	_renderView ("about", _request, _response, _next, _mixinContext (_request, true, {}));
+	_renderView (200, "about", _request, _response, _next, _mixinContext (_request, true, {}));
 }
 
 function _handleProxy (_path, _request, _response, _next)
 {
 	controller.proxy (_path, _response, function (_error) {
 		if (_error)
-			_renderView ("failed", _request, _response, _next, _mixinContext (_request, false, {
+			_renderView (500, "failed", _request, _response, _next, _mixinContext (_request, false, {
 				error : _error,
 			}));
 	});
@@ -70,7 +70,7 @@ function _handleProxy (_path, _request, _response, _next)
 
 function _handleInvalid (_request, _response, _next)
 {
-	_renderView ("invalid", _request, _response, _next, _mixinContext (_request, false, {
+	_renderView (500, "invalid", _request, _response, _next, _mixinContext (_request, false, {
 			path : _request.url, query : _request.query, method : _request.method, body : _request.body,
 	}));
 }
@@ -81,11 +81,11 @@ function _handleQueryClusterNodes (_request, _response, _next)
 {
 	controller.getClusterNodes (function (_error, _outcome) {
 		if (_error === null)
-			_renderView ("cluster_nodes", _request, _response, _next, _mixinContext (_request, true, {
+			_renderView (200, "cluster_nodes", _request, _response, _next, _mixinContext (_request, true, {
 					outcome : _outcome,
 			}));
 		else
-			_renderView ("failed", _request, _response, _next, _mixinContext (_request, false, {
+			_renderView (500, "failed", _request, _response, _next, _mixinContext (_request, false, {
 					error : _error,
 			}));
 	});
@@ -95,11 +95,11 @@ function _handleQueryClusterRing (_request, _response, _next)
 {
 	controller.getClusterRing (function (_error, _outcome) {
 		if (_error === null)
-			_renderView ("cluster_ring", _request, _response, _next, _mixinContext (_request, true, {
+			_renderView (200, "cluster_ring", _request, _response, _next, _mixinContext (_request, true, {
 					outcome : _outcome,
 			}));
 		else
-			_renderView ("failed", _request, _response, _next, _mixinContext (_request, false, {
+			_renderView (500, "failed", _request, _response, _next, _mixinContext (_request, false, {
 					error : _error,
 			}));
 	});
@@ -116,11 +116,11 @@ function _handleQueryProcesses (_request, _response, _next)
 					.sortBy (function (_process) { return (_process.key); })
 					.sortBy (function (_process) { return (_process.type); })
 					.value ();
-			_renderView ("processes", _request, _response, _next, _mixinContext (_request, true, {
+			_renderView (200, "processes", _request, _response, _next, _mixinContext (_request, true, {
 					outcome : _outcome,
 			}));
 		} else
-			_renderView ("failed", _request, _response, _next, _mixinContext (_request, false, {
+			_renderView (500, "failed", _request, _response, _next, _mixinContext (_request, false, {
 					error : _error,
 			}));
 	});
@@ -159,7 +159,7 @@ function _handleCreateProcessPre (_request, _response, _next)
 	else
 		_typeOptions = [{name : "[Custom...]", selected : true}];
 	var _typeInputable = (_typeTemplate == "[Custom...]");
-	_renderView ("process_create", _request, _response, _next, _mixinContext (_request, false, {
+	_renderView (200, "process_create", _request, _response, _next, _mixinContext (_request, false, {
 			type : _type, configuration : _configuration, count : _count,
 			typeOptions : _typeOptions, typeInputable : _typeInputable,
 			typeTemplate : _typeTemplate, configurationTemplate : _configurationTemplate,
@@ -171,11 +171,11 @@ function _handleCreateProcess (_request, _response, _next)
 {
 	controller.createProcess (_request.param ("type"), _request.param ("configuration"), _request.param ("count", 1), function (_error, _outcome) {
 		if (_error === null)
-			_renderView ("succeeded", _request, _response, _next, _mixinContext (_request, false, {
+			_renderView (200, "succeeded", _request, _response, _next, _mixinContext (_request, false, {
 					outcome : _outcome,
 			}));
 		else
-			_renderView ("failed", _request, _response, _next, _mixinContext (_request, false, {
+			_renderView (500, "failed", _request, _response, _next, _mixinContext (_request, false, {
 					error : _error,
 			}));
 	});
@@ -259,7 +259,7 @@ function _handleCallCastProcessPre (_action, _request, _response, _next)
 	} else
 		_operationOptions = [{name : "[Custom...]", selected : true}];
 	_operationInputable = (_operationTemplate == "[Custom...]");
-	_renderView ("process_call_cast", _request, _response, _next, _mixinContext (_request, false, {
+	_renderView (200, "process_call_cast", _request, _response, _next, _mixinContext (_request, false, {
 			key : _key, operation : _operation, inputs : _inputs, type : _type,
 			typeOptions : _typeOptions, operationOptions : _operationOptions, operationInputable : _operationInputable,
 			typeTemplate : _typeTemplate, operationTemplate : _operationTemplate, inputsTemplate : _inputsTemplate,
@@ -272,11 +272,11 @@ function _handleCallCastProcess (_action, _request, _response, _next)
 {
 	var _callback = function (_error, _outcome) {
 		if (_error === null)
-			_renderView ("succeeded", _request, _response, _next, _mixinContext (_request, false, {
+			_renderView (200, "succeeded", _request, _response, _next, _mixinContext (_request, false, {
 					outcome : _outcome,
 			}));
 		else
-			_renderView ("failed", _request, _response, _next, _mixinContext (_request, false, {
+			_renderView (500, "failed", _request, _response, _next, _mixinContext (_request, false, {
 					error : _error,
 			}));
 	};
@@ -288,7 +288,7 @@ function _handleCallCastProcess (_action, _request, _response, _next)
 
 function _handleStopProcessPre (_request, _response, _next)
 {
-	_renderView ("process_stop", _request, _response, _next, _mixinContext (_request, false, {
+	_renderView (200, "process_stop", _request, _response, _next, _mixinContext (_request, false, {
 			key : _request.param ("key"),
 	}));
 }
@@ -297,11 +297,11 @@ function _handleStopProcess (_request, _response, _next)
 {
 	controller.stopProcess (_request.param ("key"), function (_error, _outcome) {
 		if (_error === null)
-			_renderView ("succeeded", _request, _response, _next, _mixinContext (_request, false, {
+			_renderView (200, "succeeded", _request, _response, _next, _mixinContext (_request, false, {
 					outcome : _outcome,
 			}));
 		else
-			_renderView ("failed", _request, _response, _next, _mixinContext (_request, false, {
+			_renderView (500, "failed", _request, _response, _next, _mixinContext (_request, false, {
 					error : _error,
 			}));
 	});
@@ -348,14 +348,14 @@ function _mixinContext (_request, _pushReturn, _context)
 
 // ---------------------------------------
 
-function _renderView (_view, _request, _response, _next, _attributes)
+function _renderView (_status, _view, _request, _response, _next, _attributes)
 {
 	var _context = dust.makeBase ({}) .push (_attributes);
 	dust.render (_view, _context, function (_error, _output) {
 		if (_error)
 			_next (_error);
 		else
-			_response.send (_output, {}, 200);
+			_response.send (_output, {}, _status);
 	});
 }
 
@@ -367,7 +367,7 @@ function _configureApplication (_application)
 	_application.use ("/static", express.static (path.join (path.dirname (module.filename), "../static")));
 	_application.use (_application.router);
 	_application.use (function (_error, _request, _response, _next) {
-		_renderView ("failed", _request, _response, _next, {
+		_renderView (500, "failed", _request, _response, _next, {
 				error : {reason : "unexpected-internal-error", message : _error.toString (), messageExtra : _error.stack.toString ()},
 		});
 	});
@@ -407,6 +407,7 @@ function _configureApplication (_application)
 	_application.delete ("*", _handleInvalid);
 	
 	dust.onLoad = function (_view, _callback) {
+		transcript.traceDebugging ("loading view `%s` template...", _view);
 		fs.readFile (path.join (path.dirname (module.filename), _view + ".dust"), "utf8", function (_error, _output) {
 			if (_error)
 				_callback (_error);
@@ -419,8 +420,13 @@ function _configureApplication (_application)
 	};
 	dust.register = function (_view, _renderer) {
 		dust.cache[_view] = _renderer;
+		dust.register.cleaned = false;
 		process.nextTick (function () {
-			delete dust.cache[_view];
+			if (dust.register.cleaned !== true) {
+				transcript.traceDebugging ("cleaning view cache...");
+				dust.cache = {};
+				dust.register.cleaned = true;
+			}
 		});
 	};
 	dust.optimizers.format = function (_context, _node) {

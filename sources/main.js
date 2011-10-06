@@ -30,13 +30,29 @@ function _main ()
 	if (process.env["mosaic_node_port"] !== undefined)
 		configuration.nodePort = process.env["moasic_node_port"];
 	
+	if (process.env["mosaic_node_wui_ip"] !== undefined)
+		configuration.serverIp = process.env["mosaic_node_wui_ip"];
+	if (process.env["mosaic_node_wui_port"] !== undefined)
+		configuration.serverPort = process.env["mosaic_node_wui_port"];
+	
+	process.stdin.on ("data", function (_data) {
+		transcript.traceError ("unexpected data received on stdin; aborting!");
+		process.exit (1);
+	});
+	process.stdin.on ("end", function () {
+		transcript.traceInformation ("input stream closed; exiting!");
+		process.exit (0);
+	});
+	process.stdin.resume ();
+	
 	var _application = express.createServer ();
 	
 	_application.configure (function () {
 		views.configureApplication (_application);
 	});
 	
-	_application.listen (9999, "127.0.0.1");
+	transcript.traceInformation ("starting web server on `http://%s:%d/`...", configuration.serverIp, configuration.serverPort);
+	_application.listen (configuration.serverPort, configuration.serverIp);
 }
 
 // ---------------------------------------

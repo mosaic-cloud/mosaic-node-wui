@@ -23,9 +23,15 @@ function _schemasRefresh () {
 	var _jsonTimestamp = fs.statSync (_schemasJsonPath) .mtime;
 	var _yamlTimestamp = fs.statSync (_schemasYamlPath) .mtime;
 	if (_jsonTimestamp < _yamlTimestamp) {
+		transcript.traceInformation ("`schemas.yaml` seems to be newer than `schemas.json`; reprocessing...");
 		var _child = child_process.spawn ("python2", [_schemasPy], {cwd : process.cwd (), env : process.env, customFds : ["/dev/null", "/dev/null", process.stderr]});
-		_child.on ("exit", function () {
-			setTimeout (_schemasRefresh, _schemasPyInterval);
+		_child.on ("exit", function (_code) {
+			if (_code == 0)
+				setTimeout (_schemasRefresh, _schemasPyInterval);
+			else {
+				transcript.traceError ("`schemas.yaml` seems to be invalid; rescheduling...");
+				setTimeout (_schemasRefresh, _schemasPyInterval * 4);
+			}
 		});
 	} else {
 		setTimeout (_schemasRefresh, _schemasPyInterval);
