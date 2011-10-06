@@ -58,7 +58,7 @@ function _handleAbout (_request, _response, _next)
 
 function _handleProxy (_path, _request, _response, _next)
 {
-	controller.proxy (_path, _response, function (_error) {
+	controller.proxy (_path, _request, _response, function (_error) {
 		if (_error)
 			_renderView (500, "failed", _request, _response, _next, _mixinContext (_request, false, {
 				error : _error,

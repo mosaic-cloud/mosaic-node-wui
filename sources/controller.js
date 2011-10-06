@@ -113,11 +113,11 @@ function _invokeGetJson (_path, _query, _callback) {
 
 // ---------------------------------------
 
-function _proxy (_path, _response, _callback)
+function _proxy (_path, _originalRequest, _originalResponse, _callback)
 {
 	var _url = printf ("http://%s:%d%s", configuration.nodeIp, configuration.nodePort, _path);
 	transcript.traceDebugging ("proxying get request for: `%s`...", _url);
-	request.get (_url, function (_error) {
+	var _proxyRequest = request.get (_url, function (_error) {
 		if (_callback === undefined)
 			return;
 		if (_error) {
@@ -131,7 +131,22 @@ function _proxy (_path, _response, _callback)
 			_callback (_outcome);
 			_callback = undefined;
 		}
-	}) .pipe (_response);
+	});
+	_originalRequest.on ("close", function () {
+		if (_callback === undefined)
+			return;
+		transcript.traceWarning ("failed proxying get request for: `%s` (upstream closed); ignoring!", _url);
+		_proxyRequest.req.abort ();
+		_callback = undefined;
+	});
+	_proxyRequest.on ("close", function () {
+		if (_callback === undefined)
+			return;
+		transcript.traceWarning ("failed proxying get request for: `%s` (downstream closed); ignoring!", _url);
+		_originalResponse.end ();
+		_callback = undefined;
+	});
+	_proxyRequest.pipe (_originalResponse);
 }
 
 // ---------------------------------------
