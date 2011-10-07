@@ -38,10 +38,13 @@
 			</div>
 			<div class="span">
 				<div class="span">
-					<a href="http://python.org/"><img src="http://www.python.org/images/python-logo.gif" alt="Python" width="160px" /></a>
+					<a href="http://kernel.org/"><img src="http://kernel.org/doc/Documentation/logo.gif" alt="Linux" width="100px" /></a>
 				</div>
 				<div class="span">
-					<a href="http://java.com/"><img src="http://download.oracle.com/javase/webdesign/other/im/Java_clr_hori.gif" alt="Java" width="160px" /></a>
+					<a href="http://gnu.org/"><img src="http://planet.gnu.org/fnossplanet/sites/gnu/images/logo.png" alt="GNU" width="100px" /></a>
+				</div>
+				<div class="span">
+					<a href="http://python.org/"><img src="http://www.python.org/images/python-logo.gif" alt="Python" width="160px" /></a>
 				</div>
 				<div class="span">
 					<a href="http://eucalyptus.com/"><img src="http://open.eucalyptus.com/themes/eucalyptus/img/eucalyptus_logo_awh.png" alt="Eucalyptus" width="160px" /></a>
@@ -51,6 +54,9 @@
 				</div>
 			</div>
 			<div class="span">
+				<div class="span">
+					<a href="http://java.com/"><img src="http://download.oracle.com/javase/webdesign/other/im/Java_clr_hori.gif" alt="Java" width="160px" /></a>
+				</div>
 				<div class="span">
 					<a href="http://github.com/mochi/mochiweb"><img src="http://mochi.github.com/mochilogo.png" alt="Mochiweb" width="80px" /></a>
 				</div>
@@ -76,6 +82,9 @@
 				</div>
 				<div class="span">
 					<a href="http://expressjs.com/"><img src="http://expressjs.com/images/logo.png" alt="Express" width="160px" /></a>
+				</div>
+				<div class="span">
+					<a href="http://twitter.github.com/bootstrap"><img src="http://a0.twimg.com/profile_images/1540251533/bootstrap-avatar_bigger.png" alt="Bootstrap" height="60px" /></a>
 				</div>
 				<div class="span">
 					<a href="http://maven.apache.org/"><img src="http://maven.apache.org/maven-1.x/plugins/sandbox/images/logos/mavenlogo_builtby_w.png" alt="Maven" width="80px" /></a>
