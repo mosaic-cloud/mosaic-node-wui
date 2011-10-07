@@ -94,7 +94,7 @@
 			<div class="sidebar">
 				
 				<div class="center">
-					<img src="/static/mosaic-logo-small.png" alt="mOSAIC" height="80px" />
+					<a href="http://mosaic-cloud.eu/"><img src="/static/mosaic-logo-small.png" alt="mOSAIC" height="80px" /></a>
 				</div>
 				
 				<div class="well fade fade-trigger shy-trigger">

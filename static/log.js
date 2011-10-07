@@ -16,7 +16,7 @@
         
         
         $("#autoscroll").click(function() {
-            if(autoscroll == false){
+            if(autoscroll == false) {
                 $(this).removeClass("success");
                 $(this).text("Autoscroll (On)");
                 autoscroll = true;
@@ -29,13 +29,13 @@
         });
         
         
-        $("#clear").click(function(){
+        $("#clear").click(function() {
             $(".log").remove();
         });
         
         
-        $("#fetch").click(function(){
-            if(fetch == false){
+        $("#fetch").click(function() {
+            if(fetch == false) {
                 $(this).removeClass("success");
                 $(this).text("Fetch (On)");
                 $("#clear").click();
@@ -56,7 +56,7 @@
             disconnect();
             if(!fetch)
                 return;
-            time = setTimeout(function(){
+            time = setTimeout(function() {
                     disconnect();
                     req = new XMLHttpRequest ();
                     req.onreadystatechange = stateChangeHandler;
@@ -69,7 +69,7 @@
         function disconnect() {
             if (time)
                 clearTimeout(time);
-            if (req){
+            if (req) {
                 req.onreadystatechange = undefined;
                 req.abort();
             }
@@ -97,46 +97,37 @@
             
             if(req.responseText.length <= load)
                 return;
-            
-            var lastLog = req.responseText.slice(load).replace(/\r/g, '');
-            if(lastLog.lastIndexOf("\n") == -1) {
-                buffer += lastLog;
-            }
-            else if(lastLog.lastIndexOf("\n") == lastLog.length - 1) {
-                lastLog = lastLog.split("\n");
-                $.each(lastLog, function(index, data) {
-                    if(data != "" && data.length > 3) { // 3 is a magic number :|, the server is sending me the size of the chunked ...
-                        var row = $("<li class='log'><code>" + data + "</code></li>");
-                        row = addLogLevelClass(row);
-                        log.append(row);
-                    }
-                });
-            }
-            else {
-                lastLog = lastLog.split("\n");
-                if(buffer.length > 0) {
-                    buffer += lastLog.shift();
-                    var row = addLogLevelClass($(buffer));
-                    log.append($("<li class='log'><code>" + row + "</code></li>"));
-                    buffer = "";
-                }
-                buffer = lastLog.pop();
-                if(lastLog.length > 0) {
-                    $.each(lastLog, function(index, data){
-                        var row = $("<li class='log'><code>" + data + "</code></li>");
-                        row = addLogLevelClass(row);
-                        log.append(row);
-                    });
-                }
-            }
+            var lastLog = req.responseText.slice(load);
+            lastLog = lastLog.replace(/\r/g, '');
+            lastLog = lastLog.replace(/ /g, "&nbsp;");
+            lastLog = lastLog.replace(/</g, "&lt;");
+            lastLog = lastLog.replace(/>/g, "&gt;");
             load = req.responseText.length;
             
-            if(autoscroll){
+            buffer += lastLog;
+            if(buffer.lastIndexOf("\n") >= 0) {
+                var lines = buffer.split("\n");
+                if (buffer[buffer.length - 1] == "\n") {
+                    buffer = "";
+                }
+                else {
+                    buffer = lines.pop();
+                }
+                $.each(lines, function(index, line) {
+                    var row = $("<li class='log'><code>" + line + "</code></li>");
+                    row = addLogLevelClass(row);
+                    log.append(row);
+                });
+            }
+            
+            if(autoscroll) {
                 var logs = document.getElementById("logs");
                 logs.scrollTop = logs.scrollHeight;
             }
         }
         
-        setTimeout(function() { $("#fetch").click(); }, 500);
+        setTimeout(function() {
+            $("#fetch").click();
+        }, 500);
     });
 
