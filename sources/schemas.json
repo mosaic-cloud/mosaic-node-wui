@@ -97,7 +97,7 @@
         "castOperations": {}, 
         "configurationTemplate": null, 
         "quickCreate": true, 
-        "quickCreateName": "Feeds Fetcher", 
+        "quickCreateName": "(Feeds Fetcher)", 
         "quickCreateOrder": 100
     }, 
     "#mosaic-examples-realtime-feeds:frontend": {
@@ -105,7 +105,7 @@
         "castOperations": {}, 
         "configurationTemplate": null, 
         "quickCreate": true, 
-        "quickCreateName": "Feeds Frontend", 
+        "quickCreateName": "(Feeds Frontend)", 
         "quickCreateOrder": 100
     }, 
     "#mosaic-examples-realtime-feeds:indexer": {
@@ -113,7 +113,15 @@
         "castOperations": {}, 
         "configurationTemplate": null, 
         "quickCreate": true, 
-        "quickCreateName": "Feeds Indexer", 
+        "quickCreateName": "(Feeds Indexer)", 
+        "quickCreateOrder": 100
+    }, 
+    "#mosaic-examples-realtime-feeds:java-indexer": {
+        "callOperations": {}, 
+        "castOperations": {}, 
+        "configurationTemplate": null, 
+        "quickCreate": true, 
+        "quickCreateName": "(Feeds Indexer-C)", 
         "quickCreateOrder": 100
     }, 
     "#mosaic-examples-realtime-feeds:leacher": {
@@ -131,7 +139,7 @@
         "castOperations": {}, 
         "configurationTemplate": null, 
         "quickCreate": true, 
-        "quickCreateName": "Feeds Scavanger", 
+        "quickCreateName": "(Feeds Scavanger)", 
         "quickCreateOrder": 100
     }, 
     "#mosaic-tests:dummy": {
