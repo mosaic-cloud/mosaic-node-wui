@@ -5,6 +5,10 @@
 	<div>
 		
 		<h1>Log
+			<span>
+				<a class="btn tiny" href="/log/stream">Stream</a>
+				<a class="btn tiny" href="/log/content">Content</a>
+			</span>
 			<span class="pull-right">
 				<a id="fetch" class="btn success" href="#">Fetch (Off)</a>
 				<a id="autoscroll" class="btn" href="#">Auto-scroll (On)</a>

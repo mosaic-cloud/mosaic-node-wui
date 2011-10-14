@@ -12,7 +12,7 @@
         }, 
         "castOperations": {}, 
         "configurationTemplate": null, 
-        "description": "<div class=\"row\">\n    <div class=\"span2 center\"><a href=\"http://www.mosaic-cloud.eu/\"><img src=\"/static/mosaic-logo-small.png\" width=\"80px\" alt=\"mOSAIC\" /></a></div>\n    <div class=\"offset2\">\n        <h5>mosaic-components:httpg</h5>\n        <p>...</p>\n    </div>\n</div>\n", 
+        "description": "<div class=\"row\">\n    <div class=\"span2 center\"><a href=\"http://www.mosaic-cloud.eu/\"><img src=\"/static/mosaic-logo-small.png\" width=\"80px\" alt=\"mOSAIC\" /></a></div>\n    <div class=\"offset2\">\n        <h5>mosaic-components:httpg</h5>\n    </div>\n</div>\n", 
         "quickCreate": true, 
         "quickCreateName": "mOSAIC HTTP-G", 
         "quickCreateOrder": 10
@@ -37,7 +37,12 @@
         ]
     }, 
     "#mosaic-components:java-driver": {
-        "callOperations": {}, 
+        "callOperations": {
+            "mosaic-component:get.channel.data": {
+                "description": null, 
+                "inputsTemplate": null
+            }
+        }, 
         "castOperations": {}, 
         "configurationTemplate": "<<type>>", 
         "quickCreate": true, 
@@ -160,7 +165,7 @@
         }, 
         "castOperations": {}, 
         "configurationTemplate": null, 
-        "description": "<div class=\"row\">\n    <div class=\"span2 center\"><a href=\"http://www.mosaic-cloud.eu/\"><img src=\"/static/mosaic-logo-small.png\" width=\"80px\" alt=\"mOSAIC\" /></a></div>\n    <div class=\"offset2\">\n        <h5>mosaic-components:httpg</h5>\n        <p>...</p>\n    </div>\n</div>\n", 
+        "description": "<div class=\"row\">\n    <div class=\"span2 center\"><a href=\"http://www.mosaic-cloud.eu/\"><img src=\"/static/mosaic-logo-small.png\" width=\"80px\" alt=\"mOSAIC\" /></a></div>\n    <div class=\"offset2\">\n        <h5>mosaic-components:httpg</h5>\n    </div>\n</div>\n", 
         "quickCreate": false, 
         "quickCreateName": "mOSAIC HTTP-G", 
         "quickCreateOrder": 10

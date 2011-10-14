@@ -135,7 +135,6 @@
             <div class="span2 center"><a href="http://www.mosaic-cloud.eu/"><img src="/static/mosaic-logo-small.png" width="80px" alt="mOSAIC" /></a></div>
             <div class="offset2">
                 <h5>mosaic-components:httpg</h5>
-                <p>...</p>
             </div>
         </div>
 
@@ -169,7 +168,10 @@
     quickCreateName : mOSAIC Driver
     quickCreateOrder : 10
     configurationTemplate : "<<type>>"
-    callOperations : {}
+    callOperations :
+        mosaic-component:get.channel.data :
+            inputsTemplate :
+            description :
     castOperations : {}
 
 "#mosaic-examples-realtime-feeds:fetcher" :
