@@ -109,6 +109,7 @@
                 var lines = buffer.split("\n");
                 if (buffer[buffer.length - 1] == "\n") {
                     buffer = "";
+                    lines.pop();
                 }
                 else {
                     buffer = lines.pop();
