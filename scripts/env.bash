@@ -3,8 +3,8 @@
 _workbench="$( readlink -e -- . )"
 _sources="${_workbench}/sources"
 _scripts="${_workbench}/scripts"
-_outputs="${_workbench}/.outputs"
 _tools="${_workbench}/.tools"
+_outputs="${_workbench}/.outputs"
 _npm_prefix="${_workbench}/.npm"
 
 _PATH="${_tools}/bin:${PATH}"
