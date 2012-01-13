@@ -28,7 +28,7 @@
         "quickCreateName": "mOSAIC Cloudlet", 
         "quickCreateOrder": 10
     }, 
-    "#mosaic-components:java-container": {
+    "#mosaic-components:java-component-container": {
         "callOperations": {}, 
         "castOperations": {}, 
         "configurationTemplate": [
@@ -36,7 +36,7 @@
             "http://<<host>>/<<component>>.jar"
         ]
     }, 
-    "#mosaic-components:java-driver": {
+    "#mosaic-components:java-driver-container": {
         "callOperations": {
             "mosaic-component:get.channel.data": {
                 "description": null, 
@@ -105,7 +105,7 @@
         "quickCreateName": "(Feeds Fetcher)", 
         "quickCreateOrder": 100
     }, 
-    "#mosaic-examples-realtime-feeds:frontend": {
+    "#mosaic-examples-realtime-feeds:frontend-java": {
         "callOperations": {}, 
         "castOperations": {}, 
         "configurationTemplate": null, 
@@ -121,7 +121,7 @@
         "quickCreateName": "(Feeds Indexer)", 
         "quickCreateOrder": 100
     }, 
-    "#mosaic-examples-realtime-feeds:java-indexer": {
+    "#mosaic-examples-realtime-feeds:indexer-java": {
         "callOperations": {}, 
         "castOperations": {}, 
         "configurationTemplate": null, 
@@ -147,11 +147,6 @@
         "quickCreateName": "(Feeds Scavanger)", 
         "quickCreateOrder": 100
     }, 
-    "#mosaic-tests:dummy": {
-        "callOperations": {}, 
-        "castOperations": {}, 
-        "configurationTemplate": null
-    }, 
     "#mosaic-tests:httpg": {
         "callOperations": {
             "mosaic-httpg:get-gateway-endpoint": {
@@ -170,6 +165,17 @@
         "quickCreateName": "mOSAIC HTTP-G", 
         "quickCreateOrder": 10
     }, 
+    "#mosaic-tests:java-cloudlet-container": {
+        "callOperations": {}, 
+        "castOperations": {}, 
+        "configurationTemplate": [
+            "<<http://<host>/<<cloudlet>>.jar", 
+            "<<configuration.properties>>"
+        ], 
+        "quickCreate": false, 
+        "quickCreateName": "mOSAIC Cloudlet", 
+        "quickCreateOrder": 10
+    }, 
     "#mosaic-tests:java-component": {
         "callOperations": {}, 
         "castOperations": {}, 
@@ -178,18 +184,27 @@
             "http://<<host>>/<<component.jar>>"
         ]
     }, 
-    "#mosaic-tests:java-container": {
+    "#mosaic-tests:java-component-container": {
         "callOperations": {}, 
         "castOperations": {}, 
         "configurationTemplate": [
             "<<ComponentCallback>>", 
-            "http://<<host>>/<<component.jar>>"
-        ]
+            "http://<<host>>/<<component>>.jar"
+        ], 
+        "quickCreate": false
     }, 
-    "#mosaic-tests:jetty-hello-world": {
-        "callOperations": {}, 
+    "#mosaic-tests:java-driver-container": {
+        "callOperations": {
+            "mosaic-component:get.channel.data": {
+                "description": null, 
+                "inputsTemplate": null
+            }
+        }, 
         "castOperations": {}, 
-        "configurationTemplate": null
+        "configurationTemplate": "<<type>>", 
+        "quickCreate": false, 
+        "quickCreateName": "mOSAIC Driver", 
+        "quickCreateOrder": 10
     }, 
     "#mosaic-tests:rabbitmq": {
         "callOperations": {

@@ -138,24 +138,12 @@
             </div>
         </div>
 
-"#mosaic-tests:rabbitmq" :
-    quickCreate : false
-    << : *mosaic-components--rabbitmq
-
-"#mosaic-tests:riak-kv" :
-    << : *mosaic-components--riak-kv
-    quickCreate : false
-
-"#mosaic-tests:httpg" :
-    quickCreate : false
-    << : *mosaic-components--httpg
-
-"#mosaic-components:java-container" :
+"#mosaic-components:java-component-container" : &mosaic-components--java-component-container
     configurationTemplate : ["<<ComponentCallback>>", "http://<<host>>/<<component>>.jar"]
     callOperations : {}
     castOperations : {}
 
-"#mosaic-components:java-cloudlet-container" :
+"#mosaic-components:java-cloudlet-container" : &mosaic-components--java-cloudlet-container
     quickCreate : true
     quickCreateName : mOSAIC Cloudlet
     quickCreateOrder : 10
@@ -163,7 +151,7 @@
     callOperations : {}
     castOperations : {}
 
-"#mosaic-components:java-driver" :
+"#mosaic-components:java-driver-container" : &mosaic-components--java-driver-container
     quickCreate : true
     quickCreateName : mOSAIC Driver
     quickCreateOrder : 10
@@ -190,7 +178,7 @@
     callOperations : {}
     castOperations : {}
 
-"#mosaic-examples-realtime-feeds:java-indexer" :
+"#mosaic-examples-realtime-feeds:indexer-java" :
     quickCreate : true
     quickCreateName : (Feeds Indexer-C)
     quickCreateOrder : 100
@@ -198,7 +186,7 @@
     callOperations : {}
     castOperations : {}
 
-"#mosaic-examples-realtime-feeds:frontend" :
+"#mosaic-examples-realtime-feeds:frontend-java" :
     quickCreate : true
     quickCreateName : (Feeds Frontend)
     quickCreateOrder : 100
@@ -224,23 +212,32 @@
     callOperations : {}
     castOperations : {}
 
-"#mosaic-tests:dummy" :
-    configurationTemplate :
-    callOperations : {}
-    castOperations : {}
+"#mosaic-tests:rabbitmq" :
+    quickCreate : false
+    << : *mosaic-components--rabbitmq
 
-"#mosaic-tests:java-container" :
-    configurationTemplate : ["<<ComponentCallback>>", "http://<<host>>/<<component.jar>>"]
-    callOperations : {}
-    castOperations : {}
+"#mosaic-tests:riak-kv" :
+    << : *mosaic-components--riak-kv
+    quickCreate : false
+
+"#mosaic-tests:httpg" :
+    quickCreate : false
+    << : *mosaic-components--httpg
+
+"#mosaic-tests:java-component-container" :
+    quickCreate : false
+    << : *mosaic-components--java-component-container
+
+"#mosaic-tests:java-cloudlet-container" :
+    quickCreate : false
+    << : *mosaic-components--java-cloudlet-container
+
+"#mosaic-tests:java-driver-container" :
+    quickCreate : false
+    << : *mosaic-components--java-driver-container
 
 "#mosaic-tests:java-component" :
     configurationTemplate : ["<<ComponentMain>>", "http://<<host>>/<<component.jar>>"]
-    callOperations : {}
-    castOperations : {}
-
-"#mosaic-tests:jetty-hello-world" :
-    configurationTemplate :
     callOperations : {}
     castOperations : {}
 

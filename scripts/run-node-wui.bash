@@ -29,4 +29,4 @@ fi
 mkdir -p "${_tmp}"
 cd "${_tmp}"
 
-exec env "${_node_env[@]}" "${_node}" "${_node_args[@]}"
+exec env "${_node_env[@]}" "${_node_bin}" "${_node_args[@]}"
