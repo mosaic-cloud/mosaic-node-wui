@@ -26,7 +26,9 @@ if test "${_identifier}" != 0000000054d5b2b2b06341e1a788a2eea3733b90 ; then
 	)
 fi
 
-mkdir -p "${_tmp}"
-cd "${_tmp}"
+mkdir -p -- "${_tmp}"
+cd -- "${_tmp}"
 
 exec env "${_node_env[@]}" "${_node_bin}" "${_node_args[@]}"
+
+exit 1
