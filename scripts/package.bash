@@ -26,16 +26,16 @@ mkdir -- "${_outputs}/package"
 mkdir -- "${_outputs}/package/bin"
 mkdir -- "${_outputs}/package/lib"
 
-mkdir "${_outputs}/package/lib/node"
-find ./sources -type f \( -name "*.js" -o -name "*.dust" -o -name '*.json' -o -name '*.yaml' -o -name '*.py' \) -print \
-| while read _source ; do
-	cp -t "${_outputs}/package/lib/node" "${_source}"
+mkdir -- "${_outputs}/package/lib/node"
+find "${_sources}" -type f \( -name "*.js" -o -name "*.dust" -o -name '*.json' -o -name '*.yaml' -o -name '*.py' \) -print \
+| while read _source_path ; do
+	cp -t "${_outputs}/package/lib/node" -- "${_source_path}"
 done
 
 mkdir "${_outputs}/package/lib/static"
-find ./static -type f \( -not -name ".*" \) -print \
-| while read _static ; do
-	cp -t "${_outputs}/package/lib/static" "${_static}"
+find "${_static}" -type f \( -not -name ".*" \) -print \
+| while read _static_path ; do
+	cp -t "${_outputs}/package/lib/static" -- "${_static_path}"
 done
 
 cp -R -T -- "${_workbench}/node_modules" "${_outputs}/package/lib/node_modules"

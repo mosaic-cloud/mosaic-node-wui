@@ -9,3 +9,5 @@ if test "${#_npm_args[@]}" -eq 0 ; then
 else
 	exec env "${_npm_env[@]}" "${_npm_bin}" "${_npm_args[@]}"
 fi
+
+exit 1
