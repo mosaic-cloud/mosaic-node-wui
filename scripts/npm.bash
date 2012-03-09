@@ -9,7 +9,7 @@ if ! test -e "${_npm_prefix}" ; then
 fi
 
 if test "${#_npm_args[@]}" -eq 0 ; then
-	exec env "${_npm_env[@]}" "${_npm}"
+	exec env "${_npm_env[@]}" "${_npm_bin}"
 else
-	exec env "${_npm_env[@]}" "${_npm}" "${_npm_args[@]}"
+	exec env "${_npm_env[@]}" "${_npm_bin}" "${_npm_args[@]}"
 fi
