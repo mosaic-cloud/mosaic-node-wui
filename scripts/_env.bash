@@ -6,7 +6,6 @@ _static="${_workbench}/static"
 _scripts="${_workbench}/scripts"
 _tools="${_workbench}/.tools"
 _outputs="${_workbench}/.outputs"
-_npm_prefix="${_workbench}/.npm"
 
 _PATH="${_tools}/bin:${PATH}"
 
@@ -32,11 +31,10 @@ _node_sources="${_sources}"
 _node_args=()
 _node_env=(
 		PATH="${_PATH}"
-		NODE_PATH="${_sources}:${_npm_prefix}/node_modules"
+		NODE_PATH="${_sources}:${_workbench}/node_modules"
 )
 
 _npm_args=(
-		--prefix "${_npm_prefix}"
 )
 _npm_env=(
 		PATH="${_PATH}"

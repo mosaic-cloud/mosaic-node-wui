@@ -38,7 +38,7 @@ find ./static -type f \( -not -name ".*" \) -print \
 	cp -t "${_outputs}/package/lib/static" "${_static}"
 done
 
-cp -R -T -- "${_npm_prefix}" "${_outputs}/package/lib/npm"
+cp -R -T -- "${_workbench}/node_modules" "${_outputs}/package/lib/node_modules"
 
 mkdir -- "${_outputs}/package/lib/scripts"
 
@@ -67,7 +67,7 @@ _node_sources="${_package}/lib/node"
 _node_args=()
 _node_env=(
 		PATH="${_PATH}"
-		NODE_PATH="${_package}/lib/node:${_package}/lib/npm/node_modules"
+		NODE_PATH="${_package}/lib/node:${_package}/lib/node_modules"
 )
 
 if test "${#}" -eq 0 ; then
