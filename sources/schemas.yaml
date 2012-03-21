@@ -1,4 +1,5 @@
 ---
+
 "#mosaic-components:rabbitmq" : &mosaic-components--rabbitmq
     quickCreate : true
     quickCreateName : RabbitMQ
@@ -139,7 +140,7 @@
         </div>
 
 "#mosaic-components:java-component-container" : &mosaic-components--java-component-container
-    configurationTemplate : ["<<ComponentCallback>>", "http://<<host>>/<<component>>.jar"]
+    configurationTemplate : ["<<callbacks-class>>", null, ["http://<<host>>/<<component>>.jar"]]
     callOperations : {}
     castOperations : {}
 
@@ -147,7 +148,7 @@
     quickCreate : true
     quickCreateName : mOSAIC Cloudlet
     quickCreateOrder : 10
-    configurationTemplate : ["<<http://<host>/<<cloudlet>>.jar", "<<configuration.properties>>"]
+    configurationTemplate : [{"descriptor" : "<<cloudlet>>.properties"}, ["http://<<host>>/<<cloudlet>>.jar"]]
     callOperations : {}
     castOperations : {}
 
@@ -155,7 +156,7 @@
     quickCreate : true
     quickCreateName : mOSAIC Driver
     quickCreateOrder : 10
-    configurationTemplate : "<<type>>"
+    configurationTemplate : ["<<resource>>", null, []]
     callOperations :
         mosaic-component:get.channel.data :
             inputsTemplate :
@@ -178,22 +179,6 @@
     callOperations : {}
     castOperations : {}
 
-"#mosaic-examples-realtime-feeds:indexer-java" :
-    quickCreate : true
-    quickCreateName : (Feeds Indexer-C)
-    quickCreateOrder : 100
-    configurationTemplate :
-    callOperations : {}
-    castOperations : {}
-
-"#mosaic-examples-realtime-feeds:frontend-java" :
-    quickCreate : true
-    quickCreateName : (Feeds Frontend)
-    quickCreateOrder : 100
-    configurationTemplate :
-    callOperations : {}
-    castOperations : {}
-
 "#mosaic-examples-realtime-feeds:scavanger" :
     quickCreate : true
     quickCreateName : (Feeds Scavanger)
@@ -209,6 +194,22 @@
 
 "#mosaic-examples-realtime-feeds:pusher" :
     configurationTemplate :
+    callOperations : {}
+    castOperations : {}
+
+"#mosaic-examples-realtime-feeds:frontend-java" :
+    quickCreate : true
+    quickCreateName : (Feeds Frontend)
+    quickCreateOrder : 100
+    configurationTemplate : [null]
+    callOperations : {}
+    castOperations : {}
+
+"#mosaic-examples-realtime-feeds:indexer-java" :
+    quickCreate : true
+    quickCreateName : (Feeds Indexer-C)
+    quickCreateOrder : 100
+    configurationTemplate : [null]
     callOperations : {}
     castOperations : {}
 
@@ -237,7 +238,17 @@
     << : *mosaic-components--java-driver-container
 
 "#mosaic-tests:java-component" :
-    configurationTemplate : ["<<ComponentMain>>", "http://<<host>>/<<component.jar>>"]
+    configurationTemplate : ["<<main-class>>", "http://<<host>>/<<component>>.jar"]
+    callOperations : {}
+    castOperations : {}
+
+"#mosaic-tests:socat" :
+    configurationTemplate : ["<<token>>", "<<endpoint>>"]
+    callOperations : {}
+    castOperations : {}
+
+"#mosaic-tests:exec" :
+    configurationTemplate : ["<<executable>>", []]
     callOperations : {}
     castOperations : {}
 

@@ -21,8 +21,12 @@
         "callOperations": {}, 
         "castOperations": {}, 
         "configurationTemplate": [
-            "<<http://<host>/<<cloudlet>>.jar", 
-            "<<configuration.properties>>"
+            {
+                "descriptor": "<<cloudlet>>.properties"
+            }, 
+            [
+                "http://<<host>>/<<cloudlet>>.jar"
+            ]
         ], 
         "quickCreate": true, 
         "quickCreateName": "mOSAIC Cloudlet", 
@@ -32,8 +36,11 @@
         "callOperations": {}, 
         "castOperations": {}, 
         "configurationTemplate": [
-            "<<ComponentCallback>>", 
-            "http://<<host>>/<<component>>.jar"
+            "<<callbacks-class>>", 
+            null, 
+            [
+                "http://<<host>>/<<component>>.jar"
+            ]
         ]
     }, 
     "#mosaic-components:java-driver-container": {
@@ -44,7 +51,11 @@
             }
         }, 
         "castOperations": {}, 
-        "configurationTemplate": "<<type>>", 
+        "configurationTemplate": [
+            "<<resource>>", 
+            null, 
+            []
+        ], 
         "quickCreate": true, 
         "quickCreateName": "mOSAIC Driver", 
         "quickCreateOrder": 10
@@ -108,7 +119,9 @@
     "#mosaic-examples-realtime-feeds:frontend-java": {
         "callOperations": {}, 
         "castOperations": {}, 
-        "configurationTemplate": null, 
+        "configurationTemplate": [
+            null
+        ], 
         "quickCreate": true, 
         "quickCreateName": "(Feeds Frontend)", 
         "quickCreateOrder": 100
@@ -124,7 +137,9 @@
     "#mosaic-examples-realtime-feeds:indexer-java": {
         "callOperations": {}, 
         "castOperations": {}, 
-        "configurationTemplate": null, 
+        "configurationTemplate": [
+            null
+        ], 
         "quickCreate": true, 
         "quickCreateName": "(Feeds Indexer-C)", 
         "quickCreateOrder": 100
@@ -146,6 +161,14 @@
         "quickCreate": true, 
         "quickCreateName": "(Feeds Scavanger)", 
         "quickCreateOrder": 100
+    }, 
+    "#mosaic-tests:exec": {
+        "callOperations": {}, 
+        "castOperations": {}, 
+        "configurationTemplate": [
+            "<<executable>>", 
+            []
+        ]
     }, 
     "#mosaic-tests:httpg": {
         "callOperations": {
@@ -169,8 +192,12 @@
         "callOperations": {}, 
         "castOperations": {}, 
         "configurationTemplate": [
-            "<<http://<host>/<<cloudlet>>.jar", 
-            "<<configuration.properties>>"
+            {
+                "descriptor": "<<cloudlet>>.properties"
+            }, 
+            [
+                "http://<<host>>/<<cloudlet>>.jar"
+            ]
         ], 
         "quickCreate": false, 
         "quickCreateName": "mOSAIC Cloudlet", 
@@ -180,16 +207,19 @@
         "callOperations": {}, 
         "castOperations": {}, 
         "configurationTemplate": [
-            "<<ComponentMain>>", 
-            "http://<<host>>/<<component.jar>>"
+            "<<main-class>>", 
+            "http://<<host>>/<<component>>.jar"
         ]
     }, 
     "#mosaic-tests:java-component-container": {
         "callOperations": {}, 
         "castOperations": {}, 
         "configurationTemplate": [
-            "<<ComponentCallback>>", 
-            "http://<<host>>/<<component>>.jar"
+            "<<callbacks-class>>", 
+            null, 
+            [
+                "http://<<host>>/<<component>>.jar"
+            ]
         ], 
         "quickCreate": false
     }, 
@@ -201,7 +231,11 @@
             }
         }, 
         "castOperations": {}, 
-        "configurationTemplate": "<<type>>", 
+        "configurationTemplate": [
+            "<<resource>>", 
+            null, 
+            []
+        ], 
         "quickCreate": false, 
         "quickCreateName": "mOSAIC Driver", 
         "quickCreateOrder": 10
@@ -253,5 +287,13 @@
         "quickCreate": false, 
         "quickCreateName": "RiakKV", 
         "quickCreateOrder": 50
+    }, 
+    "#mosaic-tests:socat": {
+        "callOperations": {}, 
+        "castOperations": {}, 
+        "configurationTemplate": [
+            "<<token>>", 
+            "<<endpoint>>"
+        ]
     }
 }
