@@ -1,6 +1,6 @@
 ---
 
-"#mosaic-components:rabbitmq" : &mosaic-components--rabbitmq
+"#mosaic-components:rabbitmq" :
     quickCreate : true
     quickCreateName : RabbitMQ
     quickCreateOrder : 50
@@ -47,7 +47,7 @@
             </div>
         </div>
 
-"#mosaic-components:riak-kv" : &mosaic-components--riak-kv
+"#mosaic-components:riak-kv" :
     quickCreate : true
     quickCreateName : RiakKV
     quickCreateOrder : 50
@@ -104,10 +104,10 @@
             </div>
         </div>
 
-"#mosaic-components:httpg" : &mosaic-components--httpg
+"#mosaic-components:httpg" :
     quickCreate : true
     quickCreateName : mOSAIC HTTP-G
-    quickCreateOrder : 10
+    quickCreateOrder : 30
     configurationTemplate :
     callOperations :
         mosaic-httpg:get-gateway-endpoint :
@@ -139,12 +139,12 @@
             </div>
         </div>
 
-"#mosaic-components:java-component-container" : &mosaic-components--java-component-container
+"#mosaic-components:java-component-container" :
     configurationTemplate : ["<<callbacks-class>>", null, ["http://<<host>>/<<component>>.jar"]]
     callOperations : {}
     castOperations : {}
 
-"#mosaic-components:java-cloudlet-container" : &mosaic-components--java-cloudlet-container
+"#mosaic-components:java-cloudlet-container" :
     quickCreate : true
     quickCreateName : mOSAIC Cloudlet
     quickCreateOrder : 10
@@ -152,11 +152,22 @@
     callOperations : {}
     castOperations : {}
 
-"#mosaic-components:java-driver-container" : &mosaic-components--java-driver-container
+"#mosaic-components:java-driver-amqp" :
     quickCreate : true
-    quickCreateName : mOSAIC Driver
-    quickCreateOrder : 10
-    configurationTemplate : ["<<resource>>", null, []]
+    quickCreateName : mOSAIC AMQP Driver
+    quickCreateOrder : 20
+    configurationTemplate : [null]
+    callOperations :
+        mosaic-component:get.channel.data :
+            inputsTemplate :
+            description :
+    castOperations : {}
+
+"#mosaic-components:java-driver-riak" :
+    quickCreate : true
+    quickCreateName : mOSAIC Riak Driver
+    quickCreateOrder : 20
+    configurationTemplate : [null]
     callOperations :
         mosaic-component:get.channel.data :
             inputsTemplate :
@@ -212,30 +223,6 @@
     configurationTemplate : [null]
     callOperations : {}
     castOperations : {}
-
-"#mosaic-tests:rabbitmq" :
-    quickCreate : false
-    << : *mosaic-components--rabbitmq
-
-"#mosaic-tests:riak-kv" :
-    << : *mosaic-components--riak-kv
-    quickCreate : false
-
-"#mosaic-tests:httpg" :
-    quickCreate : false
-    << : *mosaic-components--httpg
-
-"#mosaic-tests:java-component-container" :
-    quickCreate : false
-    << : *mosaic-components--java-component-container
-
-"#mosaic-tests:java-cloudlet-container" :
-    quickCreate : false
-    << : *mosaic-components--java-cloudlet-container
-
-"#mosaic-tests:java-driver-container" :
-    quickCreate : false
-    << : *mosaic-components--java-driver-container
 
 "#mosaic-tests:java-component" :
     configurationTemplate : ["<<main-class>>", "http://<<host>>/<<component>>.jar"]
