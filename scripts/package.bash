@@ -107,11 +107,10 @@ cat >"${_outputs}/package/pkg.json" <<EOS
 	"package" : "${_package_name}",
 	"version" : "${_package_version}",
 	"maintainer" : "mosaic-developers@lists.info.uvt.ro",
-	"description" : "mOSAIC Examples: Realtime Feeds",
+	"description" : "mOSAIC Node WebUI",
 	"directories" : [ "bin", "lib" ],
 	"depends" : [
-		"mosaic-nodejs-0.6.15",
-		"libxml2"
+		"mosaic-nodejs-0.6.15"
 	]
 }
 EOS
