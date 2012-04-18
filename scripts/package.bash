@@ -99,7 +99,7 @@ cat >"${_outputs}/package/pkg.json" <<EOS
 	"description" : "mOSAIC Node WebUI",
 	"directories" : [ "bin", "lib" ],
 	"depends" : [
-		"mosaic-nodejs"
+		"mosaic-nodejs-0.4.11"
 	]
 }
 EOS
