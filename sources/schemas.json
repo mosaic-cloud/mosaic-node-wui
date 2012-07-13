@@ -1,4 +1,22 @@
 {
+    "#mosaic-components:couchdb": {
+        "callOperations": {
+            "mosaic-couchdb:get-node-identifier": {
+                "description": "<div class=\"row\">\n    <div class=\"span2 center\"><a href=\"http://couchdb.apache.org/\"><img src=\"/static/couchdb-logo-small.png\" width=\"80px\" alt=\"CouchDB\" /></a></div>\n    <div class=\"offset2\">\n        <h5>mosaic-couchdb:get-node-identifier</h5>\n        <p>Returns the CouchDB Erlang node identifier (<code>erl -name</code> argument).</p>\n    </div>\n</div>\n", 
+                "inputsTemplate": null
+            }, 
+            "mosaic-couchdb:get-store-http-endpoint": {
+                "description": "<div class=\"row\">\n    <div class=\"span2 center\"><a href=\"http://couchdb.apache.org/\"><img src=\"/static/couchdb-logo-small.png\" width=\"80px\" alt=\"CouchDB\" /></a></div>\n    <div class=\"offset2\">\n        <h5>mosaic-couchdb:get-store-http-endpoint</h5>\n        <p>Returns the CouchDB HTTP endpoint (an URL also accessible through a web-browser) which can be accessed with any <a href=\"http://wiki.apache.org/couchdb/Basics\">compatible client</a>. (For further details about the protocol please consult the <a href=\"http://wiki.apache.org/couchdb/Reference\">dedicated page</a>.)</p>\n    </div>\n</div>\n", 
+                "inputsTemplate": null
+            }
+        }, 
+        "castOperations": {}, 
+        "configurationTemplate": null, 
+        "description": "<div class=\"row\">\n    <div class=\"span2 center\"><a href=\"http://couchdb.apache.org/\"><img src=\"/static/couchdb-logo-small.png\" width=\"80px\" alt=\"CouchDB\" /></a></div>\n    <div class=\"offset2\">\n        <h5>mosaic-components:couchdb</h5>\n        <p>CouchDB is a document store. (For details please consult the <a href=\"http://couchdb.apache.org/\">dedicated page</a>.)</p>\n        <p>This is a customized version of CouchDB which presents itself as an integrated mOSAIC component, allowing the user to easily control and monitor the broker as a uniform mOSAIC component.</p>\n    </div>\n</div>\n", 
+        "quickCreate": true, 
+        "quickCreateName": "CouchDB", 
+        "quickCreateOrder": 53
+    }, 
     "#mosaic-components:httpg": {
         "callOperations": {
             "mosaic-httpg:get-gateway-endpoint": {
@@ -15,7 +33,7 @@
         "description": "<div class=\"row\">\n    <div class=\"span2 center\"><a href=\"http://www.mosaic-cloud.eu/\"><img src=\"/static/mosaic-logo-small.png\" width=\"80px\" alt=\"mOSAIC\" /></a></div>\n    <div class=\"offset2\">\n        <h5>mosaic-components:httpg</h5>\n    </div>\n</div>\n", 
         "quickCreate": true, 
         "quickCreateName": "mOSAIC HTTP-G", 
-        "quickCreateOrder": 30
+        "quickCreateOrder": 21
     }, 
     "#mosaic-components:java-cloudlet-container": {
         "callOperations": {}, 
@@ -30,7 +48,7 @@
         ], 
         "quickCreate": true, 
         "quickCreateName": "mOSAIC Cloudlet", 
-        "quickCreateOrder": 10
+        "quickCreateOrder": 11
     }, 
     "#mosaic-components:java-component-container": {
         "callOperations": {}, 
@@ -56,7 +74,7 @@
         ], 
         "quickCreate": true, 
         "quickCreateName": "mOSAIC AMQP Driver", 
-        "quickCreateOrder": 20
+        "quickCreateOrder": 22
     }, 
     "#mosaic-components:java-driver-riak": {
         "callOperations": {
@@ -71,7 +89,7 @@
         ], 
         "quickCreate": true, 
         "quickCreateName": "mOSAIC Riak Driver", 
-        "quickCreateOrder": 20
+        "quickCreateOrder": 23
     }, 
     "#mosaic-components:rabbitmq": {
         "callOperations": {
@@ -93,7 +111,7 @@
         "description": "<div class=\"row\">\n    <div class=\"span2 center\"><a href=\"http://www.rabbitmq.com/\"><img src=\"/static/rabbitmq-logo-small.png\" width=\"80px\" alt=\"RabbitMQ\" /></a></div>\n    <div class=\"offset2\">\n        <h5>mosaic-components:rabbitmq</h5>\n        <p>RabbitMQ is an <a href=\"http://amqp.org/\">AMQP</a> compliant message queue broker. (For details please consult the <a href=\"http://www.rabbitmq.com/\">dedicated page</a>.)</p>\n        <p>This is a customized version of RabbitMQ which presents itself as an integrated mOSAIC component, allowing the user to easily control and monitor the broker as a uniform mOSAIC component.</p>\n    </div>\n</div>\n", 
         "quickCreate": true, 
         "quickCreateName": "RabbitMQ", 
-        "quickCreateOrder": 50
+        "quickCreateOrder": 51
     }, 
     "#mosaic-components:riak-kv": {
         "callOperations": {
@@ -119,7 +137,7 @@
         "description": "<div class=\"row\">\n    <div class=\"span2 center\"><a href=\"http://www.basho.com/products_riak_overview.php\"><img src=\"/static/riak-logo-small.png\" width=\"80px\" alt=\"Riak\" /></a></div>\n    <div class=\"offset2\">\n        <h5>mosaic-components:riak-kv</h5>\n        <p>Riak is a Dynamo-inspired key / value store. (For details please consult the <a href=\"http://www.basho.com/products_riak_overview.php\">dedicated page</a>.)</p>\n        <p>This is a customized version of Riak which presents itself as an integrated mOSAIC component, allowing the user to easily control and monitor the broker as a uniform mOSAIC component.</p>\n    </div>\n</div>\n", 
         "quickCreate": true, 
         "quickCreateName": "RiakKV", 
-        "quickCreateOrder": 50
+        "quickCreateOrder": 52
     }, 
     "#mosaic-examples-realtime-feeds:fetcher": {
         "callOperations": {}, 
@@ -127,7 +145,7 @@
         "configurationTemplate": null, 
         "quickCreate": true, 
         "quickCreateName": "(Feeds Fetcher)", 
-        "quickCreateOrder": 100
+        "quickCreateOrder": 102
     }, 
     "#mosaic-examples-realtime-feeds:frontend-java": {
         "callOperations": {}, 
@@ -137,7 +155,7 @@
         ], 
         "quickCreate": true, 
         "quickCreateName": "(Feeds Frontend)", 
-        "quickCreateOrder": 100
+        "quickCreateOrder": 101
     }, 
     "#mosaic-examples-realtime-feeds:indexer": {
         "callOperations": {}, 
@@ -145,7 +163,7 @@
         "configurationTemplate": null, 
         "quickCreate": true, 
         "quickCreateName": "(Feeds Indexer)", 
-        "quickCreateOrder": 100
+        "quickCreateOrder": 103
     }, 
     "#mosaic-examples-realtime-feeds:indexer-java": {
         "callOperations": {}, 
@@ -155,7 +173,7 @@
         ], 
         "quickCreate": true, 
         "quickCreateName": "(Feeds Indexer-C)", 
-        "quickCreateOrder": 100
+        "quickCreateOrder": 104
     }, 
     "#mosaic-examples-realtime-feeds:leacher": {
         "callOperations": {}, 
@@ -173,7 +191,7 @@
         "configurationTemplate": null, 
         "quickCreate": true, 
         "quickCreateName": "(Feeds Scavanger)", 
-        "quickCreateOrder": 100
+        "quickCreateOrder": 105
     }, 
     "#mosaic-tests:exec": {
         "callOperations": {}, 

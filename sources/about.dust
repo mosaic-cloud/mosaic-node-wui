@@ -30,13 +30,16 @@
 					<a href="http://rabbitmq.com/"><img src="https://dev.rabbitmq.com/res/rabbitmqlogonostrap.png" alt="RabbitMQ" width="160px" /></a>
 				</div>
 				<div class="span">
-					<a href="http://basho.com/"><img src="http://www.basho.com/images/riaklogo.png" alt="Riak" width="160px" /></a>
+					<a href="http://basho.com/"><img src="http://wiki.basho.com/images/riak-transparent-small.png" alt="Riak" width="120px" /></a>
 				</div>
 				<div class="span">
 					<a href="http://zeromq.org/"><img src="http://download.zeromq.org/include/logo.gif" alt="ZeroMQ" width="120px" /></a>
 				</div>
 			</div>
 			<div class="span">
+				<div class="span">
+					<a href="http://couchdb.apache.org/"><img src="http://couchdb.apache.org/image/couch.png" alt="CouchDB" width="80px" /></a>
+				</div>
 				<div class="span">
 					<a href="http://kernel.org/"><img src="http://kernel.org/doc/Documentation/logo.gif" alt="Linux" width="100px" /></a>
 				</div>
