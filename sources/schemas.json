@@ -76,6 +76,24 @@
         "quickCreateName": "mOSAIC AMQP Driver", 
         "quickCreateOrder": 22
     }, 
+    "#mosaic-components:java-driver-hdfs": {
+        "callOperations": {
+            "mosaic-component:get.channel.data": {
+                "description": null, 
+                "inputsTemplate": null
+            }
+        }, 
+        "castOperations": {}, 
+        "configurationTemplate": [
+            {
+                "hdfs.host": "127.0.0.1", 
+                "hdfs.port": 9000
+            }
+        ], 
+        "quickCreate": true, 
+        "quickCreateName": "mOSAIC HDFS Driver", 
+        "quickCreateOrder": 24
+    }, 
     "#mosaic-components:java-driver-riak": {
         "callOperations": {
             "mosaic-component:get.channel.data": {

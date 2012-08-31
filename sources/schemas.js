@@ -24,7 +24,9 @@ function _schemasRefresh () {
 	var _yamlTimestamp = fs.statSync (_schemasYamlPath) .mtime;
 	if (_jsonTimestamp < _yamlTimestamp) {
 		transcript.traceInformation ("`schemas.yaml` seems to be newer than `schemas.json`; reprocessing...");
-		var _child = child_process.spawn ("python2", [_schemasPy], {cwd : process.cwd (), env : process.env, customFds : ["/dev/null", "/dev/null", process.stderr]});
+		var _devNull = fs.openSync ("/dev/null", "r+")
+		var _child = child_process.spawn ("python2", [_schemasPy], {cwd : process.cwd (), env : process.env, customFds : [_devNull, _devNull, process.stderr]});
+		fs.close (_devNull)
 		_child.on ("exit", function (_code) {
 			if (_code == 0)
 				setTimeout (_schemasRefresh, _schemasPyInterval);

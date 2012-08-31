@@ -211,6 +211,17 @@
             description :
     castOperations : {}
 
+"#mosaic-components:java-driver-hdfs" :
+    quickCreate : true
+    quickCreateName : mOSAIC HDFS Driver
+    quickCreateOrder : 24
+    configurationTemplate : [{"hdfs.host" : "127.0.0.1", "hdfs.port" : 9000}]
+    callOperations :
+        mosaic-component:get.channel.data :
+            inputsTemplate :
+            description :
+    castOperations : {}
+
 "#mosaic-examples-realtime-feeds:fetcher" :
     quickCreate : true
     quickCreateName : (Feeds Fetcher)
