@@ -43,12 +43,12 @@ function _handleLog (_request, _response, _next)
 
 function _handleLogStream (_request, _response, _next)
 {
-	_handleProxy ("/log/stream", _request, _response, _next);
+	_handleProxy ("/v1/log/stream", _request, _response, _next);
 }
 
 function _handleLogContent (_request, _response, _next)
 {
-	_handleProxy ("/log/content", _request, _response, _next);
+	_handleProxy ("/v1/log/content", _request, _response, _next);
 }
 
 function _handleAbout (_request, _response, _next)

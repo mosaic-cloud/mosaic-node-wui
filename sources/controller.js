@@ -16,43 +16,43 @@ var transcript = require ("./transcript") (module, configuration.libTranscriptLe
 // ---------------------------------------
 
 function _getClusterNodes (_callback) {
-	return (_invokeGetJson ("/cluster/nodes", {}, function (_error, _response, _outcome) {
+	return (_invokeGetJson ("/v1/cluster/nodes", {}, function (_error, _response, _outcome) {
 		_callback (_error, _outcome);
 	}));
 }
 
 function _getClusterRing (_callback) {
-	return (_invokeGetJson ("/cluster/ring", {}, function (_error, _response, _outcome) {
+	return (_invokeGetJson ("/v1/cluster/ring", {}, function (_error, _response, _outcome) {
 		_callback (_error, _outcome);
 	}));
 }
 
 function _getProcesses (_callback) {
-	return (_invokeGetJson ("/processes/examine", {}, function (_error, _response, _outcome) {
+	return (_invokeGetJson ("/v1/processes/examine", {}, function (_error, _response, _outcome) {
 		_callback (_error, _outcome);
 	}));
 }
 
 function _createProcess (_type, _configuration, _count, _callback) {
-	return (_invokeGetJson ("/processes/create", {type : _type, configuration : _configuration, count : _count}, function (_error, _response, _outcome) {
+	return (_invokeGetJson ("/v1/processes/create", {type : _type, configuration : _configuration, count : _count}, function (_error, _response, _outcome) {
 		_callback (_error, _outcome);
 	}));
 }
 
 function _callProcess (_key, _operation, _inputs, _callback) {
-	return (_invokeGetJson ("/processes/call", {key : _key, operation : _operation, inputs : _inputs}, function (_error, _response, _outcome) {
+	return (_invokeGetJson ("/v1/processes/call", {key : _key, operation : _operation, inputs : _inputs}, function (_error, _response, _outcome) {
 		_callback (_error, _outcome);
 	}));
 }
 
 function _castProcess (_key, _operation, _inputs, _callback) {
-	return (_invokeGetJson ("/processes/cast", {key : _key, operation : _operation, inputs : _inputs}, function (_error, _response, _outcome) {
+	return (_invokeGetJson ("/v1/processes/cast", {key : _key, operation : _operation, inputs : _inputs}, function (_error, _response, _outcome) {
 		_callback (_error, _outcome);
 	}));
 }
 
 function _stopProcess (_key, _callback) {
-	return (_invokeGetJson ("/processes/stop", {key : _key}, function (_error, _response, _outcome) {
+	return (_invokeGetJson ("/v1/processes/stop", {key : _key}, function (_error, _response, _outcome) {
 		_callback (_error, _outcome);
 	}));
 }
