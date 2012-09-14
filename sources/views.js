@@ -167,7 +167,7 @@ function _handleCreateProcessPre (_request, _response, _next)
 	else
 		_typeOptions = [{name : "[Custom...]", selected : true}];
 	var _typeInputable = (_typeTemplate == "[Custom...]");
-	_renderView (200, "process_create", _request, _response, _next, _mixinContext (_request, false, {
+	_renderView (200, "process_create", _request, _response, _next, _mixinContext (_request, true, {
 			type : _type, configuration : _configuration, annotation : _annotation, count : _count,
 			typeOptions : _typeOptions, typeInputable : _typeInputable,
 			typeTemplate : _typeTemplate, configurationTemplate : _configurationTemplate, annotationTemplate : _annotationTemplate,
@@ -267,7 +267,7 @@ function _handleCallCastProcessPre (_action, _request, _response, _next)
 	} else
 		_operationOptions = [{name : "[Custom...]", selected : true}];
 	_operationInputable = (_operationTemplate == "[Custom...]");
-	_renderView (200, "process_call_cast", _request, _response, _next, _mixinContext (_request, false, {
+	_renderView (200, "process_call_cast", _request, _response, _next, _mixinContext (_request, true, {
 			key : _key, operation : _operation, inputs : _inputs, type : _type,
 			typeOptions : _typeOptions, operationOptions : _operationOptions, operationInputable : _operationInputable,
 			typeTemplate : _typeTemplate, operationTemplate : _operationTemplate, inputsTemplate : _inputsTemplate,
@@ -296,7 +296,7 @@ function _handleCallCastProcess (_action, _request, _response, _next)
 
 function _handleStopProcessPre (_request, _response, _next)
 {
-	_renderView (200, "process_stop", _request, _response, _next, _mixinContext (_request, false, {
+	_renderView (200, "process_stop", _request, _response, _next, _mixinContext (_request, true, {
 			key : _request.param ("key"),
 	}));
 }
@@ -309,6 +309,22 @@ function _handleStopProcess (_request, _response, _next)
 					outcome : _outcome,
 			}));
 		else
+			_renderView (500, "failed", _request, _response, _next, _mixinContext (_request, false, {
+					error : _error,
+			}));
+	});
+}
+
+function _handleGetTranscript (_request, _response, _next)
+{
+	controller.getTranscript (_request.param ("key"), function (_error, _outcome) {
+		if (_error === null) {
+			_outcome.records = _.sortBy (_outcome.records, function (_record) { return (_record.timestamp); });
+			_renderView (200, "process_transcript", _request, _response, _next, _mixinContext (_request, true, {
+					key : _request.param ("key"), type : _request.param ("type"), configuration : _request.param ("configuration"),
+					outcome : _outcome,
+			}));
+		} else
 			_renderView (500, "failed", _request, _response, _next, _mixinContext (_request, false, {
 					error : _error,
 			}));
@@ -399,6 +415,7 @@ function _configureApplication (_application)
 	_application.post ("/processes/:key/cast/:operation?", _handleCastProcess);
 	_application.get ("/processes/:key/stop", _handleStopProcessPre);
 	_application.post ("/processes/:key/stop", _handleStopProcess);
+	_application.get ("/processes/:key/log", _handleGetTranscript);
 	
 	_application.get ("/process/create", _handleCreateProcessPre);
 	_application.post ("/process/create", _handleCreateProcess);

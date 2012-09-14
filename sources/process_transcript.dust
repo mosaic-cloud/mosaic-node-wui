@@ -1,0 +1,73 @@
+{>layout/}
+
+{<blocks__main_panel}
+	{#outcome}
+		
+		<div>
+			
+			<h1>Process transcript <code>{key}</code>
+				<span class="pull-right">
+					{?return}<a class="btn small" href="{return|u}">Return</a>{/return}
+					<a class="btn small" href="/processes/{key|uc}/call?type={type|uc}&amp;return={returnStacked|uc}">Call</a>
+					<a class="btn small" href="/processes/{key|uc}/cast?type={type|uc}&amp;return={returnStacked|uc}">Cast</a>
+					<a class="btn success small" href="/process/create?type={type|uc}&amp;configuration={?configuration}{configuration|json|uc}{:else}null{/configuration}&amp;return={returnStacked|uc}">Clone</a>
+					<a class="btn danger small" href="/processes/{key|uc}/stop?return={returnStacked|uc}">Stop</a>
+				</span>
+			</h1>
+			
+			<div class="row">
+				<div class="span18">
+					
+					<div id="logs" class="well">
+						<ol id="list">
+							{#records}
+								<li class="log"><code>{data|htmlpre|s}</code></li>
+							{/records}
+						</ol>
+					</div>
+					
+					<ul>
+						<tbody>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			
+		</div>
+		
+	{/outcome}
+{/blocks__main_panel}
+
+
+{<layout__extra_head}
+	
+	<meta http-equiv="refresh" content="3" />
+	
+	<style type="text/css">
+		
+		div#logs {
+			margin : 0px;
+			padding : 4px;
+			height : 100%;
+			width : 100%;
+			min-height : 200px;
+			min-width : 400px;
+			overflow-x : auto;
+			overflow-y : overflow;
+			background-color: #FEE9CC;
+		}
+		
+		div#logs, div#logs > ol, div#logs > ol > li {
+			margin : 0px;
+			padding : 0px;
+		}
+		
+		div#logs > ol > li {
+			margin-left : 4em;
+			list-style-position : outside;
+			width : auto;
+		}
+		
+	</style>
+	
+{/layout__extra_head}

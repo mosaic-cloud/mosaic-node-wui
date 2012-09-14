@@ -57,6 +57,12 @@ function _stopProcess (_key, _callback) {
 	}));
 }
 
+function _getTranscript (_key, _callback) {
+	return (_invokeGetJson ("/v1/processes/transcript", {key : _key}, function (_error, _response, _outcome) {
+		_callback (_error, _outcome);
+	}));
+}
+
 function _getConfigurators (_callback) {
 	return (_invokeGetJson ("/v1/processes/configurators", {}, function (_error, _response, _outcome) {
 		_callback (_error, _outcome);
@@ -164,6 +170,8 @@ module.exports.createProcess = _createProcess;
 module.exports.callProcess = _callProcess;
 module.exports.castProcess = _castProcess;
 module.exports.stopProcess = _stopProcess;
+module.exports.getConfigurators = _getConfigurators;
+module.exports.getTranscript = _getTranscript;
 module.exports.proxy = _proxy;
 
 // ---------------------------------------
