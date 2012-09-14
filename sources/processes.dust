@@ -20,10 +20,11 @@
 								<th>Key</th>
 								<th>Actions</th>
 								<th>Configuration</th>
+								<th>Annotation</th>
 							</tr>
 						</thead>
 						<tbody>
-							{#processes}
+							{#descriptors}
 								<tr class="fade-trigger">
 									<td><code>{type}</code></td>
 									<td><code>{key}</code></td>
@@ -35,8 +36,9 @@
 										<a class="btn danger tiny fade" href="/processes/{key|uc}/stop?return={returnStacked|uc}">Stop</a>
 									</td>
 									<td>{?configuration}<code>{configuration|json|htmlpre|s}</code>{:else}<br/>{/configuration}</td>
+									<td>{?annotation}<code>{annotation|json|htmlpre|s}</code>{:else}<br/>{/annotation}</td>
 								</tr>
-							{/processes}
+							{/descriptors}
 						</tbody>
 					</table>
 				</div>

@@ -11,15 +11,15 @@ module.exports.libTranscriptLevel = _defaultTranscriptLevel;
 
 // ---------------------------------------
 
-var _nodeIp = "127.0.155.1";
+var _nodeIp = "127.0.155.0";
 var _nodePort = 31808;
 module.exports.nodeIp = _nodeIp;
 module.exports.nodePort = _nodePort;
 
 // ---------------------------------------
 
-var _serverIp = "127.0.155.1";
-var _serverPort = 31806;
+var _serverIp = "127.0.155.0";
+var _serverPort = 31804;
 module.exports.serverIp = _serverIp;
 module.exports.serverPort = _serverPort;
 

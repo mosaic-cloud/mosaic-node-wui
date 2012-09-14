@@ -58,6 +58,18 @@
 						</div>
 						
 						<div class="clearfix">
+							<label for="annotation">Annotation</label>
+							<div class="input">
+								{?annotation}
+									<textarea id="annotation" class="span6 disabled" name="annotation" rows="4" cols="40" disabled="disabled">{annotation|htmlpre|s}</textarea>
+									<input type="hidden" name="annotation" value="{annotation}" />
+								{:else}
+									<textarea id="annotation" class="span6" name="annotation" rows="4" cols="40">{?annotationTemplate}{annotationTemplate|htmlpre|s}{:else}null{/annotationTemplate}</textarea>
+								{/annotation}
+							</div>
+						</div>
+						
+						<div class="clearfix">
 							<label for="count">Count</label>
 							<div class="input">
 								<input id="count" class="span1" type="text" name="count" value="{?count}{count}{:else}1{/count}" />

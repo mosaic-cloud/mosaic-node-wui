@@ -33,8 +33,8 @@ function _getProcesses (_callback) {
 	}));
 }
 
-function _createProcess (_type, _configuration, _count, _callback) {
-	return (_invokeGetJson ("/v1/processes/create", {type : _type, configuration : _configuration, count : _count}, function (_error, _response, _outcome) {
+function _createProcess (_type, _configuration, _annotation, _count, _callback) {
+	return (_invokeGetJson ("/v1/processes/create", {type : _type, configuration : _configuration, annotation : _annotation, count : _count}, function (_error, _response, _outcome) {
 		_callback (_error, _outcome);
 	}));
 }

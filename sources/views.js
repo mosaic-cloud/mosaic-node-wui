@@ -130,14 +130,18 @@ function _handleCreateProcessPre (_request, _response, _next)
 {
 	var _type = _request.param ("type") || undefined;
 	var _configuration = _request.param ("configuration") || undefined;
+	var _annotation = _request.param ("annotation") || undefined;
 	var _count = _request.param ("count") || undefined;
 	var _typeTemplate = _request.param ("typeTemplate") || undefined;
 	var _configurationTemplate = _request.param ("configurationTemplate") || undefined;
+	var _annotationTemplate = _request.param ("annotationTemplate") || undefined;
 	var _description = undefined;
 	if (_type !== undefined)
 		_typeTemplate = _type;
 	if (_configuration !== undefined)
 		_configurationTemplate = _configuration;
+	if (_annotation !== undefined)
+		_annotationTemplate = _annotation;
 	if (_typeTemplate === undefined)
 		_typeTemplate = "[Custom...]";
 	var _processSchemas = schemas.processes ();
@@ -147,10 +151,14 @@ function _handleCreateProcessPre (_request, _response, _next)
 	if (_processSchema !== undefined) {
 		if (_configurationTemplate === undefined)
 			_configurationTemplate = JSON.stringify (_processSchema.configurationTemplate, null, 4);
+		if (_annotationTemplate === undefined)
+			_annotationTemplate = JSON.stringify (_processSchema.annotationTemplate, null, 4);
 		_description = _processSchema.description;
 	} else {
 		if (_configurationTemplate === undefined)
 			_configurationTemplate = JSON.stringify (null, null, 4);
+		if (_annotationTemplate === undefined)
+			_annotationTemplate = JSON.stringify (null, null, 4);
 	}
 	var _typeOptions = undefined;
 	if (_processSchemas !== undefined)
@@ -160,16 +168,16 @@ function _handleCreateProcessPre (_request, _response, _next)
 		_typeOptions = [{name : "[Custom...]", selected : true}];
 	var _typeInputable = (_typeTemplate == "[Custom...]");
 	_renderView (200, "process_create", _request, _response, _next, _mixinContext (_request, false, {
-			type : _type, configuration : _configuration, count : _count,
+			type : _type, configuration : _configuration, annotation : _annotation, count : _count,
 			typeOptions : _typeOptions, typeInputable : _typeInputable,
-			typeTemplate : _typeTemplate, configurationTemplate : _configurationTemplate,
+			typeTemplate : _typeTemplate, configurationTemplate : _configurationTemplate, annotationTemplate : _annotationTemplate,
 			description : _description,
 	}));
 }
 
 function _handleCreateProcess (_request, _response, _next)
 {
-	controller.createProcess (_request.param ("type"), _request.param ("configuration"), _request.param ("count", 1), function (_error, _outcome) {
+	controller.createProcess (_request.param ("type"), _request.param ("configuration"), _request.param ("annotation"), _request.param ("count", 1), function (_error, _outcome) {
 		if (_error === null)
 			_renderView (200, "succeeded", _request, _response, _next, _mixinContext (_request, false, {
 					outcome : _outcome,
