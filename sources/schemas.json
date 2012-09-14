@@ -39,12 +39,8 @@
         "callOperations": {}, 
         "castOperations": {}, 
         "configurationTemplate": [
-            {
-                "descriptor": "<<cloudlet>>.properties"
-            }, 
-            [
-                "http://<<host>>/<<cloudlet>>.jar"
-            ]
+            "<<cloudlet>>.properties", 
+            "http://<<host>>/<<cloudlet>>.jar"
         ], 
         "quickCreate": true, 
         "quickCreateName": "mOSAIC Cloudlet", 
@@ -55,10 +51,7 @@
         "castOperations": {}, 
         "configurationTemplate": [
             "<<callbacks-class>>", 
-            null, 
-            [
-                "http://<<host>>/<<component>>.jar"
-            ]
+            "http://<<host>>/<<component>>.jar"
         ]
     }, 
     "#mosaic-components:java-driver-amqp": {
@@ -69,9 +62,7 @@
             }
         }, 
         "castOperations": {}, 
-        "configurationTemplate": [
-            null
-        ], 
+        "configurationTemplate": null, 
         "quickCreate": true, 
         "quickCreateName": "mOSAIC AMQP Driver", 
         "quickCreateOrder": 22
@@ -102,9 +93,7 @@
             }
         }, 
         "castOperations": {}, 
-        "configurationTemplate": [
-            null
-        ], 
+        "configurationTemplate": null, 
         "quickCreate": true, 
         "quickCreateName": "mOSAIC Riak Driver", 
         "quickCreateOrder": 23
@@ -168,9 +157,7 @@
     "#mosaic-examples-realtime-feeds:frontend-java": {
         "callOperations": {}, 
         "castOperations": {}, 
-        "configurationTemplate": [
-            null
-        ], 
+        "configurationTemplate": null, 
         "quickCreate": true, 
         "quickCreateName": "(Feeds Frontend)", 
         "quickCreateOrder": 101
@@ -186,9 +173,7 @@
     "#mosaic-examples-realtime-feeds:indexer-java": {
         "callOperations": {}, 
         "castOperations": {}, 
-        "configurationTemplate": [
-            null
-        ], 
+        "configurationTemplate": null, 
         "quickCreate": true, 
         "quickCreateName": "(Feeds Indexer-C)", 
         "quickCreateOrder": 104
@@ -219,20 +204,10 @@
             []
         ]
     }, 
-    "#mosaic-tests:java-component": {
-        "callOperations": {}, 
-        "castOperations": {}, 
-        "configurationTemplate": [
-            "<<main-class>>", 
-            "http://<<host>>/<<component>>.jar"
-        ]
-    }, 
     "#mosaic-tests:socat": {
+        "annotationTemplate": "<<token>>", 
         "callOperations": {}, 
         "castOperations": {}, 
-        "configurationTemplate": [
-            "<<token>>", 
-            "<<endpoint>>"
-        ]
+        "configurationTemplate": "<<endpoint>>"
     }
 }

@@ -177,7 +177,7 @@
         </div>
 
 "#mosaic-components:java-component-container" :
-    configurationTemplate : ["<<callbacks-class>>", null, ["http://<<host>>/<<component>>.jar"]]
+    configurationTemplate : ["<<callbacks-class>>", "http://<<host>>/<<component>>.jar"]
     callOperations : {}
     castOperations : {}
 
@@ -185,7 +185,7 @@
     quickCreate : true
     quickCreateName : mOSAIC Cloudlet
     quickCreateOrder : 11
-    configurationTemplate : [{"descriptor" : "<<cloudlet>>.properties"}, ["http://<<host>>/<<cloudlet>>.jar"]]
+    configurationTemplate : ["<<cloudlet>>.properties", "http://<<host>>/<<cloudlet>>.jar"]
     callOperations : {}
     castOperations : {}
 
@@ -193,7 +193,7 @@
     quickCreate : true
     quickCreateName : mOSAIC AMQP Driver
     quickCreateOrder : 22
-    configurationTemplate : [null]
+    configurationTemplate :
     callOperations :
         mosaic-component:get.channel.data :
             inputsTemplate :
@@ -204,7 +204,7 @@
     quickCreate : true
     quickCreateName : mOSAIC Riak Driver
     quickCreateOrder : 23
-    configurationTemplate : [null]
+    configurationTemplate :
     callOperations :
         mosaic-component:get.channel.data :
             inputsTemplate :
@@ -260,7 +260,7 @@
     quickCreate : true
     quickCreateName : (Feeds Frontend)
     quickCreateOrder : 101
-    configurationTemplate : [null]
+    configurationTemplate :
     callOperations : {}
     castOperations : {}
 
@@ -268,17 +268,13 @@
     quickCreate : true
     quickCreateName : (Feeds Indexer-C)
     quickCreateOrder : 104
-    configurationTemplate : [null]
-    callOperations : {}
-    castOperations : {}
-
-"#mosaic-tests:java-component" :
-    configurationTemplate : ["<<main-class>>", "http://<<host>>/<<component>>.jar"]
+    configurationTemplate :
     callOperations : {}
     castOperations : {}
 
 "#mosaic-tests:socat" :
-    configurationTemplate : ["<<token>>", "<<endpoint>>"]
+    configurationTemplate : "<<endpoint>>"
+    annotationTemplate : "<<token>>"
     callOperations : {}
     castOperations : {}
 
