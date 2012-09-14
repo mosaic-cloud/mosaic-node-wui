@@ -28,7 +28,7 @@ function _getClusterRing (_callback) {
 }
 
 function _getProcesses (_callback) {
-	return (_invokeGetJson ("/v1/processes/examine", {}, function (_error, _response, _outcome) {
+	return (_invokeGetJson ("/v1/processes/descriptors", {}, function (_error, _response, _outcome) {
 		_callback (_error, _outcome);
 	}));
 }
@@ -53,6 +53,12 @@ function _castProcess (_key, _operation, _inputs, _callback) {
 
 function _stopProcess (_key, _callback) {
 	return (_invokeGetJson ("/v1/processes/stop", {key : _key}, function (_error, _response, _outcome) {
+		_callback (_error, _outcome);
+	}));
+}
+
+function _getConfigurators (_callback) {
+	return (_invokeGetJson ("/v1/processes/configurators", {}, function (_error, _response, _outcome) {
 		_callback (_error, _outcome);
 	}));
 }
