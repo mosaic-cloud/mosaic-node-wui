@@ -25,6 +25,10 @@ var _schemasYamlPath = path.join (path.dirname (module.filename), "schemas.yaml"
 // ---------------------------------------
 
 function _schemasPyRefresh () {
+	if (true || !fs.existsSync (_schemasYamlPath)) {
+		_schemasPyLoad ();
+		return;
+	}
 	var _jsonTimestamp = fs.statSync (_schemasJsonPath) .mtime;
 	var _yamlTimestamp = fs.statSync (_schemasYamlPath) .mtime;
 	if (_jsonTimestamp < _yamlTimestamp) {
