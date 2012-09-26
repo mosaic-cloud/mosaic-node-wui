@@ -104,7 +104,7 @@
 						<li><a href="/process/create?return={returnStacked}">Create</a>
 							<ul>
 								{#quickCreate}
-									<li class="shy"><a href="/process/create?type={type|uc}?return={returnStacked}">{name}</a></li>
+									<li class="shy"><a href="/process/create?type={type|uc}&return={returnStacked}">{name}</a></li>
 								{/quickCreate}
 							</ul>
 						</li>

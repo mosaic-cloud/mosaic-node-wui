@@ -30,7 +30,7 @@
 								{?type}
 									<input id="type" type="text" class="span6 disable" disabled="disabled" value="{type}" />
 								{:else}
-									<select id="type" class="span6" onchange="window.location.assign('/process/{?call}call{/call}{?cast}cast{/cast}?key={key|uc}&amp;typeTemplate='+escape(window.document.getElementById('type').options[window.document.getElementById('type').selectedIndex].text)+'&amp;return={return|uc}');">
+									<select id="type" class="span6" onchange="window.location.assign('/process/{?call}call{/call}{?cast}cast{/cast}?key={key|uc}&typeTemplate='+escape(window.document.getElementById('type').options[window.document.getElementById('type').selectedIndex].text)+'&return={return|uc}');">
 										{#typeOptions}
 											{?selected}
 												<option selected="selected">{name}</option>
@@ -50,9 +50,9 @@
 									<input id="operation" type="text" class="span6 disable" disabled="disabled" value="{operation}" />
 								{:else}
 										{^operationInputable}
-									<select id="operation" class="span6" name="operation" onchange="window.location.assign('/process/{?call}call{/call}{?cast}cast{/cast}?key={key|uc}&amp;type={type|uc}&amp;typeTemplate={typeTemplate|uc}&amp;operationTemplate='+escape(window.document.getElementById('operation').options[window.document.getElementById('operation').selectedIndex].text)+'&amp;return={return|uc}');">
+									<select id="operation" class="span6" name="operation" onchange="window.location.assign('/process/{?call}call{/call}{?cast}cast{/cast}?key={key|uc}&type={type|uc}&typeTemplate={typeTemplate|uc}&operationTemplate='+escape(window.document.getElementById('operation').options[window.document.getElementById('operation').selectedIndex].text)+'&return={return|uc}');">
 										{:else}
-									<select id="operation" class="span6" onchange="window.location.assign('/process/{?call}call{/call}{?cast}cast{/cast}?key={key|uc}&amp;type={type|uc}&amp;typeTemplate={typeTemplate|uc}&amp;operationTemplate='+escape(window.document.getElementById('operation').options[window.document.getElementById('operation').selectedIndex].text)+'&amp;return={return|uc}');">
+									<select id="operation" class="span6" onchange="window.location.assign('/process/{?call}call{/call}{?cast}cast{/cast}?key={key|uc}&type={type|uc}&typeTemplate={typeTemplate|uc}&operationTemplate='+escape(window.document.getElementById('operation').options[window.document.getElementById('operation').selectedIndex].text)+'&return={return|uc}');">
 										{/operationInputable}
 										{#operationOptions}
 											{?selected}

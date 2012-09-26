@@ -65,10 +65,10 @@ dust.filters.jsonp = function (_value) {
 	return (JSON.stringify (_value, null, 4));
 };
 dust.filters.htmlpre = function (_value) {
-	return (_value.replace (/</g, "&lt;") .replace (/>/g, "&gt;") .replace (/ /, "&nbsp;"));
+	return (_value.replace (/</g, "&lt;") .replace (/>/g, "&gt;") .replace (/ /g, "&nbsp;"));
 };
 dust.filters.insa = function (_value) {
-	return (_value.replace (/((http|ftp|https):\/\/[\w\-_]+(\.[\w\-_]+)+([\w\-\.,@?^=%:/~\+#]*[\w\-\@?^=%&amp;/~\+#])?)/g, "<a href='$1'>$1</a>"));
+	return (_value.replace (/((http|ftp|https):\/\/[\w\-_]+(\.[\w\-_]+)+([\w\-\.,@?^=%:/~\+#]*[\w\-\@?^=%&/~\+#])?)/g, "<a href='$1'>$1</a>"));
 };
 
 // ---------------------------------------

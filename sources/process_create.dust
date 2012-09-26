@@ -20,9 +20,9 @@
 									<input type="hidden" name="type" value="{type}" />
 								{:else}
 										{^typeInputable}
-									<select id="type" class="span6" name="type" onchange="window.location.assign('/process/create?typeTemplate='+escape(window.document.getElementById('type').options[window.document.getElementById('type').selectedIndex].text)+'&amp;return={return|uc}');">
+									<select id="type" class="span6" name="type" onchange="window.location.assign('/process/create?typeTemplate='+escape(window.document.getElementById('type').options[window.document.getElementById('type').selectedIndex].text)+'&return={return|uc}');">
 										{:else}
-									<select id="type" class="span6" onchange="window.location.assign('/process/create?typeTemplate='+escape(window.document.getElementById('type').options[window.document.getElementById('type').selectedIndex].text)+'&amp;return={return|uc}');">
+									<select id="type" class="span6" onchange="window.location.assign('/process/create?typeTemplate='+escape(window.document.getElementById('type').options[window.document.getElementById('type').selectedIndex].text)+'&return={return|uc}');">
 										{/typeInputable}
 										{#typeOptions}
 											{?selected}
