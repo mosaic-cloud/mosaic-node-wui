@@ -12,6 +12,7 @@ var fs = require ("fs");
 var path = require ("path");
 var printf = require ("printf");
 var querystring = require ("querystring");
+var url = require ("url");
 
 var controller = require ("./controller");
 var schemas = require ("./schemas");
@@ -71,7 +72,7 @@ function _handleProxy (_path, _request, _response, _next)
 function _handleInvalid (_request, _response, _next)
 {
 	_renderView (500, "invalid", _request, _response, _next, _mixinContext (_request, false, {
-			path : _request.url, query : _request.query, method : _request.method, body : _request.body,
+			path : url.parse (_request.url) .pathname, query : _request.query, method : _request.method, body : _request.body,
 	}));
 }
 
@@ -167,7 +168,7 @@ function _handleCreateProcessPre (_request, _response, _next)
 	else
 		_typeOptions = [{name : "[Custom...]", selected : true}];
 	var _typeInputable = (_typeTemplate == "[Custom...]");
-	_renderView (200, "process_create", _request, _response, _next, _mixinContext (_request, true, {
+	_renderView (200, "process_create", _request, _response, _next, _mixinContext (_request, false, {
 			type : _type, configuration : _configuration, annotation : _annotation, count : _count,
 			typeOptions : _typeOptions, typeInputable : _typeInputable,
 			typeTemplate : _typeTemplate, configurationTemplate : _configurationTemplate, annotationTemplate : _annotationTemplate,
@@ -267,7 +268,7 @@ function _handleCallCastProcessPre (_action, _request, _response, _next)
 	} else
 		_operationOptions = [{name : "[Custom...]", selected : true}];
 	_operationInputable = (_operationTemplate == "[Custom...]");
-	_renderView (200, "process_call_cast", _request, _response, _next, _mixinContext (_request, true, {
+	_renderView (200, "process_call_cast", _request, _response, _next, _mixinContext (_request, false, {
 			key : _key, operation : _operation, inputs : _inputs, type : _type,
 			typeOptions : _typeOptions, operationOptions : _operationOptions, operationInputable : _operationInputable,
 			typeTemplate : _typeTemplate, operationTemplate : _operationTemplate, inputsTemplate : _inputsTemplate,
@@ -296,7 +297,7 @@ function _handleCallCastProcess (_action, _request, _response, _next)
 
 function _handleStopProcessPre (_request, _response, _next)
 {
-	_renderView (200, "process_stop", _request, _response, _next, _mixinContext (_request, true, {
+	_renderView (200, "process_stop", _request, _response, _next, _mixinContext (_request, false, {
 			key : _request.param ("key"),
 	}));
 }
@@ -342,20 +343,13 @@ function _mixinContext (_request, _pushReturn, _context)
 			.sortBy (function (_option) { return (_option.name); })
 			.sortBy (function (_option) { return (_option.order); })
 			.value ();
-	var _back = _request.param ("return") || undefined;
-	if (_back)
-		_back = querystring.unescape (_back);
-	else
+	var _back = _request.param ("return") || null;
+	if (_back == "")
 		_back = null;
-	var _self = _request.url;
+	var _stacked = _request.url;
 	if (_back)
-		var _stacked = printf ("%s?%s", _self, querystring.stringify (
-				_ (_request.query) .chain () .clone () .extend ({"return" : _back}) .values ()));
-	else
-		if (_ (_request.query) .isEmpty ())
-			var _stacked = _self;
-		else
-			var _stacked = printf ("%s?%s", _self, querystring.stringify (_request.query));
+		var _stacked = printf ("%s?%s", url.parse (_request.url) .pathname, querystring.stringify (
+				_ (_request.query) .chain () .clone () .extend ({"return" : _back}) .value ()));
 	if (_pushReturn)
 		return (_.extend (_context, {
 			"quickCreate" : _quickCreate,

@@ -29,10 +29,10 @@
 									<td><code>{type}</code></td>
 									<td><code>{key}</code></td>
 									<td>
-										<a class="btn info tiny fade" href="/processes/{key|uc}/log?type={type|uc}&amp;configuration={?configuration}{configuration|json|uc}{:else}null{/configuration}&amp;return={returnStacked|uc}">Log</a>
-										<a class="btn tiny fade" href="/processes/{key|uc}/call?type={type|uc}&amp;return={returnStacked|uc}">Call</a>
-										<a class="btn tiny fade" href="/processes/{key|uc}/cast?type={type|uc}&amp;return={returnStacked|uc}">Cast</a>
-										<a class="btn success tiny fade" href="/process/create?type={type|uc}&amp;configuration={?configuration}{configuration|json|uc}{:else}null{/configuration}&amp;return={returnStacked|uc}">Clone</a>
+										<a class="btn info tiny fade" href="/processes/{key|uc}/log?type={type|uc}&configuration={?configuration}{configuration|json|uc}{:else}null{/configuration}&return={returnStacked|uc}">Log</a>
+										<a class="btn tiny fade" href="/processes/{key|uc}/call?type={type|uc}&return={returnStacked|uc}">Call</a>
+										<a class="btn tiny fade" href="/processes/{key|uc}/cast?type={type|uc}&return={returnStacked|uc}">Cast</a>
+										<a class="btn success tiny fade" href="/process/create?type={type|uc}&configuration={?configuration}{configuration|json|uc}{:else}null{/configuration}&return={returnStacked|uc}">Clone</a>
 										<a class="btn danger tiny fade" href="/processes/{key|uc}/stop?return={returnStacked|uc}">Stop</a>
 									</td>
 									<td>{?configuration}<code>{configuration|json|htmlpre|s}</code>{:else}<br/>{/configuration}</td>
@@ -52,6 +52,6 @@
 
 {<layout__extra_head}
 	
-	<meta http-equiv="refresh" content="3" />
+	<!-- <meta http-equiv="refresh" content="3" /> -->
 	
 {/layout__extra_head}

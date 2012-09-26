@@ -81,7 +81,7 @@
 						<li><a href="/about">About</a></li>
 					</ul>
 					<ul class="nav secondary-nav pull-right">
-						{?return}<li><a href="{return|u}">Return</a></li>{/return}
+						{?return}<li><a href="{return}">Return</a></li>{/return}
 						<li><a href="javascript:window.location.reload()">Refresh</a></li>
 						<li><a href="http://validator.w3.org/check?uri=referer"><img src="http://www.w3.org/Icons/valid-xhtml11" alt="XHTML" height="14px" /></a></li>
 					</ul>
@@ -100,25 +100,25 @@
 				<div class="well fade fade-trigger shy-trigger">
 					<h5>Components</h5>
 					<ul>
-						<li><a href="/processes">List</a></li>
-						<li><a href="/process/create">Create</a>
+						<li><a href="/processes?return={returnStacked}">List</a></li>
+						<li><a href="/process/create?return={returnStacked}">Create</a>
 							<ul>
 								{#quickCreate}
-									<li class="shy"><a href="/process/create?type={type|uc}">{name}</a></li>
+									<li class="shy"><a href="/process/create?type={type|uc}?return={returnStacked}">{name}</a></li>
 								{/quickCreate}
 							</ul>
 						</li>
-						<li><a href="/process/call">Call</a></li>
-						<li><a href="/process/cast">Cast</a></li>
-						<li><a href="/process/stop">Stop</a></li>
+						<li><a href="/process/call?return={returnStacked}">Call</a></li>
+						<li><a href="/process/cast?return={returnStacked}">Cast</a></li>
+						<li><a href="/process/stop?return={returnStacked}">Stop</a></li>
 					</ul>
 				</div>
 				
 				<div class="well fade fade-trigger shy-trigger">
 					<h5>Cluster</h5>
 					<ul>
-						<li><a href="/cluster/nodes">Nodes</a></li>
-						<li><a href="/cluster/ring">Ring</a></li>
+						<li><a href="/cluster/nodes?return={returnStacked}">Nodes</a></li>
+						<li><a href="/cluster/ring?return={returnStacked}">Ring</a></li>
 					</ul>
 				</div>
 				

@@ -9,6 +9,7 @@ var _ = require ("underscore");
 var dust = require ("dust");
 var express = require ("express");
 var path = require ("path");
+var querystring = require ("querystring");
 
 var views = require ("./views");
 

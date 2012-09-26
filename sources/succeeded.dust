@@ -20,7 +20,7 @@
 							
 							{?return}
 								<div class="alert-actions">
-									<a class="btn primary large" href="{return|u}">Return</a>
+									<a class="btn primary large" href="{return}">Return</a>
 								</div>
 							{/return}
 							
@@ -42,7 +42,7 @@
 							<div class="alert-actions">
 								<a class="btn danger large" href="javascript:window.location.reload()">Retry</a>
 								<a class="btn large" href="javascript:window.history.back()">Back</a>
-								{?return}<a class="btn large" href="{return|u}">Return</a>{/return}
+								{?return}<a class="btn large" href="{return}">Return</a>{/return}
 							</div>
 							
 						</div>

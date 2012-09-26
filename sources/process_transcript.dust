@@ -7,10 +7,10 @@
 			
 			<h1>Process transcript <code>{key}</code>
 				<span class="pull-right">
-					{?return}<a class="btn small" href="{return|u}">Return</a>{/return}
-					<a class="btn small" href="/processes/{key|uc}/call?type={type|uc}&amp;return={returnStacked|uc}">Call</a>
-					<a class="btn small" href="/processes/{key|uc}/cast?type={type|uc}&amp;return={returnStacked|uc}">Cast</a>
-					<a class="btn success small" href="/process/create?type={type|uc}&amp;configuration={?configuration}{configuration|json|uc}{:else}null{/configuration}&amp;return={returnStacked|uc}">Clone</a>
+					{?return}<a class="btn small" href="{return}">Return</a>{/return}
+					<a class="btn small" href="/processes/{key|uc}/call?type={type|uc}&return={returnStacked|uc}">Call</a>
+					<a class="btn small" href="/processes/{key|uc}/cast?type={type|uc}&return={returnStacked|uc}">Cast</a>
+					<a class="btn success small" href="/process/create?type={type|uc}&configuration={?configuration}{configuration|json|uc}{:else}null{/configuration}&return={returnStacked|uc}">Clone</a>
 					<a class="btn danger small" href="/processes/{key|uc}/stop?return={returnStacked|uc}">Stop</a>
 				</span>
 			</h1>
@@ -41,7 +41,7 @@
 
 {<layout__extra_head}
 	
-	<meta http-equiv="refresh" content="3" />
+	<!-- <meta http-equiv="refresh" content="3" /> -->
 	
 	<style type="text/css">
 		

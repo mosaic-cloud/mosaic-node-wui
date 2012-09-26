@@ -21,7 +21,7 @@
 					
 					<div class="alert-actions">
 						<a class="btn large" href="javascript:window.history.back()">Back</a>
-						{?return}<a class="btn large" href="{return|u}">Return</a>{/return}
+						{?return}<a class="btn large" href="{return}">Return</a>{/return}
 					</div>
 					
 				</div>

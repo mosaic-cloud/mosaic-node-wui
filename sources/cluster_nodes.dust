@@ -100,7 +100,7 @@
 								<div class="actions">
 									<input class="btn success large" type="submit" value="Join" />
 									<button class="btn large" type="reset">Reset</button>
-									<input type="hidden" name="return" value="{returnStacked|u}" />
+									<input type="hidden" name="return" value="{returnStacked}" />
 								</div>
 							</fieldset>
 						</form>
