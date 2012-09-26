@@ -21,7 +21,7 @@
 					<div id="logs" class="well">
 						<ol id="list">
 							{#records}
-								<li class="log"><code>{data|htmlpre|s}</code></li>
+								<li class="log"><code>{data|htmlpren|s}</code></li>
 							{/records}
 						</ol>
 					</div>
