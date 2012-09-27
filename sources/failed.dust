@@ -15,8 +15,8 @@
 						
 						<dl>
 							<dt>Reason:</dt><dd><code>{reason}</code></dd>
-							<dt>Message:</dt><dd><pre>{message}</pre></dd>
-							{?messageExtra}<dt>Additional details:</dt><dd><pre>{messageExtra}</pre></dd>{/messageExtra}
+							<dt>Message:</dt><dd><pre>{message|htmlpren|s}</pre></dd>
+							{?messageExtra}<dt>Additional details:</dt><dd><pre>{messageExtra|htmlpren|s}</pre></dd>{/messageExtra}
 						</dl>
 						
 						<div class="alert-actions">
