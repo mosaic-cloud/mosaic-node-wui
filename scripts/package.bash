@@ -106,6 +106,7 @@ cat >"${_outputs}/package/pkg.json" <<EOS
 	"description" : "mOSAIC Node WebUI",
 	"directories" : [ "bin", "lib" ],
 	"depends" : [
+		"mosaic-utils",
 		"mosaic-nodejs-0.8.4"
 	]
 }
