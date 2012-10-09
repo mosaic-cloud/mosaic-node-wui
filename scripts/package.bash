@@ -5,10 +5,6 @@ if ! test "${#}" -eq 0 ; then
 	exit 1
 fi
 
-if ! test -e "${_outputs}" ; then
-	mkdir -- "${_outputs}"
-fi
-
 if test -e "${_outputs}/package" ; then
 	chmod -R +w -- "${_outputs}/package"
 	rm -R -- "${_outputs}/package"
@@ -28,7 +24,7 @@ find "${_sources}" -type f \( -name "*.js" -o -name "*.dust" -o -name '*.json' \
 	cp -t "${_outputs}/package/lib/node" -- "${_source_path}"
 done
 
-mkdir "${_outputs}/package/lib/static"
+mkdir -- "${_outputs}/package/lib/static"
 find "${_static}" -type f \( -not -name ".*" \) -print \
 | while read _static_path ; do
 	cp -t "${_outputs}/package/lib/static" -- "${_static_path}"
