@@ -30,7 +30,7 @@ find "${_static}" -type f \( -not -name ".*" \) -print \
 	cp -t "${_outputs}/package/lib/static" -- "${_static_path}"
 done
 
-cp -R -T -- "${_workbench}/node_modules" "${_outputs}/package/lib/node_modules"
+cp -H -R -T -- "${_workbench}/node_modules" "${_outputs}/package/lib/node_modules"
 
 mkdir -- "${_outputs}/package/lib/scripts"
 
