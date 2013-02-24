@@ -62,7 +62,7 @@ _schemasPyRefresh ();
 
 // ---------------------------------------
 
-var _schemasCtlInterval = 1000;
+var _schemasCtlInterval = 6000;
 var _schemasCtlCache = null;
 
 function _schemasCtlRefresh () {
