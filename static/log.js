@@ -59,8 +59,8 @@
             time = setTimeout(function() {
                     disconnect();
                     req = new XMLHttpRequest ();
-                    req.onreadystatechange = stateChangeHandler;
                     req.open("GET", "/log/stream", true);
+                    req.onreadystatechange = stateChangeHandler;
                     req.send();
             }, delay);
         }
