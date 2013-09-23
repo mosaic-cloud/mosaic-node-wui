@@ -137,6 +137,16 @@ function _handleCreateProcessPre (_request, _response, _next)
 	var _configurationTemplate = _request.param ("configurationTemplate") || undefined;
 	var _annotationTemplate = _request.param ("annotationTemplate") || undefined;
 	var _description = undefined;
+	if (_configuration !== undefined)
+		_configuration = JSON.parse (_configuration);
+	if (_annotation !== undefined)
+		_annotation = JSON.parse (_annotation);
+	if (_count !== undefined)
+		_count = parseInt (_count);
+	if (_configurationTemplate !== undefined)
+		_configurationTemplate = JSON.parse (_configurationTemplate);
+	if (_annotationTemplate !== undefined)
+		_annotationTemplate = JSON.parse (_annotationTemplate);
 	if (_type !== undefined)
 		_typeTemplate = _type;
 	if (_configuration !== undefined)
@@ -151,15 +161,15 @@ function _handleCreateProcessPre (_request, _response, _next)
 		_processSchema = _processSchemas [_typeTemplate];
 	if (_processSchema !== undefined) {
 		if (_configurationTemplate === undefined)
-			_configurationTemplate = JSON.stringify (_processSchema.configurationTemplate, null, 4);
+			_configurationTemplate = _processSchema.configurationTemplate;
 		if (_annotationTemplate === undefined)
-			_annotationTemplate = JSON.stringify (_processSchema.annotationTemplate, null, 4);
+			_annotationTemplate = _processSchema.annotationTemplate;
 		_description = _processSchema.description;
 	} else {
 		if (_configurationTemplate === undefined)
-			_configurationTemplate = JSON.stringify (null, null, 4);
+			_configurationTemplate = null;
 		if (_annotationTemplate === undefined)
-			_annotationTemplate = JSON.stringify (null, null, 4);
+			_annotationTemplate = null;
 	}
 	var _typeOptions = undefined;
 	if (_processSchemas !== undefined)
@@ -169,16 +179,27 @@ function _handleCreateProcessPre (_request, _response, _next)
 		_typeOptions = [{name : "[Custom...]", selected : true}];
 	var _typeInputable = (_typeTemplate == "[Custom...]");
 	_renderView (200, "process_create", _request, _response, _next, _mixinContext (_request, false, {
-			type : _type, configuration : _configuration, annotation : _annotation, count : _count,
-			typeOptions : _typeOptions, typeInputable : _typeInputable,
-			typeTemplate : _typeTemplate, configurationTemplate : _configurationTemplate, annotationTemplate : _annotationTemplate,
+			type : _type,
+			configuration : JSON.stringify (_configuration, null, 4),
+			annotation : JSON.stringify (_annotation, null, 4),
+			count : _count,
+			typeOptions : _typeOptions,
+			typeInputable : _typeInputable,
+			typeTemplate : _typeTemplate,
+			configurationTemplate : JSON.stringify (_configurationTemplate, null, 4),
+			annotationTemplate : JSON.stringify (_annotationTemplate, null, 4),
 			description : _description,
 	}));
 }
 
 function _handleCreateProcess (_request, _response, _next)
 {
-	controller.createProcess (_request.param ("type"), _request.param ("configuration"), _request.param ("annotation"), _request.param ("count", 1), function (_error, _outcome) {
+	controller.createProcess (
+				_request.param ("type"),
+				JSON.parse (_request.param ("configuration")),
+				JSON.parse (_request.param ("annotation")),
+				JSON.parse (_request.param ("count", "1")),
+	function (_error, _outcome) {
 		if (_error === null)
 			_renderView (200, "succeeded", _request, _response, _next, _mixinContext (_request, false, {
 					outcome : _outcome,
@@ -220,6 +241,10 @@ function _handleCallCastProcessPre (_action, _request, _response, _next)
 	var _operationTemplate = _request.param ("operationTemplate") || undefined;
 	var _inputsTemplate = _request.param ("inputsTemplate") || undefined;
 	var _description = undefined;
+	if (_inputs !== undefined)
+		_inputs = JSON.parse (_inputs);
+	if (_inputsTemplate !== undefined)
+		_inputsTemplate = JSON.parse (_inputsTemplate);
 	if (_type !== undefined)
 		_typeTemplate = _type;
 	if (_operation !== undefined)
@@ -247,12 +272,12 @@ function _handleCallCastProcessPre (_action, _request, _response, _next)
 	if (_operationSchema !== undefined) {
 		if (_operationSchema !== null) {
 			if (_inputsTemplate === undefined)
-				_inputsTemplate = JSON.stringify (_operationSchema.inputsTemplate, null, 4);
+				_inputsTemplate = _operationSchema.inputsTemplate;
 			_description = _operationSchema.description;
 		}
 	} else {
 		if (_inputsTemplate === undefined)
-			_inputsTemplate = JSON.stringify (null, null, 4);
+			_inputsTemplate = null;
 	}
 	var _typeOptions = undefined;
 	if (_processSchemas !== undefined)
@@ -269,9 +294,16 @@ function _handleCallCastProcessPre (_action, _request, _response, _next)
 		_operationOptions = [{name : "[Custom...]", selected : true}];
 	_operationInputable = (_operationTemplate == "[Custom...]");
 	_renderView (200, "process_call_cast", _request, _response, _next, _mixinContext (_request, false, {
-			key : _key, operation : _operation, inputs : _inputs, type : _type,
-			typeOptions : _typeOptions, operationOptions : _operationOptions, operationInputable : _operationInputable,
-			typeTemplate : _typeTemplate, operationTemplate : _operationTemplate, inputsTemplate : _inputsTemplate,
+			key : _key,
+			operation : _operation,
+			inputs : JSON.stringify (_inputs, null, 4),
+			type : _type,
+			typeOptions : _typeOptions,
+			operationOptions : _operationOptions,
+			operationInputable : _operationInputable,
+			typeTemplate : _typeTemplate,
+			operationTemplate : _operationTemplate,
+			inputsTemplate : JSON.stringify (_inputsTemplate, null, 4),
 			description : _description,
 			call : (_action == "call"), cast : (_action == "cast")
 	}));
@@ -290,9 +322,9 @@ function _handleCallCastProcess (_action, _request, _response, _next)
 			}));
 	};
 	if (_action == "call")
-		controller.callProcess (_request.param ("key"), _request.param ("operation"), _request.param ("inputs"), _callback);
+		controller.callProcess (_request.param ("key"), _request.param ("operation"), JSON.parse (_request.param ("inputs")), _callback);
 	else
-		controller.castProcess (_request.param ("key"), _request.param ("operation"), _request.param ("inputs"), _callback);
+		controller.castProcess (_request.param ("key"), _request.param ("operation"), JSON.parse (_request.param ("inputs")), _callback);
 }
 
 function _handleStopProcessPre (_request, _response, _next)

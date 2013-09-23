@@ -34,19 +34,32 @@ function _getProcesses (_callback) {
 }
 
 function _createProcess (_type, _configuration, _annotation, _count, _callback) {
-	return (_invokeGetJson ("/v1/processes/create", {type : _type, configuration : _configuration, annotation : _annotation, count : _count}, function (_error, _response, _outcome) {
+	return (_invokeGetJson ("/v1/processes/create", {
+			type : _type,
+			configuration : JSON.stringify (_configuration, null, 0),
+			annotation : JSON.stringify (_annotation, null, 0),
+			count : JSON.stringify (_count, null, 0)
+	}, function (_error, _response, _outcome) {
 		_callback (_error, _outcome);
 	}));
 }
 
 function _callProcess (_key, _operation, _inputs, _callback) {
-	return (_invokeGetJson ("/v1/processes/call", {key : _key, operation : _operation, inputs : _inputs}, function (_error, _response, _outcome) {
+	return (_invokeGetJson ("/v1/processes/call", {
+			key : _key,
+			operation : _operation,
+			inputs : JSON.stringify (_inputs, null, 0)
+	}, function (_error, _response, _outcome) {
 		_callback (_error, _outcome);
 	}));
 }
 
 function _castProcess (_key, _operation, _inputs, _callback) {
-	return (_invokeGetJson ("/v1/processes/cast", {key : _key, operation : _operation, inputs : _inputs}, function (_error, _response, _outcome) {
+	return (_invokeGetJson ("/v1/processes/cast", {
+			key : _key,
+			operation : _operation,
+			inputs : JSON.stringify (_inputs, null, 0)
+	}, function (_error, _response, _outcome) {
 		_callback (_error, _outcome);
 	}));
 }
@@ -80,7 +93,7 @@ function _invokeGetJson (_path, _query, _callback) {
 			headers : {
 				"Accept-Type" : "application/json",
 			},
-			timeout : 6 * 1000,
+			timeout : 30 * 1000,
 	};
 	request (_options, function (_error, _response, _body) {
 		if (_callback === undefined)
