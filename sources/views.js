@@ -386,7 +386,7 @@ function _handleGetTranscript (_request, _response, _next)
 		if (_error === null) {
 			_outcome.records = _.sortBy (_outcome.records, function (_record) { return (_record.timestamp); });
 			_renderView (200, "process_transcript", _request, _response, _next, _mixinContext (_request, true, {
-					key : _request.param ("key"), type : _request.param ("type"), configuration : _request.param ("configuration"),
+					key : _request.param ("key"), type : _request.param ("type"), configuration : JSON.parse (_request.param ("configuration")),
 					outcome : _outcome,
 			}));
 		} else
