@@ -82,6 +82,12 @@ function _getConfigurators (_callback) {
 	}));
 }
 
+function _launchProcesses (_descriptor, _callback) {
+	return (_invokePostJson ("/v1/processes/create", {}, _descriptor, function (_error, _response, _outcome) {
+		_callback (_error, _outcome);
+	}));
+}
+
 // ---------------------------------------
 
 function _invokeGetJson (_path, _query, _callback) {
@@ -94,6 +100,60 @@ function _invokeGetJson (_path, _query, _callback) {
 				"Accept-Type" : "application/json",
 			},
 			timeout : 30 * 1000,
+	};
+	request (_options, function (_error, _response, _body) {
+		if (_callback === undefined)
+			return;
+		if (_error) {
+			var _outcome = {
+					reason : "unexpected-http-client-error",
+					message : _error.toString (),
+					messageExtra : _error.stack.toString (),
+					error : _error,
+					path : _path,
+			};
+			_callback (_outcome, undefined, undefined);
+			_callback = undefined;
+		} else if (_response.statusCode != 200) {
+			var _outcome = {
+					reason : "unexpected-http-response-status-code",
+					message : printf ("Unexpected status code `%d`", _response.statusCode),
+					messageExtra : _body,
+					statusCode : _response.statusCode,
+					path : _path,
+			};
+			_callback (_outcome, undefined, undefined);
+			_callback = undefined;
+		} else if (_response.headers["content-type"] != "application/json") {
+			var _outcome = {
+					reason : "unexpected-http-response-content-type",
+					message : printf ("Unexpected content type `%s`", _response.headers["content-type"]),
+					messageExtra : _body,
+					contentType : _response.headers["content-type"],
+					path : _path,
+			};
+			_callback (_outcome, undefined, undefined);
+			_callback = undefined;
+		} else {
+			var _outcome = JSON.parse (_body);
+			_callback (null, _response, _outcome);
+			_callback = undefined;
+		}
+	});
+}
+
+function _invokePostJson (_path, _query, _input, _callback) {
+	var _url = printf ("http://%s:%d%s?%s", configuration.nodeIp, configuration.nodePort, _path, querystring.stringify (_query));
+	transcript.traceDebugging ("invocking get request for: `%s`...", _url);
+	var _options = {
+			uri : _url,
+			method : "POST",
+			headers : {
+				"Content-Type" : "application/json",
+				"Accept-Type" : "application/json",
+			},
+			timeout : 30 * 1000,
+			body : JSON.stringify (_input, null, 4),
 	};
 	request (_options, function (_error, _response, _body) {
 		if (_callback === undefined)
@@ -180,6 +240,7 @@ module.exports.getClusterNodes = _getClusterNodes;
 module.exports.getClusterRing = _getClusterRing;
 module.exports.getProcesses = _getProcesses;
 module.exports.createProcess = _createProcess;
+module.exports.launchProcesses = _launchProcesses;
 module.exports.callProcess = _callProcess;
 module.exports.castProcess = _castProcess;
 module.exports.stopProcess = _stopProcess;

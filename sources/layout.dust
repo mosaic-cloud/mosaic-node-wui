@@ -111,6 +111,7 @@
 						<li><a href="/process/call?return={returnStacked}">Call</a></li>
 						<li><a href="/process/cast?return={returnStacked}">Cast</a></li>
 						<li><a href="/process/stop?return={returnStacked}">Stop</a></li>
+						<li><a href="/processes/launch?return={returnStacked}">Launch</a></li>
 					</ul>
 				</div>
 				

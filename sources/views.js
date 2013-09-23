@@ -211,6 +211,38 @@ function _handleCreateProcess (_request, _response, _next)
 	});
 }
 
+function _handleLaunchProcessesPre (_request, _response, _next)
+{
+	var _descriptor = _request.param ("descriptor") || undefined;
+	var _descriptorTemplate = _request.param ("descriptorTemplate") || undefined;
+	var _description = undefined;
+	if (_descriptor !== undefined)
+		_descriptor = JSON.parse (_descriptor);
+	if (_descriptorTemplate !== undefined)
+		_descriptorTemplate = JSON.parse (_descriptorTemplate);
+	if (_descriptor !== undefined)
+		_descriptorTemplate = _descriptor;
+	_renderView (200, "processes_launch", _request, _response, _next, _mixinContext (_request, false, {
+			descriptor : JSON.stringify (_descriptor, null, 4),
+			descriptorTemplate : JSON.stringify (_descriptorTemplate, null, 4),
+			description : _description,
+	}));
+}
+
+function _handleLaunchProcesses (_request, _response, _next)
+{
+	controller.launchProcesses (JSON.parse (_request.param ("descriptor")), function (_error, _outcome) {
+		if (_error === null)
+			_renderView (200, "succeeded", _request, _response, _next, _mixinContext (_request, false, {
+					outcome : _outcome,
+			}));
+		else
+			_renderView (500, "failed", _request, _response, _next, _mixinContext (_request, false, {
+					error : _error,
+			}));
+	});
+}
+
 function _handleCallProcessPre (_request, _response, _next)
 {
 	_handleCallCastProcessPre ("call", _request, _response, _next);
@@ -435,6 +467,8 @@ function _configureApplication (_application)
 	_application.get ("/cluster/ring", _handleQueryClusterRing);
 	
 	_application.get ("/processes", _handleQueryProcesses);
+	_application.get ("/processes/launch", _handleLaunchProcessesPre);
+	_application.post ("/processes/launch", _handleLaunchProcesses);
 	_application.get ("/processes/:key/call/:operation?", _handleCallProcessPre);
 	_application.post ("/processes/:key/call/:operation?", _handleCallProcess);
 	_application.get ("/processes/:key/cast/:operation?", _handleCastProcessPre);
