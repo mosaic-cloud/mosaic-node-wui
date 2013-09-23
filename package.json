@@ -1,6 +1,6 @@
 {
 	"name" : "mosaic-node-wui",
-	"version" : "0.1.0",
+	"version" : "0.6.1",
 	"scripts" : {},
 	"files" : ["./sources", "./static"],
 	"main" : "./sources/main.js",
