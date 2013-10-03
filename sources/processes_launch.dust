@@ -1,0 +1,63 @@
+{>layout/}
+
+{<blocks__main_panel}
+	
+	<div>
+		
+		<h1>Processes launch</h1>
+		
+		<div class="row">
+			<div class="span12">
+				
+				<form action="/processes/launch" method="post">
+					<fieldset>
+						
+						<div class="clearfix">
+							<label for="descriptor">Descriptor</label>
+							<div class="input">
+								{?descriptor}
+									<textarea id="descriptor" class="span6 disabled" name="descriptor" rows="8" cols="40" disabled="disabled">{descriptor|htmlpre|s}</textarea>
+									<input type="hidden" name="descriptor" value="{descriptor}" />
+								{:else}
+									<textarea id="descriptor" class="span6" name="descriptor" rows="8" cols="40">{?descriptorTemplate}{descriptorTemplate|htmlpre|s}{:else}null{/descriptorTemplate}</textarea>
+									<input type="file" onchange="loadDescriptor(this.files[0])" />
+									<script type="text/javascript">
+										function loadDescriptor (_file) {
+											var _reader = new FileReader ();
+											_reader.onload = function () {
+												window.document.getElementById('descriptor').value = _reader.result;
+											};
+											_reader.readAsText (_file, "utf-8");
+										}
+									</script>
+								{/descriptor}
+							</div>
+						</div>
+						
+						<div class="actions">
+							<input class="btn success large" type="submit" value="Create" />
+							<button class="btn large" type="reset">Reset</button>
+							{?return}<a class="btn large" href="{return}">Return</a>{/return}
+							<input type="hidden" name="return" value="{returnStacked}" />
+						</div>
+						
+					</fieldset>
+					
+				</form>
+			</div>
+		</div>
+		
+		{?description}
+			<div class="row">
+				<div class="span12">
+					<h2>Help</h2>
+					<div class="alert-message block-message info">
+						{description|s}
+					</div>
+				</div>
+			</div>
+		{/description}
+		
+	</div>
+	
+{/blocks__main_panel}
