@@ -30,7 +30,6 @@
         }, 
         "castOperations": {}, 
         "configurationTemplate": null, 
-        "description": "<div class=\"row\">\n    <div class=\"span2 center\"><a href=\"http://www.mosaic-cloud.eu/\"><img src=\"/static/mosaic-logo-small.png\" width=\"80px\" alt=\"mOSAIC\" /></a></div>\n    <div class=\"offset2\">\n        <h5>mosaic-components:httpg</h5>\n    </div>\n</div>\n", 
         "quickCreate": true, 
         "quickCreateName": "mOSAIC HTTP-G", 
         "quickCreateOrder": 21
@@ -64,7 +63,7 @@
         "castOperations": {}, 
         "configurationTemplate": null, 
         "quickCreate": true, 
-        "quickCreateName": "mOSAIC AMQP Driver", 
+        "quickCreateName": "mOSAIC AMQP-D", 
         "quickCreateOrder": 22
     }, 
     "#mosaic-components:java-driver-hdfs": {
@@ -81,7 +80,7 @@
                 "hdfs.port": 9000
             }
         ], 
-        "quickCreate": true, 
+        "quickCreate": false, 
         "quickCreateName": "mOSAIC HDFS Driver", 
         "quickCreateOrder": 24
     }, 
@@ -95,8 +94,28 @@
         "castOperations": {}, 
         "configurationTemplate": null, 
         "quickCreate": true, 
-        "quickCreateName": "mOSAIC Riak Driver", 
+        "quickCreateName": "mOSAIC Riak-D", 
         "quickCreateOrder": 23
+    }, 
+    "#mosaic-components:me2cp": {
+        "callOperations": {}, 
+        "castOperations": {}, 
+        "configurationTemplate": "<<bundle>>", 
+        "quickCreate": true, 
+        "quickCreateName": "mOSAIC ME2-C", 
+        "quickCreateOrder": 12
+    }, 
+    "#mosaic-components:mysql": {
+        "callOperations": {
+            "mosaic-mysql:get-sql-endpoint": {
+                "inputsTemplate": null
+            }
+        }, 
+        "castOperations": {}, 
+        "configurationTemplate": null, 
+        "quickCreate": true, 
+        "quickCreateName": "MySQL", 
+        "quickCreateOrder": 54
     }, 
     "#mosaic-components:rabbitmq": {
         "callOperations": {

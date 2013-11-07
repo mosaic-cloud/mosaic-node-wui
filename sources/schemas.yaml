@@ -168,17 +168,15 @@
                     </div>
                 </div>
     castOperations : {}
-    description : |
-        <div class="row">
-            <div class="span2 center"><a href="http://www.mosaic-cloud.eu/"><img src="/static/mosaic-logo-small.png" width="80px" alt="mOSAIC" /></a></div>
-            <div class="offset2">
-                <h5>mosaic-components:httpg</h5>
-            </div>
-        </div>
 
-"#mosaic-components:java-component-container" :
-    configurationTemplate : ["<<callbacks-class>>", "http://<<host>>/<<component>>.jar"]
-    callOperations : {}
+"#mosaic-components:mysql" :
+    quickCreate : true
+    quickCreateName : MySQL
+    quickCreateOrder : 54
+    configurationTemplate :
+    callOperations :
+        mosaic-mysql:get-sql-endpoint :
+            inputsTemplate :
     castOperations : {}
 
 "#mosaic-components:java-cloudlet-container" :
@@ -189,9 +187,17 @@
     callOperations : {}
     castOperations : {}
 
+"#mosaic-components:me2cp" :
+    quickCreate : true
+    quickCreateName : mOSAIC ME2-C
+    quickCreateOrder : 12
+    configurationTemplate : "<<bundle>>"
+    callOperations : {}
+    castOperations : {}
+
 "#mosaic-components:java-driver-amqp" :
     quickCreate : true
-    quickCreateName : mOSAIC AMQP Driver
+    quickCreateName : mOSAIC AMQP-D
     quickCreateOrder : 22
     configurationTemplate :
     callOperations :
@@ -202,7 +208,7 @@
 
 "#mosaic-components:java-driver-riak" :
     quickCreate : true
-    quickCreateName : mOSAIC Riak Driver
+    quickCreateName : mOSAIC Riak-D
     quickCreateOrder : 23
     configurationTemplate :
     callOperations :
@@ -212,7 +218,7 @@
     castOperations : {}
 
 "#mosaic-components:java-driver-hdfs" :
-    quickCreate : true
+    quickCreate : false
     quickCreateName : mOSAIC HDFS Driver
     quickCreateOrder : 24
     configurationTemplate : [{"hdfs.host" : "127.0.0.1", "hdfs.port" : 9000}]
@@ -220,6 +226,11 @@
         mosaic-component:get.channel.data :
             inputsTemplate :
             description :
+    castOperations : {}
+
+"#mosaic-components:java-component-container" :
+    configurationTemplate : ["<<callbacks-class>>", "http://<<host>>/<<component>>.jar"]
+    callOperations : {}
     castOperations : {}
 
 ...
