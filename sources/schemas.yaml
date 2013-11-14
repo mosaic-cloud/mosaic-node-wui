@@ -1,7 +1,7 @@
 ---
 
 "#mosaic-components:rabbitmq" :
-    quickCreate : true
+    quickCreate : false
     quickCreateName : RabbitMQ
     quickCreateOrder : 51
     configurationTemplate :
@@ -48,7 +48,7 @@
         </div>
 
 "#mosaic-components:riak-kv" :
-    quickCreate : true
+    quickCreate : false
     quickCreateName : RiakKV
     quickCreateOrder : 52
     configurationTemplate :
@@ -105,7 +105,7 @@
         </div>
 
 "#mosaic-components:couchdb" :
-    quickCreate : true
+    quickCreate : false
     quickCreateName : CouchDB
     quickCreateOrder : 53
     configurationTemplate :
@@ -142,7 +142,7 @@
         </div>
 
 "#mosaic-components:httpg" :
-    quickCreate : true
+    quickCreate : false
     quickCreateName : mOSAIC HTTP-G
     quickCreateOrder : 21
     configurationTemplate :
@@ -169,16 +169,6 @@
                 </div>
     castOperations : {}
 
-"#mosaic-components:mysql" :
-    quickCreate : true
-    quickCreateName : MySQL
-    quickCreateOrder : 54
-    configurationTemplate :
-    callOperations :
-        mosaic-mysql:get-sql-endpoint :
-            inputsTemplate :
-    castOperations : {}
-
 "#mosaic-components:java-cloudlet-container" :
     quickCreate : true
     quickCreateName : mOSAIC Cloudlet
@@ -196,7 +186,7 @@
     castOperations : {}
 
 "#mosaic-components:java-driver-amqp" :
-    quickCreate : true
+    quickCreate : false
     quickCreateName : mOSAIC AMQP-D
     quickCreateOrder : 22
     configurationTemplate :
@@ -207,7 +197,7 @@
     castOperations : {}
 
 "#mosaic-components:java-driver-riak" :
-    quickCreate : true
+    quickCreate : false
     quickCreateName : mOSAIC Riak-D
     quickCreateOrder : 23
     configurationTemplate :
@@ -229,6 +219,7 @@
     castOperations : {}
 
 "#mosaic-components:java-component-container" :
+    quickCreate : false
     configurationTemplate : ["<<callbacks-class>>", "http://<<host>>/<<component>>.jar"]
     callOperations : {}
     castOperations : {}
