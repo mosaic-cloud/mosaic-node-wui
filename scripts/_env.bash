@@ -8,9 +8,9 @@ _workbench="$( readlink -e -- . )"
 _sources="${_workbench}/sources"
 _scripts="${_workbench}/scripts"
 _static="${_workbench}/static"
-_tools="${mosaic_distribution_tools:-${_workbench}/.tools}"
+_tools="${pallur_tools:-${_workbench}/.tools}"
 _outputs="${_workbench}/.outputs"
-_temporary="${mosaic_distribution_temporary:-/tmp}"
+_temporary="${pallur_temporary:-/tmp}"
 
 _PATH="${_tools}/bin:${PATH}"
 
@@ -44,5 +44,5 @@ _npm_env=(
 )
 
 _package_name="$( basename -- "$( readlink -e -- . )" )"
-_package_version="${mosaic_distribution_version:-0.7.0_mosaic_dev}"
+_package_version="${pallur_distribution_version:-0.7.0_dev}"
 _package_scripts=( run-service node )
