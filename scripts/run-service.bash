@@ -12,7 +12,7 @@ if test -n "${mosaic_service_temporary:-}" ; then
 elif test -n "${mosaic_temporary:-}" ; then
 	_tmp="${mosaic_temporary}/services/${_identifier}"
 else
-	_tmp="/tmp/mosaic/services/${_identifier}"
+	_tmp="${TMPDIR:-/tmp}/mosaic/services/${_identifier}"
 fi
 
 _node_args+=(
