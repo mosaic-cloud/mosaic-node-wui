@@ -18,15 +18,11 @@ var controller = require ("./controller");
 
 var _schemasPy = path.join (path.dirname (module.filename), "schemas.py");
 var _schemasPyInterval = 500;
-var _schemasPyCache = null;
-var _schemasJsonPath = path.join (path.dirname (module.filename), "schemas.json");
 var _schemasYamlPath = path.join (path.dirname (module.filename), "schemas.yaml");
-
-// ---------------------------------------
 
 function _schemasPyRefresh () {
 	if (true || !fs.existsSync (_schemasYamlPath)) {
-		_schemasPyLoad ();
+		_schemasJsonLoad ();
 		return;
 	}
 	var _jsonTimestamp = fs.statSync (_schemasJsonPath) .mtime;
@@ -39,7 +35,7 @@ function _schemasPyRefresh () {
 		_child.on ("exit", function (_code) {
 			if (_code == 0) {
 				setTimeout (_schemasPyRefresh, _schemasPyInterval);
-				_schemasPyLoad ();
+				_schemasJsonLoad ();
 			} else {
 				transcript.traceError ("`schemas.yaml` seems to be invalid; rescheduling...");
 				setTimeout (_schemasPyRefresh, _schemasPyInterval * 4);
@@ -50,15 +46,21 @@ function _schemasPyRefresh () {
 	}
 }
 
-function _schemasPyLoad () {
+// _schemasPyRefresh ();
+
+// ---------------------------------------
+
+var _schemasJsonPath = path.join (path.dirname (module.filename), "schemas.json");
+var _schemasJsonCache = null;
+
+function _schemasJsonLoad () {
 	var _schemas = fs.readFileSync (_schemasJsonPath, "utf8");
 	_schemas = JSON.parse (_schemas);
-	_schemasPyCache = _schemas;
+	_schemasJsonCache = _schemas;
 	_schemasCache = null;
 }
 
-_schemasPyLoad ();
-_schemasPyRefresh ();
+_schemasJsonLoad ();
 
 // ---------------------------------------
 
@@ -103,8 +105,11 @@ function _processes () {
 		_schemas = {};
 		if (_schemasCtlCache != null)
 			_ (_schemas) .extend (_schemasCtlCache);
-		if (_schemasPyCache != null)
-			_ (_schemas) .extend (_schemasPyCache);
+		if (_schemasJsonCache != null)
+			_ (_schemasJsonCache) .each (function (_configurator, _identifier) {
+				if (_.has (_schemas, _identifier))
+					_schemas[_identifier] = _configurator;
+			});
 	}
 	return (_schemas);
 }

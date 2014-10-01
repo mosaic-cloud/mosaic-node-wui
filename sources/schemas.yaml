@@ -144,7 +144,7 @@
 "#mosaic-components:httpg" :
     quickCreate : false
     quickCreateName : mOSAIC HTTP-G
-    quickCreateOrder : 21
+    quickCreateOrder : 61
     configurationTemplate :
     callOperations :
         mosaic-httpg:get-gateway-endpoint :
@@ -169,26 +169,42 @@
                 </div>
     castOperations : {}
 
-"#mosaic-components:java-cloudlet-container" :
-    quickCreate : true
-    quickCreateName : mOSAIC Cloudlet
-    quickCreateOrder : 11
-    configurationTemplate : ["<<cloudlet>>.properties", "http://<<host>>/<<cloudlet>>.jar"]
+"#mosaic-components:mysql" :
+    quickCreate : false
+    quickCreateName : mOSAIC MySQL
+    quickCreateOrder : 54
+    configurationTemplate : {}
     callOperations : {}
     castOperations : {}
 
 "#mosaic-components:me2cp" :
     quickCreate : true
     quickCreateName : mOSAIC ME2-C
-    quickCreateOrder : 12
+    quickCreateOrder : 21
     configurationTemplate : "<<bundle>>"
+    callOperations : {}
+    castOperations : {}
+
+"#mosaic-components:java-cloudlet-container" :
+    quickCreate : true
+    quickCreateName : mOSAIC Cloudlet
+    quickCreateOrder : 22
+    configurationTemplate : ["<<cloudlet>>.properties", "http://<<host>>/<<cloudlet>>.jar"]
+    callOperations : {}
+    castOperations : {}
+
+"#mosaic-components:java-component-container" :
+    quickCreate : true
+    quickCreateName : mOSAIC Java-C
+    quickCreateOrder : 23
+    configurationTemplate : ["<<callbacks-class>>", "http://<<host>>/<<component>>.jar"]
     callOperations : {}
     castOperations : {}
 
 "#mosaic-components:java-driver-amqp" :
     quickCreate : false
     quickCreateName : mOSAIC AMQP-D
-    quickCreateOrder : 22
+    quickCreateOrder : 62
     configurationTemplate :
     callOperations :
         mosaic-component:get.channel.data :
@@ -199,29 +215,12 @@
 "#mosaic-components:java-driver-riak" :
     quickCreate : false
     quickCreateName : mOSAIC Riak-D
-    quickCreateOrder : 23
+    quickCreateOrder : 63
     configurationTemplate :
     callOperations :
         mosaic-component:get.channel.data :
             inputsTemplate :
             description :
-    castOperations : {}
-
-"#mosaic-components:java-driver-hdfs" :
-    quickCreate : false
-    quickCreateName : mOSAIC HDFS Driver
-    quickCreateOrder : 24
-    configurationTemplate : [{"hdfs.host" : "127.0.0.1", "hdfs.port" : 9000}]
-    callOperations :
-        mosaic-component:get.channel.data :
-            inputsTemplate :
-            description :
-    castOperations : {}
-
-"#mosaic-components:java-component-container" :
-    quickCreate : false
-    configurationTemplate : ["<<callbacks-class>>", "http://<<host>>/<<component>>.jar"]
-    callOperations : {}
     castOperations : {}
 
 ...

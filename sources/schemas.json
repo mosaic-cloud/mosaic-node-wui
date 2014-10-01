@@ -13,7 +13,7 @@
         "castOperations": {}, 
         "configurationTemplate": null, 
         "description": "<div class=\"row\">\n    <div class=\"span2 center\"><a href=\"http://couchdb.apache.org/\"><img src=\"/static/couchdb-logo-small.png\" width=\"80px\" alt=\"CouchDB\" /></a></div>\n    <div class=\"offset2\">\n        <h5>mosaic-components:couchdb</h5>\n        <p>CouchDB is a document store. (For details please consult the <a href=\"http://couchdb.apache.org/\">dedicated page</a>.)</p>\n        <p>This is a customized version of CouchDB which presents itself as an integrated mOSAIC component, allowing the user to easily control and monitor the broker as a uniform mOSAIC component.</p>\n    </div>\n</div>\n", 
-        "quickCreate": true, 
+        "quickCreate": false, 
         "quickCreateName": "CouchDB", 
         "quickCreateOrder": 53
     }, 
@@ -30,9 +30,9 @@
         }, 
         "castOperations": {}, 
         "configurationTemplate": null, 
-        "quickCreate": true, 
+        "quickCreate": false, 
         "quickCreateName": "mOSAIC HTTP-G", 
-        "quickCreateOrder": 21
+        "quickCreateOrder": 61
     }, 
     "#mosaic-components:java-cloudlet-container": {
         "callOperations": {}, 
@@ -43,7 +43,7 @@
         ], 
         "quickCreate": true, 
         "quickCreateName": "mOSAIC Cloudlet", 
-        "quickCreateOrder": 11
+        "quickCreateOrder": 22
     }, 
     "#mosaic-components:java-component-container": {
         "callOperations": {}, 
@@ -51,7 +51,10 @@
         "configurationTemplate": [
             "<<callbacks-class>>", 
             "http://<<host>>/<<component>>.jar"
-        ]
+        ], 
+        "quickCreate": true, 
+        "quickCreateName": "mOSAIC Java-C", 
+        "quickCreateOrder": 23
     }, 
     "#mosaic-components:java-driver-amqp": {
         "callOperations": {
@@ -62,27 +65,9 @@
         }, 
         "castOperations": {}, 
         "configurationTemplate": null, 
-        "quickCreate": true, 
-        "quickCreateName": "mOSAIC AMQP-D", 
-        "quickCreateOrder": 22
-    }, 
-    "#mosaic-components:java-driver-hdfs": {
-        "callOperations": {
-            "mosaic-component:get.channel.data": {
-                "description": null, 
-                "inputsTemplate": null
-            }
-        }, 
-        "castOperations": {}, 
-        "configurationTemplate": [
-            {
-                "hdfs.host": "127.0.0.1", 
-                "hdfs.port": 9000
-            }
-        ], 
         "quickCreate": false, 
-        "quickCreateName": "mOSAIC HDFS Driver", 
-        "quickCreateOrder": 24
+        "quickCreateName": "mOSAIC AMQP-D", 
+        "quickCreateOrder": 62
     }, 
     "#mosaic-components:java-driver-riak": {
         "callOperations": {
@@ -93,9 +78,9 @@
         }, 
         "castOperations": {}, 
         "configurationTemplate": null, 
-        "quickCreate": true, 
+        "quickCreate": false, 
         "quickCreateName": "mOSAIC Riak-D", 
-        "quickCreateOrder": 23
+        "quickCreateOrder": 63
     }, 
     "#mosaic-components:me2cp": {
         "callOperations": {}, 
@@ -103,18 +88,14 @@
         "configurationTemplate": "<<bundle>>", 
         "quickCreate": true, 
         "quickCreateName": "mOSAIC ME2-C", 
-        "quickCreateOrder": 12
+        "quickCreateOrder": 21
     }, 
     "#mosaic-components:mysql": {
-        "callOperations": {
-            "mosaic-mysql:get-sql-endpoint": {
-                "inputsTemplate": null
-            }
-        }, 
+        "callOperations": {}, 
         "castOperations": {}, 
-        "configurationTemplate": null, 
-        "quickCreate": true, 
-        "quickCreateName": "MySQL", 
+        "configurationTemplate": {}, 
+        "quickCreate": false, 
+        "quickCreateName": "mOSAIC MySQL", 
         "quickCreateOrder": 54
     }, 
     "#mosaic-components:rabbitmq": {
@@ -135,7 +116,7 @@
         "castOperations": {}, 
         "configurationTemplate": null, 
         "description": "<div class=\"row\">\n    <div class=\"span2 center\"><a href=\"http://www.rabbitmq.com/\"><img src=\"/static/rabbitmq-logo-small.png\" width=\"80px\" alt=\"RabbitMQ\" /></a></div>\n    <div class=\"offset2\">\n        <h5>mosaic-components:rabbitmq</h5>\n        <p>RabbitMQ is an <a href=\"http://amqp.org/\">AMQP</a> compliant message queue broker. (For details please consult the <a href=\"http://www.rabbitmq.com/\">dedicated page</a>.)</p>\n        <p>This is a customized version of RabbitMQ which presents itself as an integrated mOSAIC component, allowing the user to easily control and monitor the broker as a uniform mOSAIC component.</p>\n    </div>\n</div>\n", 
-        "quickCreate": true, 
+        "quickCreate": false, 
         "quickCreateName": "RabbitMQ", 
         "quickCreateOrder": 51
     }, 
@@ -161,7 +142,7 @@
         "castOperations": {}, 
         "configurationTemplate": null, 
         "description": "<div class=\"row\">\n    <div class=\"span2 center\"><a href=\"http://www.basho.com/products_riak_overview.php\"><img src=\"/static/riak-logo-small.png\" width=\"80px\" alt=\"Riak\" /></a></div>\n    <div class=\"offset2\">\n        <h5>mosaic-components:riak-kv</h5>\n        <p>Riak is a Dynamo-inspired key / value store. (For details please consult the <a href=\"http://www.basho.com/products_riak_overview.php\">dedicated page</a>.)</p>\n        <p>This is a customized version of Riak which presents itself as an integrated mOSAIC component, allowing the user to easily control and monitor the broker as a uniform mOSAIC component.</p>\n    </div>\n</div>\n", 
-        "quickCreate": true, 
+        "quickCreate": false, 
         "quickCreateName": "RiakKV", 
         "quickCreateOrder": 52
     }
