@@ -84,11 +84,11 @@ function _schemasCtlRefresh () {
 				_schemasCache = null;
 			} else {
 				transcript.traceError ("controller failed; rescheduling...");
-				setTimeout (_schemasCtlRefresh, _schemasCtlInterval * 4);
+				setTimeout (_schemasCtlRefresh, _schemasCtlInterval);
 			}
 		} else {
 			transcript.traceError ("controller failed; rescheduling...");
-			setTimeout (_schemasCtlRefresh, _schemasCtlInterval * 4);
+			setTimeout (_schemasCtlRefresh, _schemasCtlInterval);
 		}
 	});
 }
