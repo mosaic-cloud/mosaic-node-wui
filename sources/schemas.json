@@ -93,7 +93,7 @@
     "#mosaic-components:mysql": {
         "callOperations": {}, 
         "castOperations": {}, 
-        "configurationTemplate": {}, 
+        "configurationTemplate": null, 
         "quickCreate": false, 
         "quickCreateName": "mOSAIC MySQL", 
         "quickCreateOrder": 54

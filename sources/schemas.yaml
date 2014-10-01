@@ -173,7 +173,7 @@
     quickCreate : false
     quickCreateName : mOSAIC MySQL
     quickCreateOrder : 54
-    configurationTemplate : {}
+    configurationTemplate :
     callOperations : {}
     castOperations : {}
 
