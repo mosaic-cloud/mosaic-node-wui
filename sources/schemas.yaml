@@ -144,7 +144,7 @@
 "#mosaic-components:httpg" :
     quickCreate : false
     quickCreateName : mOSAIC HTTP-G
-    quickCreateOrder : 61
+    quickCreateOrder : 62
     configurationTemplate :
     callOperations :
         mosaic-httpg:get-gateway-endpoint :
@@ -174,13 +174,27 @@
     quickCreateName : mOSAIC MySQL
     quickCreateOrder : 54
     configurationTemplate :
-    callOperations : {}
+    callOperations :
+        mosaic-mysql:get-sql-endpoint :
+            inputsTemplate :
+            description :
+    castOperations : {}
+
+"#mosaic-components:object-store" :
+    quickCreate : false
+    quickCreateName : mOSAIC object store
+    quickCreateOrder : 61
+    configurationTemplate :
+    callOperations :
+        mosaic-object-store:get-service-endpoint :
+            inputsTemplate :
+            description :
     castOperations : {}
 
 "#mosaic-components:me2cp" :
-    quickCreate : true
+    quickCreate : false
     quickCreateName : mOSAIC ME2-C
-    quickCreateOrder : 21
+    quickCreateOrder : 71
     configurationTemplate : "<<bundle>>"
     callOperations : {}
     castOperations : {}
@@ -188,7 +202,7 @@
 "#mosaic-components:java-cloudlet-container" :
     quickCreate : true
     quickCreateName : mOSAIC Cloudlet
-    quickCreateOrder : 22
+    quickCreateOrder : 31
     configurationTemplate : ["<<cloudlet>>.properties", "http://<<host>>/<<cloudlet>>.jar"]
     callOperations : {}
     castOperations : {}
@@ -196,7 +210,7 @@
 "#mosaic-components:java-component-container" :
     quickCreate : true
     quickCreateName : mOSAIC Java-C
-    quickCreateOrder : 23
+    quickCreateOrder : 32
     configurationTemplate : ["<<callbacks-class>>", "http://<<host>>/<<component>>.jar"]
     callOperations : {}
     castOperations : {}
@@ -204,7 +218,7 @@
 "#mosaic-components:java-driver-amqp" :
     quickCreate : false
     quickCreateName : mOSAIC AMQP-D
-    quickCreateOrder : 62
+    quickCreateOrder : 33
     configurationTemplate :
     callOperations :
         mosaic-component:get.channel.data :
@@ -215,10 +229,65 @@
 "#mosaic-components:java-driver-riak" :
     quickCreate : false
     quickCreateName : mOSAIC Riak-D
-    quickCreateOrder : 63
+    quickCreateOrder : 34
     configurationTemplate :
     callOperations :
         mosaic-component:get.channel.data :
+            inputsTemplate :
+            description :
+    castOperations : {}
+
+"#modaclouds-components:knowledgebase" :
+    quickCreate : true
+    quickCreateName : MODA knowledgebase
+    quickCreateOrder : 21
+    configurationTemplate :
+    callOperations :
+        modaclouds-knowledgebase:get-http-endpoint :
+            inputsTemplate :
+            description :
+    castOperations : {}
+
+"#modaclouds-components:monitoring-manager" :
+    quickCreate : true
+    quickCreateName : MODA mon. manager
+    quickCreateOrder : 22
+    configurationTemplate :
+    callOperations :
+        modaclouds-monitoring-manager:get-http-endpoint :
+            inputsTemplate :
+            description :
+    castOperations : {}
+
+"#modaclouds-components:monitoring-dda" :
+    quickCreate : true
+    quickCreateName : MODA mon. DDA
+    quickCreateOrder : 23
+    configurationTemplate :
+    callOperations :
+        modaclouds-monitoring-dda:get-http-endpoint :
+            inputsTemplate :
+            description :
+    castOperations : {}
+
+"#modaclouds-components:monitoring-sda-weka" :
+    quickCreate : true
+    quickCreateName : MODA mon. SDA Weka
+    quickCreateOrder : 24
+    configurationTemplate :
+    callOperations :
+        modaclouds-monitoring-sda-weka:get-http-endpoint :
+            inputsTemplate :
+            description :
+    castOperations : {}
+
+"#modaclouds-components:monitoring-sda-matlab" :
+    quickCreate : true
+    quickCreateName : MODA mon. SDA Matlab
+    quickCreateOrder : 25
+    configurationTemplate :
+    callOperations :
+        modaclouds-monitoring-sda-matlab:get-http-endpoint :
             inputsTemplate :
             description :
     castOperations : {}

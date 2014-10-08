@@ -1,4 +1,69 @@
 {
+    "#modaclouds-components:knowledgebase": {
+        "callOperations": {
+            "modaclouds-knowledgebase:get-http-endpoint": {
+                "description": null, 
+                "inputsTemplate": null
+            }
+        }, 
+        "castOperations": {}, 
+        "configurationTemplate": null, 
+        "quickCreate": true, 
+        "quickCreateName": "MODA knowledgebase", 
+        "quickCreateOrder": 21
+    }, 
+    "#modaclouds-components:monitoring-dda": {
+        "callOperations": {
+            "modaclouds-monitoring-dda:get-http-endpoint": {
+                "description": null, 
+                "inputsTemplate": null
+            }
+        }, 
+        "castOperations": {}, 
+        "configurationTemplate": null, 
+        "quickCreate": true, 
+        "quickCreateName": "MODA mon. DDA", 
+        "quickCreateOrder": 23
+    }, 
+    "#modaclouds-components:monitoring-manager": {
+        "callOperations": {
+            "modaclouds-monitoring-manager:get-http-endpoint": {
+                "description": null, 
+                "inputsTemplate": null
+            }
+        }, 
+        "castOperations": {}, 
+        "configurationTemplate": null, 
+        "quickCreate": true, 
+        "quickCreateName": "MODA mon. manager", 
+        "quickCreateOrder": 22
+    }, 
+    "#modaclouds-components:monitoring-sda-matlab": {
+        "callOperations": {
+            "modaclouds-monitoring-sda-matlab:get-http-endpoint": {
+                "description": null, 
+                "inputsTemplate": null
+            }
+        }, 
+        "castOperations": {}, 
+        "configurationTemplate": null, 
+        "quickCreate": true, 
+        "quickCreateName": "MODA mon. SDA Matlab", 
+        "quickCreateOrder": 25
+    }, 
+    "#modaclouds-components:monitoring-sda-weka": {
+        "callOperations": {
+            "modaclouds-monitoring-sda-weka:get-http-endpoint": {
+                "description": null, 
+                "inputsTemplate": null
+            }
+        }, 
+        "castOperations": {}, 
+        "configurationTemplate": null, 
+        "quickCreate": true, 
+        "quickCreateName": "MODA mon. SDA Weka", 
+        "quickCreateOrder": 24
+    }, 
     "#mosaic-components:couchdb": {
         "callOperations": {
             "mosaic-couchdb:get-node-identifier": {
@@ -32,7 +97,7 @@
         "configurationTemplate": null, 
         "quickCreate": false, 
         "quickCreateName": "mOSAIC HTTP-G", 
-        "quickCreateOrder": 61
+        "quickCreateOrder": 62
     }, 
     "#mosaic-components:java-cloudlet-container": {
         "callOperations": {}, 
@@ -43,7 +108,7 @@
         ], 
         "quickCreate": true, 
         "quickCreateName": "mOSAIC Cloudlet", 
-        "quickCreateOrder": 22
+        "quickCreateOrder": 31
     }, 
     "#mosaic-components:java-component-container": {
         "callOperations": {}, 
@@ -54,7 +119,7 @@
         ], 
         "quickCreate": true, 
         "quickCreateName": "mOSAIC Java-C", 
-        "quickCreateOrder": 23
+        "quickCreateOrder": 32
     }, 
     "#mosaic-components:java-driver-amqp": {
         "callOperations": {
@@ -67,7 +132,7 @@
         "configurationTemplate": null, 
         "quickCreate": false, 
         "quickCreateName": "mOSAIC AMQP-D", 
-        "quickCreateOrder": 62
+        "quickCreateOrder": 33
     }, 
     "#mosaic-components:java-driver-riak": {
         "callOperations": {
@@ -80,23 +145,41 @@
         "configurationTemplate": null, 
         "quickCreate": false, 
         "quickCreateName": "mOSAIC Riak-D", 
-        "quickCreateOrder": 63
+        "quickCreateOrder": 34
     }, 
     "#mosaic-components:me2cp": {
         "callOperations": {}, 
         "castOperations": {}, 
         "configurationTemplate": "<<bundle>>", 
-        "quickCreate": true, 
+        "quickCreate": false, 
         "quickCreateName": "mOSAIC ME2-C", 
-        "quickCreateOrder": 21
+        "quickCreateOrder": 71
     }, 
     "#mosaic-components:mysql": {
-        "callOperations": {}, 
+        "callOperations": {
+            "mosaic-mysql:get-sql-endpoint": {
+                "description": null, 
+                "inputsTemplate": null
+            }
+        }, 
         "castOperations": {}, 
         "configurationTemplate": null, 
         "quickCreate": false, 
         "quickCreateName": "mOSAIC MySQL", 
         "quickCreateOrder": 54
+    }, 
+    "#mosaic-components:object-store": {
+        "callOperations": {
+            "mosaic-object-store:get-service-endpoint": {
+                "description": null, 
+                "inputsTemplate": null
+            }
+        }, 
+        "castOperations": {}, 
+        "configurationTemplate": null, 
+        "quickCreate": false, 
+        "quickCreateName": "mOSAIC object store", 
+        "quickCreateOrder": 61
     }, 
     "#mosaic-components:rabbitmq": {
         "callOperations": {
