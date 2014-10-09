@@ -9,8 +9,34 @@
         "castOperations": {}, 
         "configurationTemplate": null, 
         "quickCreate": true, 
-        "quickCreateName": "MODA knowledgebase", 
+        "quickCreateName": "MODA KB", 
         "quickCreateOrder": 21
+    }, 
+    "#modaclouds-components:metric-explorer": {
+        "callOperations": {
+            "modaclouds-metric-explorer:get-http-endpoint": {
+                "description": null, 
+                "inputsTemplate": null
+            }
+        }, 
+        "castOperations": {}, 
+        "configurationTemplate": null, 
+        "quickCreate": true, 
+        "quickCreateName": "MODA MetricExpl", 
+        "quickCreateOrder": 26
+    }, 
+    "#modaclouds-components:metric-importer": {
+        "callOperations": {
+            "modaclouds-metric-importer:get-http-endpoint": {
+                "description": null, 
+                "inputsTemplate": null
+            }
+        }, 
+        "castOperations": {}, 
+        "configurationTemplate": null, 
+        "quickCreate": true, 
+        "quickCreateName": "MODA MetricImp", 
+        "quickCreateOrder": 27
     }, 
     "#modaclouds-components:monitoring-dda": {
         "callOperations": {
@@ -22,7 +48,7 @@
         "castOperations": {}, 
         "configurationTemplate": null, 
         "quickCreate": true, 
-        "quickCreateName": "MODA mon. DDA", 
+        "quickCreateName": "MODA DDA", 
         "quickCreateOrder": 23
     }, 
     "#modaclouds-components:monitoring-manager": {
@@ -35,7 +61,7 @@
         "castOperations": {}, 
         "configurationTemplate": null, 
         "quickCreate": true, 
-        "quickCreateName": "MODA mon. manager", 
+        "quickCreateName": "MODA MonMan", 
         "quickCreateOrder": 22
     }, 
     "#modaclouds-components:monitoring-sda-matlab": {
@@ -48,7 +74,7 @@
         "castOperations": {}, 
         "configurationTemplate": null, 
         "quickCreate": true, 
-        "quickCreateName": "MODA mon. SDA Matlab", 
+        "quickCreateName": "MODA SDA-Matlab", 
         "quickCreateOrder": 25
     }, 
     "#modaclouds-components:monitoring-sda-weka": {
@@ -61,7 +87,7 @@
         "castOperations": {}, 
         "configurationTemplate": null, 
         "quickCreate": true, 
-        "quickCreateName": "MODA mon. SDA Weka", 
+        "quickCreateName": "MODA SDA-Weka", 
         "quickCreateOrder": 24
     }, 
     "#mosaic-components:couchdb": {
