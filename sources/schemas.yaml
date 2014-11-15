@@ -298,7 +298,16 @@
     quickCreateOrder : 26
     configurationTemplate :
     callOperations :
-        modaclouds-metric-explorer:get-http-endpoint :
+        modaclouds-metric-explorer:get-dashboard-endpoint :
+            inputsTemplate :
+            description :
+        modaclouds-metric-explorer:get-query-endpoint :
+            inputsTemplate :
+            description :
+        modaclouds-metric-explorer:get-pickle-receiver-endpoint :
+            inputsTemplate :
+            description :
+        modaclouds-metric-explorer:get-line-receiver-endpoint :
             inputsTemplate :
             description :
     castOperations : {}
@@ -312,6 +321,28 @@
         modaclouds-metric-importer:get-http-endpoint :
             inputsTemplate :
             description :
+    castOperations : {}
+
+"#modaclouds-components:load-balancer-controller" :
+    quickCreate : true
+    quickCreateName : MODA LB Ctl
+    quickCreateOrder : 28
+    configurationTemplate :
+    callOperations :
+        modaclouds-metric-explorer:get-controller-endpoint :
+            inputsTemplate :
+            description :
+        modaclouds-metric-explorer:get-gateway-endpoint :
+            inputsTemplate :
+            description :
+    castOperations : {}
+
+"#modaclouds-components:load-balancer-reasoner" :
+    quickCreate : true
+    quickCreateName : MODA LB Rsn
+    quickCreateOrder : 29
+    configurationTemplate :
+    callOperations : {}
     castOperations : {}
 
 ...

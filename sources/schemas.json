@@ -12,9 +12,46 @@
         "quickCreateName": "MODA KB", 
         "quickCreateOrder": 21
     }, 
+    "#modaclouds-components:load-balancer-controller": {
+        "callOperations": {
+            "modaclouds-metric-explorer:get-controller-endpoint": {
+                "description": null, 
+                "inputsTemplate": null
+            }, 
+            "modaclouds-metric-explorer:get-gateway-endpoint": {
+                "description": null, 
+                "inputsTemplate": null
+            }
+        }, 
+        "castOperations": {}, 
+        "configurationTemplate": null, 
+        "quickCreate": true, 
+        "quickCreateName": "MODA LB Ctl", 
+        "quickCreateOrder": 28
+    }, 
+    "#modaclouds-components:load-balancer-reasoner": {
+        "callOperations": {}, 
+        "castOperations": {}, 
+        "configurationTemplate": null, 
+        "quickCreate": true, 
+        "quickCreateName": "MODA LB Rsn", 
+        "quickCreateOrder": 29
+    }, 
     "#modaclouds-components:metric-explorer": {
         "callOperations": {
-            "modaclouds-metric-explorer:get-http-endpoint": {
+            "modaclouds-metric-explorer:get-dashboard-endpoint": {
+                "description": null, 
+                "inputsTemplate": null
+            }, 
+            "modaclouds-metric-explorer:get-line-receiver-endpoint": {
+                "description": null, 
+                "inputsTemplate": null
+            }, 
+            "modaclouds-metric-explorer:get-pickle-receiver-endpoint": {
+                "description": null, 
+                "inputsTemplate": null
+            }, 
+            "modaclouds-metric-explorer:get-query-endpoint": {
                 "description": null, 
                 "inputsTemplate": null
             }
