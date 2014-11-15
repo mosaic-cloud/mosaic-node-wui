@@ -47,7 +47,8 @@
 							<label for="operation">Operation</label>
 							<div class="input">
 								{?operation}
-									<input id="operation" type="text" class="span6 disable" disabled="disabled" value="{operation}" />
+									<input id="operation" type="text" name="operation" class="span6 disable" disabled="disabled" value="{operation}" />
+									<input type="hidden" name="operation" value="{operation}" />
 								{:else}
 										{^operationInputable}
 									<select id="operation" class="span6" name="operation" onchange="window.location.assign('/process/{?call}call{/call}{?cast}cast{/cast}?key={key|uc}&type={type|uc}&typeTemplate={typeTemplate|uc}&operationTemplate='+escape(window.document.getElementById('operation').options[window.document.getElementById('operation').selectedIndex].text)+'&return={return|uc}');">
