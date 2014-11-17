@@ -26,16 +26,6 @@ function _main ()
 		return;
 	}
 	
-	if (process.env["mosaic_node_ip"] !== undefined)
-		configuration.nodeIp = process.env["mosaic_node_ip"];
-	if (process.env["mosaic_node_port"] !== undefined)
-		configuration.nodePort = parseInt (process.env["mosaic_node_port"]);
-	
-	if (process.env["mosaic_node_wui_ip"] !== undefined)
-		configuration.serverIp = process.env["mosaic_node_wui_ip"];
-	if (process.env["mosaic_node_wui_port"] !== undefined)
-		configuration.serverPort = parseInt (process.env["mosaic_node_wui_port"]);
-	
 	process.stdin.on ("data", function (_data) {
 		transcript.traceError ("unexpected data received on stdin; aborting!");
 		process.exit (1);
@@ -52,7 +42,8 @@ function _main ()
 		views.configureApplication (_application);
 	});
 	
-	transcript.traceInformation ("starting web server on `http://%s:%d/`...", configuration.serverIp, configuration.serverPort);
+	transcript.traceInformation ("starting on `http://%s:%d/`...", configuration.serverIp, configuration.serverPort);
+	transcript.traceInformation ("connecting to `http://%s:%d/`...", configuration.nodeIp, configuration.nodePort);
 	_application.listen (configuration.serverPort, configuration.serverIp);
 }
 
