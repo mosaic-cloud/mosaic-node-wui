@@ -148,11 +148,11 @@
     "#mosaic-components:httpg": {
         "callOperations": {
             "mosaic-httpg:get-gateway-endpoint": {
-                "description": "<div class=\"row\">\n    <div class=\"span2 center\"><a href=\"http://www.mosaic-cloud.eu/\"><img src=\"/static/mosaic-logo-small.png\" width=\"80px\" alt=\"mOSAIC\" /></a></div>\n    <div class=\"offset2\">\n        <h5>mosaic-httpg:get-gateway-identifier</h5>\n        <p>Returns the mOSAIC Gateway HTTP endpoint which should be accessed by web-clients to reach the backend components.</p>\n    </div>\n</div>\n", 
+                "description": "<div class=\"row\">\n    <div class=\"span2 center\"><a href=\"http://developers.mosaic-apps.eu/\"><img src=\"/static/mosaic-logo-small.png\" width=\"80px\" alt=\"mOSAIC\" /></a></div>\n    <div class=\"offset2\">\n        <h5>mosaic-httpg:get-gateway-identifier</h5>\n        <p>Returns the mOSAIC Gateway HTTP endpoint which should be accessed by web-clients to reach the backend components.</p>\n    </div>\n</div>\n", 
                 "inputsTemplate": null
             }, 
             "mosaic-httpg:get-node-identifier": {
-                "description": "<div class=\"row\">\n    <div class=\"span2 center\"><a href=\"http://www.mosaic-cloud.eu/\"><img src=\"/static/mosaic-logo-small.png\" width=\"80px\" alt=\"mOSAIC\" /></a></div>\n    <div class=\"offset2\">\n        <h5>mosaic-httpg:get-node-identifier</h5>\n        <p>Returns the mOSAIC Gateway Erlang node identifier (<code>erl -name</code> argument).</p>\n    </div>\n</div>\n", 
+                "description": "<div class=\"row\">\n    <div class=\"span2 center\"><a href=\"http://developers.mosaic-apps.eu/\"><img src=\"/static/mosaic-logo-small.png\" width=\"80px\" alt=\"mOSAIC\" /></a></div>\n    <div class=\"offset2\">\n        <h5>mosaic-httpg:get-node-identifier</h5>\n        <p>Returns the mOSAIC Gateway Erlang node identifier (<code>erl -name</code> argument).</p>\n    </div>\n</div>\n", 
                 "inputsTemplate": null
             }
         }, 

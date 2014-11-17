@@ -151,7 +151,7 @@
             inputsTemplate :
             description : |
                 <div class="row">
-                    <div class="span2 center"><a href="http://www.mosaic-cloud.eu/"><img src="/static/mosaic-logo-small.png" width="80px" alt="mOSAIC" /></a></div>
+                    <div class="span2 center"><a href="http://developers.mosaic-apps.eu/"><img src="/static/mosaic-logo-small.png" width="80px" alt="mOSAIC" /></a></div>
                     <div class="offset2">
                         <h5>mosaic-httpg:get-gateway-identifier</h5>
                         <p>Returns the mOSAIC Gateway HTTP endpoint which should be accessed by web-clients to reach the backend components.</p>
@@ -161,7 +161,7 @@
             inputsTemplate :
             description : |
                 <div class="row">
-                    <div class="span2 center"><a href="http://www.mosaic-cloud.eu/"><img src="/static/mosaic-logo-small.png" width="80px" alt="mOSAIC" /></a></div>
+                    <div class="span2 center"><a href="http://developers.mosaic-apps.eu/"><img src="/static/mosaic-logo-small.png" width="80px" alt="mOSAIC" /></a></div>
                     <div class="offset2">
                         <h5>mosaic-httpg:get-node-identifier</h5>
                         <p>Returns the mOSAIC Gateway Erlang node identifier (<code>erl -name</code> argument).</p>
