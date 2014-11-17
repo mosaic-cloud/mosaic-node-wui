@@ -17,11 +17,6 @@ else
 fi
 ## chunk::be1d894b132982aa08a6adf7e406c9a9::end ##
 
-_node_env+=(
-		mosaic_service_identifier="${_identifier}"
-		mosaic_service_temporary="${_tmp}"
-)
-
 if test -n "${mosaic_node_wui_ip:-}" ; then
 	_node_env+=(
 			mosaic_node_wui_ip="${mosaic_node_wui_ip}"
@@ -46,6 +41,11 @@ fi
 
 _node_args+=(
 		"${_node_sources}/main.js"
+)
+
+_node_env+=(
+		mosaic_service_identifier="${_identifier}"
+		mosaic_service_temporary="${_tmp}"
 )
 
 ## chunk::da43d7ef47da796de30612bd22b4e475::begin ##
