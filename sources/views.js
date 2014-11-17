@@ -194,15 +194,23 @@ function _handleCreateProcessPre (_request, _response, _next)
 
 function _handleCreateProcess (_request, _response, _next)
 {
+	var _type = _request.param ("type");
+	var _configuration = JSON.parse (_request.param ("configuration"));
+	var _annotation = JSON.parse (_request.param ("annotation"));
+	var _count = JSON.parse (_request.param ("count", "1"));
 	controller.createProcess (
-				_request.param ("type"),
-				JSON.parse (_request.param ("configuration")),
-				JSON.parse (_request.param ("annotation")),
-				JSON.parse (_request.param ("count", "1")),
+				_type,
+				_configuration,
+				_annotation,
+				_count,
 	function (_error, _outcome) {
 		if (_error === null)
-			_renderView (200, "succeeded", _request, _response, _next, _mixinContext (_request, false, {
+			_renderView (200, "process_create_succeeded", _request, _response, _next, _mixinContext (_request, false, {
 					outcome : _outcome,
+					type : _type,
+					configuration : _configuration,
+					annotation : _annotation,
+					count : _count
 			}));
 		else
 			_renderView (500, "failed", _request, _response, _next, _mixinContext (_request, false, {

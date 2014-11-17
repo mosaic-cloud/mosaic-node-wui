@@ -47,17 +47,6 @@
 			</div>
 		</div>
 		
-		{?description}
-			<div class="row">
-				<div class="span12">
-					<h2>Help</h2>
-					<div class="alert-message block-message info">
-						{description|s}
-					</div>
-				</div>
-			</div>
-		{/description}
-		
 	</div>
 	
 {/blocks__main_panel}

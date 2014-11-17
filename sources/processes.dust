@@ -11,38 +11,52 @@
 				</span>
 			</h1>
 			
-			<div class="row">
-				<div class="span18">
-					<table class="zebra-striped tiny center">
-						<thead>
-							<tr class="center">
-								<th>Type</th>
-								<th>Key</th>
-								<th>Actions</th>
-								<th>Configuration</th>
-								<th>Annotation</th>
-							</tr>
-						</thead>
-						<tbody>
-							{#descriptors}
-								<tr class="fade-trigger">
-									<td><code>{type}</code></td>
-									<td><code>{key}</code></td>
-									<td>
-										<a class="btn info tiny fade" href="/processes/{key|uc}/log?type={type|uc}&configuration={?configuration}{configuration|json|uc}{:else}null{/configuration}&return={returnStacked|uc}">Log</a>
-										<a class="btn tiny fade" href="/processes/{key|uc}/call?type={type|uc}&return={returnStacked|uc}">Call</a>
-										<a class="btn tiny fade" href="/processes/{key|uc}/cast?type={type|uc}&return={returnStacked|uc}">Cast</a>
-										<a class="btn success tiny fade" href="/process/create?type={type|uc}&configuration={?configuration}{configuration|json|uc}{:else}null{/configuration}&return={returnStacked|uc}">Clone</a>
-										<a class="btn danger tiny fade" href="/processes/{key|uc}/stop?return={returnStacked|uc}">Stop</a>
-									</td>
-									<td>{?configuration}<code>{configuration|json|htmlpre|s}</code>{:else}<br/>{/configuration}</td>
-									<td>{?annotation}<code>{annotation|json|htmlpre|s}</code>{:else}<br/>{/annotation}</td>
+			{?descriptors}
+				
+				<div class="row">
+					<div class="span18">
+						<table class="zebra-striped tiny center">
+							<thead>
+								<tr class="center">
+									<th>Type</th>
+									<th>Key</th>
+									<th>Actions</th>
+									<th>Configuration</th>
+									<th>Annotation</th>
 								</tr>
-							{/descriptors}
-						</tbody>
-					</table>
+							</thead>
+							<tbody>
+								{#descriptors}
+									<tr class="fade-trigger">
+										<td><code>{type}</code></td>
+										<td><code>{key}</code></td>
+										<td>
+											<a class="btn info tiny fade" href="/processes/{key|uc}/log?type={type|uc}&configuration={?configuration}{configuration|json|uc}{:else}null{/configuration}&return={returnStacked|uc}">Log</a>
+											<a class="btn tiny fade" href="/processes/{key|uc}/call?type={type|uc}&return={returnStacked|uc}">Call</a>
+											<a class="btn tiny fade" href="/processes/{key|uc}/cast?type={type|uc}&return={returnStacked|uc}">Cast</a>
+											<a class="btn success tiny fade" href="/process/create?type={type|uc}&configuration={?configuration}{configuration|json|uc}{:else}null{/configuration}&return={returnStacked|uc}">Clone</a>
+											<a class="btn danger tiny fade" href="/processes/{key|uc}/stop?return={returnStacked|uc}">Stop</a>
+										</td>
+										<td>{?configuration}<code>{configuration|json|htmlpre|s}</code>{:else}<br/>{/configuration}</td>
+										<td>{?annotation}<code>{annotation|json|htmlpre|s}</code>{:else}<br/>{/annotation}</td>
+									</tr>
+								{/descriptors}
+							</tbody>
+						</table>
+					</div>
 				</div>
-			</div>
+				
+			{:else}
+				
+				<div class="row">
+					<div class="span12">
+						<div class="alert-message block-message info">
+							There are no processes running!
+						</div>
+					</div>
+				</div>
+				
+			{/descriptors}
 			
 		</div>
 		

@@ -12,11 +12,8 @@
 					<div class="span12">
 						<div class="alert-message block-message success">
 							
-							<p><strong>Succeeded executing action.</strong></p>
+							<p><strong>Succeeded creating processes.</strong></p>
 							
-							{?outputs}
-							<pre>{outputs|jsonp|htmlpre|insa|s}</pre>
-							{/outputs}
 							
 							{?return}
 								<div class="alert-actions">
@@ -25,6 +22,33 @@
 							{/return}
 							
 						</div>
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="span12">
+						<table class="zebra-striped tiny center">
+							<thead>
+								<tr class="center">
+									<th>Key</th>
+									<th>Actions</th>
+								</tr>
+							</thead>
+							<tbody>
+								{#keys}
+									<tr class="fade-trigger">
+										<td><code>{.}</code></td>
+										<td>
+											<a class="btn info tiny fade" href="/processes/{.|uc}/log?type={type|uc}&configuration={?configuration}{configuration|json|uc}{:else}null{/configuration}&return={returnStacked|uc}">Log</a>
+											<a class="btn tiny fade" href="/processes/{.|uc}/call?type={type|uc}&return={returnStacked|uc}">Call</a>
+											<a class="btn tiny fade" href="/processes/{.|uc}/cast?type={type|uc}&return={returnStacked|uc}">Cast</a>
+											<a class="btn success tiny fade" href="/process/create?type={type|uc}&configuration={?configuration}{configuration|json|uc}{:else}null{/configuration}&return={returnStacked|uc}">Clone</a>
+											<a class="btn danger tiny fade" href="/processes/{.|uc}/stop?return={returnStacked|uc}">Stop</a>
+										</td>
+									</tr>
+								{/keys}
+							</tbody>
+						</table>
 					</div>
 				</div>
 				

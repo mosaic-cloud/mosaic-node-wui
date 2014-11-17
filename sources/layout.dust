@@ -17,12 +17,16 @@
 				padding-top : 60px;
 			}
 			
-			.fade-long {
+			.debugging {
+				display: visible;
+			}
+			
+			.fade-long, .debugging {
 				opacity : 0.33;
 				transition: opacity 3s step-end;
 			}
 			
-			.fade-long:hover {
+			.fade-long:hover, .debugging:hover {
 				opacity : 1.00 !important;
 				transition: opacity 0s step-end !important;
 			}
@@ -103,33 +107,35 @@
 			
 			<div class="sidebar fade-long">
 				
+				<!--
 				<div class="center">
 					<a href="http://developers.mosaic-apps.eu/"><img src="/static/mosaic-logo-small.png" alt="mOSAIC" height="80px" /></a>
 				</div>
+				-->
 				
 				<div class="well">
 					<h5>Processes</h5>
 					<ul>
-						<li><a href="/processes?return={returnStacked}">List</a></li>
-						<li><a href="/process/create?return={returnStacked}">Create</a>
+						<li><a href="/processes">List</a></li>
+						<li><a href="/process/create">Create</a>
 							<ul>
 								{#quickCreate}
-									<li><a href="/process/create?type={type|uc}&return={returnStacked}">{name}</a></li>
+									<li><a href="/process/create?type={type|uc}">{name}</a></li>
 								{/quickCreate}
 							</ul>
 						</li>
-						<li><a href="/process/call?return={returnStacked}">Call</a></li>
-						<li><a href="/process/cast?return={returnStacked}">Cast</a></li>
-						<li><a href="/process/stop?return={returnStacked}">Stop</a></li>
-						<li><a href="/processes/launch?return={returnStacked}">Launch</a></li>
+						<li><a href="/process/call">Call</a></li>
+						<li><a href="/process/cast">Cast</a></li>
+						<li><a href="/process/stop">Stop</a></li>
+						<li><a href="/processes/launch">Launch</a></li>
 					</ul>
 				</div>
 				
 				<div class="well">
 					<h5>Cluster</h5>
 					<ul>
-						<li><a href="/cluster/nodes?return={returnStacked}">Nodes</a></li>
-						<li><a href="/cluster/ring?return={returnStacked}">Ring</a></li>
+						<li><a href="/cluster/nodes">Nodes</a></li>
+						<li><a href="/cluster/ring">Ring</a></li>
 					</ul>
 				</div>
 				

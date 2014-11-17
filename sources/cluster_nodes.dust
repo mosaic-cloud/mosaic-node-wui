@@ -71,7 +71,7 @@
 				{:else}
 					<div class="row">
 						<div class="span12">
-							<div class="alert-message">
+							<div class="alert-message block-message">
 								<h4>No other peers discovered!</h4>
 								<ul>
 									<li>You haven't started yet any other nodes. (Thus just ignore this warning.)</li>
