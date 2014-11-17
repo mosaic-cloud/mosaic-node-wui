@@ -13,7 +13,7 @@
 				<div class="row">
 					
 					<div class="span3 center">
-						<h5>Components</h5>
+						<h5>Processes</h5>
 						<a class="btn primary large small" href="/processes">List</a>
 						<a class="btn success large small" href="/process/create">Create</a>
 					</div>

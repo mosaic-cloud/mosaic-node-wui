@@ -17,6 +17,16 @@
 				padding-top : 60px;
 			}
 			
+			.fade-long {
+				opacity : 0.33;
+				transition: opacity 3s step-end;
+			}
+			
+			.fade-long:hover {
+				opacity : 1.00 !important;
+				transition: opacity 0s step-end !important;
+			}
+			
 			.fade {
 				opacity : 0.33;
 			}
@@ -30,7 +40,7 @@
 			}
 			
 			.shy-trigger:hover li.shy, .shy-trigger.shy:hover {
-				display : list-item !important;
+				display : list-item;
 			}
 			
 			a.btn.tiny, input.btn.tiny {
@@ -70,7 +80,7 @@
 	
 	<body>
 		
-		<div class="topbar">
+		<div class="topbar fade-long">
 			<div class="topbar-inner">
 				<div class="container-fluid">
 					<a class="brand" href="http://mosaic-cloud.eu/">mOSAIC</a>
@@ -91,20 +101,20 @@
 		
 		<div class="container-fluid">
 			
-			<div class="sidebar">
+			<div class="sidebar fade-long">
 				
 				<div class="center">
 					<a href="http://mosaic-cloud.eu/"><img src="/static/mosaic-logo-small.png" alt="mOSAIC" height="80px" /></a>
 				</div>
 				
-				<div class="well fade fade-trigger shy-trigger">
-					<h5>Components</h5>
+				<div class="well">
+					<h5>Processes</h5>
 					<ul>
 						<li><a href="/processes?return={returnStacked}">List</a></li>
 						<li><a href="/process/create?return={returnStacked}">Create</a>
 							<ul>
 								{#quickCreate}
-									<li class="shy"><a href="/process/create?type={type|uc}&return={returnStacked}">{name}</a></li>
+									<li><a href="/process/create?type={type|uc}&return={returnStacked}">{name}</a></li>
 								{/quickCreate}
 							</ul>
 						</li>
@@ -115,7 +125,7 @@
 					</ul>
 				</div>
 				
-				<div class="well fade fade-trigger shy-trigger">
+				<div class="well">
 					<h5>Cluster</h5>
 					<ul>
 						<li><a href="/cluster/nodes?return={returnStacked}">Nodes</a></li>
