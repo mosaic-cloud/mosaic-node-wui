@@ -329,10 +329,10 @@
     quickCreateOrder : 28
     configurationTemplate :
     callOperations :
-        modaclouds-metric-explorer:get-controller-endpoint :
+        modaclouds-load-balancer-controller:get-controller-endpoint :
             inputsTemplate :
             description :
-        modaclouds-metric-explorer:get-gateway-endpoint :
+        modaclouds-load-balancer-controller:get-gateway-endpoint :
             inputsTemplate :
             description :
     castOperations : {}

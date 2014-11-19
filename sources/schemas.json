@@ -14,11 +14,11 @@
     }, 
     "#modaclouds-components:load-balancer-controller": {
         "callOperations": {
-            "modaclouds-metric-explorer:get-controller-endpoint": {
+            "modaclouds-load-balancer-controller:get-controller-endpoint": {
                 "description": null, 
                 "inputsTemplate": null
             }, 
-            "modaclouds-metric-explorer:get-gateway-endpoint": {
+            "modaclouds-load-balancer-controller:get-gateway-endpoint": {
                 "description": null, 
                 "inputsTemplate": null
             }
