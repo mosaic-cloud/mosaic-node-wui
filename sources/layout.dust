@@ -87,7 +87,6 @@
 		<div class="topbar fade-long">
 			<div class="topbar-inner">
 				<div class="container-fluid">
-					<a class="brand" href="http://developers.mosaic-apps.eu/">mOSAIC</a>
 					<ul class="nav">
 						<li><a href="/">WebUI</a></li>
 						<li><a href="/console">Console</a></li>
