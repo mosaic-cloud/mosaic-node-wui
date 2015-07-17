@@ -1,9 +1,46 @@
 ---
 
+"#mosaic-components:couchdb" :
+    quickCreate : true
+    quickCreateName : CouchDB
+    quickCreateOrder : 551
+    configurationTemplate :
+    callOperations :
+        mosaic-couchdb:get-store-http-endpoint :
+            inputsTemplate :
+            description : |
+                <div class="row">
+                    <div class="span2 center"><a href="http://couchdb.apache.org/"><img src="/static/couchdb-logo-small.png" width="80px" alt="CouchDB" /></a></div>
+                    <div class="offset2">
+                        <h5>mosaic-couchdb:get-store-http-endpoint</h5>
+                        <p>Returns the CouchDB HTTP endpoint (an URL also accessible through a web-browser) which can be accessed with any <a href="http://wiki.apache.org/couchdb/Basics">compatible client</a>. (For further details about the protocol please consult the <a href="http://wiki.apache.org/couchdb/Reference">dedicated page</a>.)</p>
+                    </div>
+                </div>
+        mosaic-couchdb:get-node-identifier :
+            inputsTemplate :
+            description : |
+                <div class="row">
+                    <div class="span2 center"><a href="http://couchdb.apache.org/"><img src="/static/couchdb-logo-small.png" width="80px" alt="CouchDB" /></a></div>
+                    <div class="offset2">
+                        <h5>mosaic-couchdb:get-node-identifier</h5>
+                        <p>Returns the CouchDB Erlang node identifier (<code>erl -name</code> argument).</p>
+                    </div>
+                </div>
+    castOperations : {}
+    description : |
+        <div class="row">
+            <div class="span2 center"><a href="http://couchdb.apache.org/"><img src="/static/couchdb-logo-small.png" width="80px" alt="CouchDB" /></a></div>
+            <div class="offset2">
+                <h5>mosaic-components:couchdb</h5>
+                <p>CouchDB is a document store. (For details please consult the <a href="http://couchdb.apache.org/">dedicated page</a>.)</p>
+                <p>This is a customized version of CouchDB which presents itself as an integrated mOSAIC component, allowing the user to easily control and monitor the broker as a uniform mOSAIC component.</p>
+            </div>
+        </div>
+
 "#mosaic-components:rabbitmq" :
-    quickCreate : false
+    quickCreate : true
     quickCreateName : RabbitMQ
-    quickCreateOrder : 51
+    quickCreateOrder : 552
     configurationTemplate :
     callOperations :
         mosaic-rabbitmq:get-management-endpoint :
@@ -48,9 +85,9 @@
         </div>
 
 "#mosaic-components:riak-kv" :
-    quickCreate : false
+    quickCreate : true
     quickCreateName : RiakKV
-    quickCreateOrder : 52
+    quickCreateOrder : 554
     configurationTemplate :
     callOperations :
         mosaic-riak-kv:get-store-http-endpoint :
@@ -104,47 +141,10 @@
             </div>
         </div>
 
-"#mosaic-components:couchdb" :
-    quickCreate : false
-    quickCreateName : CouchDB
-    quickCreateOrder : 53
-    configurationTemplate :
-    callOperations :
-        mosaic-couchdb:get-store-http-endpoint :
-            inputsTemplate :
-            description : |
-                <div class="row">
-                    <div class="span2 center"><a href="http://couchdb.apache.org/"><img src="/static/couchdb-logo-small.png" width="80px" alt="CouchDB" /></a></div>
-                    <div class="offset2">
-                        <h5>mosaic-couchdb:get-store-http-endpoint</h5>
-                        <p>Returns the CouchDB HTTP endpoint (an URL also accessible through a web-browser) which can be accessed with any <a href="http://wiki.apache.org/couchdb/Basics">compatible client</a>. (For further details about the protocol please consult the <a href="http://wiki.apache.org/couchdb/Reference">dedicated page</a>.)</p>
-                    </div>
-                </div>
-        mosaic-couchdb:get-node-identifier :
-            inputsTemplate :
-            description : |
-                <div class="row">
-                    <div class="span2 center"><a href="http://couchdb.apache.org/"><img src="/static/couchdb-logo-small.png" width="80px" alt="CouchDB" /></a></div>
-                    <div class="offset2">
-                        <h5>mosaic-couchdb:get-node-identifier</h5>
-                        <p>Returns the CouchDB Erlang node identifier (<code>erl -name</code> argument).</p>
-                    </div>
-                </div>
-    castOperations : {}
-    description : |
-        <div class="row">
-            <div class="span2 center"><a href="http://couchdb.apache.org/"><img src="/static/couchdb-logo-small.png" width="80px" alt="CouchDB" /></a></div>
-            <div class="offset2">
-                <h5>mosaic-components:couchdb</h5>
-                <p>CouchDB is a document store. (For details please consult the <a href="http://couchdb.apache.org/">dedicated page</a>.)</p>
-                <p>This is a customized version of CouchDB which presents itself as an integrated mOSAIC component, allowing the user to easily control and monitor the broker as a uniform mOSAIC component.</p>
-            </div>
-        </div>
-
 "#mosaic-components:httpg" :
-    quickCreate : false
-    quickCreateName : mOSAIC HTTP-G
-    quickCreateOrder : 62
+    quickCreate : true
+    quickCreateName : HTTP-GW
+    quickCreateOrder : 542
     configurationTemplate :
     callOperations :
         mosaic-httpg:get-gateway-endpoint :
@@ -170,9 +170,9 @@
     castOperations : {}
 
 "#mosaic-components:mysql" :
-    quickCreate : false
-    quickCreateName : mOSAIC MySQL
-    quickCreateOrder : 54
+    quickCreate : true
+    quickCreateName : MySQL
+    quickCreateOrder : 553
     configurationTemplate :
     callOperations :
         mosaic-mysql:get-sql-endpoint :
@@ -181,9 +181,9 @@
     castOperations : {}
 
 "#mosaic-components:object-store" :
-    quickCreate : false
-    quickCreateName : mOSAIC object store
-    quickCreateOrder : 61
+    quickCreate : true
+    quickCreateName : ObjectStore
+    quickCreateOrder : 541
     configurationTemplate :
     callOperations :
         mosaic-object-store:get-service-endpoint :
@@ -192,9 +192,9 @@
     castOperations : {}
 
 "#mosaic-components:me2cp" :
-    quickCreate : false
-    quickCreateName : mOSAIC ME2-C
-    quickCreateOrder : 71
+    quickCreate : true
+    quickCreateName : ME2-C
+    quickCreateOrder : 571
     configurationTemplate : "<<bundle>>"
     callOperations : {}
     castOperations : {}
@@ -202,7 +202,7 @@
 "#mosaic-components:java-cloudlet-container" :
     quickCreate : true
     quickCreateName : mOSAIC Cloudlet
-    quickCreateOrder : 31
+    quickCreateOrder : 531
     configurationTemplate : ["<<cloudlet>>.properties", "http://<<host>>/<<cloudlet>>.jar"]
     callOperations : {}
     castOperations : {}
@@ -210,15 +210,15 @@
 "#mosaic-components:java-component-container" :
     quickCreate : true
     quickCreateName : mOSAIC Java-C
-    quickCreateOrder : 32
+    quickCreateOrder : 532
     configurationTemplate : ["<<callbacks-class>>", "http://<<host>>/<<component>>.jar"]
     callOperations : {}
     castOperations : {}
 
 "#mosaic-components:java-driver-amqp" :
-    quickCreate : false
+    quickCreate : true
     quickCreateName : mOSAIC AMQP-D
-    quickCreateOrder : 33
+    quickCreateOrder : 533
     configurationTemplate :
     callOperations :
         mosaic-component:get.channel.data :
@@ -227,9 +227,9 @@
     castOperations : {}
 
 "#mosaic-components:java-driver-riak" :
-    quickCreate : false
+    quickCreate : true
     quickCreateName : mOSAIC Riak-D
-    quickCreateOrder : 34
+    quickCreateOrder : 534
     configurationTemplate :
     callOperations :
         mosaic-component:get.channel.data :
@@ -237,21 +237,10 @@
             description :
     castOperations : {}
 
-"#modaclouds-components:knowledgebase" :
-    quickCreate : true
-    quickCreateName : MODA KB
-    quickCreateOrder : 21
-    configurationTemplate :
-    callOperations :
-        modaclouds-knowledgebase:get-http-endpoint :
-            inputsTemplate :
-            description :
-    castOperations : {}
-
 "#modaclouds-components:monitoring-manager" :
     quickCreate : true
     quickCreateName : MODA MonMan
-    quickCreateOrder : 22
+    quickCreateOrder : 251
     configurationTemplate :
     callOperations :
         modaclouds-monitoring-manager:get-http-endpoint :
@@ -262,7 +251,7 @@
 "#modaclouds-components:monitoring-dda" :
     quickCreate : true
     quickCreateName : MODA DDA
-    quickCreateOrder : 23
+    quickCreateOrder : 252
     configurationTemplate :
     callOperations :
         modaclouds-monitoring-dda:get-http-endpoint :
@@ -273,7 +262,7 @@
 "#modaclouds-components:monitoring-sda-weka" :
     quickCreate : true
     quickCreateName : MODA SDA-Weka
-    quickCreateOrder : 24
+    quickCreateOrder : 253
     configurationTemplate :
     callOperations :
         modaclouds-monitoring-sda-weka:get-http-endpoint :
@@ -284,7 +273,7 @@
 "#modaclouds-components:monitoring-sda-matlab" :
     quickCreate : true
     quickCreateName : MODA SDA-Matlab
-    quickCreateOrder : 25
+    quickCreateOrder : 254
     configurationTemplate :
     callOperations :
         modaclouds-monitoring-sda-matlab:get-http-endpoint :
@@ -292,10 +281,18 @@
             description :
     castOperations : {}
 
+"#modaclouds-components:monitoring-history-db" :
+    quickCreate : true
+    quickCreateName : MODA HistDB
+    quickCreateOrder : 255
+    configurationTemplate :
+    callOperations : {}
+    castOperations : {}
+
 "#modaclouds-components:metric-explorer" :
     quickCreate : true
     quickCreateName : MODA MetricExpl
-    quickCreateOrder : 26
+    quickCreateOrder : 256
     configurationTemplate :
     callOperations :
         modaclouds-metric-explorer:get-dashboard-endpoint :
@@ -315,7 +312,7 @@
 "#modaclouds-components:metric-importer" :
     quickCreate : true
     quickCreateName : MODA MetricImp
-    quickCreateOrder : 27
+    quickCreateOrder : 257
     configurationTemplate :
     callOperations :
         modaclouds-metric-importer:get-http-endpoint :
@@ -326,7 +323,7 @@
 "#modaclouds-components:load-balancer-controller" :
     quickCreate : true
     quickCreateName : MODA LB Ctl
-    quickCreateOrder : 28
+    quickCreateOrder : 261
     configurationTemplate :
     callOperations :
         modaclouds-load-balancer-controller:get-controller-endpoint :
@@ -340,9 +337,52 @@
 "#modaclouds-components:load-balancer-reasoner" :
     quickCreate : true
     quickCreateName : MODA LB Rsn
-    quickCreateOrder : 29
+    quickCreateOrder : 262
     configurationTemplate :
     callOperations : {}
+    castOperations : {}
+
+"#modaclouds-components:models-at-runtime" :
+    quickCreate : true
+    quickCreateName : MODA M@R
+    quickCreateOrder : 271
+    configurationTemplate :
+    callOperations : {}
+    castOperations : {}
+
+"#modaclouds-components:sla-core" :
+    quickCreate : true
+    quickCreateName : MODA SLA
+    quickCreateOrder : 272
+    configurationTemplate :
+    callOperations : {}
+    castOperations : {}
+
+"#modaclouds-components:fg-analyzer" :
+    quickCreate : true
+    quickCreateName : MODA FG An
+    quickCreateOrder : 281
+    configurationTemplate :
+    callOperations : {}
+    castOperations : {}
+
+"#modaclouds-components:fg-local-db" :
+    quickCreate : true
+    quickCreateName : MODA FG lDB
+    quickCreateOrder : 282
+    configurationTemplate :
+    callOperations : {}
+    castOperations : {}
+
+"#modaclouds-components:fuseki" :
+    quickCreate : true
+    quickCreateName : Fuseki
+    quickCreateOrder : 291
+    configurationTemplate :
+    callOperations :
+        modaclouds-fuseki:get-http-endpoint :
+            inputsTemplate :
+            description :
     castOperations : {}
 
 ...
