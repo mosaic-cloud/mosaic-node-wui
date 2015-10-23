@@ -8,6 +8,7 @@
 			<h1>Process transcript <code>{key}</code>
 				<span class="pull-right">
 					{?return}<a class="btn small" href="{return}">Return</a>{/return}
+					<a class="btn info small" href="/processes/{key|uc}/log/raw">Log (raw)</a>
 					<a class="btn small" href="/processes/{key|uc}/call?type={type|uc}&return={returnStacked|uc}">Call</a>
 					<a class="btn small" href="/processes/{key|uc}/cast?type={type|uc}&return={returnStacked|uc}">Cast</a>
 					<a class="btn success small" href="/process/create?type={type|uc}&configuration={?configuration}{configuration|json|uc}{:else}null{/configuration}&return={returnStacked|uc}">Clone</a>

@@ -394,9 +394,26 @@ function _handleGetTranscript (_request, _response, _next)
 		if (_error === null) {
 			_outcome.records = _.sortBy (_outcome.records, function (_record) { return (_record.timestamp); });
 			_renderView (200, "process_transcript", _request, _response, _next, _mixinContext (_request, true, {
-					key : _request.param ("key"), type : _request.param ("type"), configuration : JSON.parse (_request.param ("configuration")),
+					key : _request.param ("key"), type : _request.param ("type"), configuration : JSON.parse (_request.param ("configuration") || "null"),
 					outcome : _outcome,
 			}));
+		} else
+			_renderView (500, "failed", _request, _response, _next, _mixinContext (_request, false, {
+					error : _error,
+			}));
+	});
+}
+
+function _handleGetTranscriptRaw (_request, _response, _next)
+{
+	controller.getTranscript (_request.param ("key"), function (_error, _outcome) {
+		if (_error === null) {
+			_outcome.records = _.sortBy (_outcome.records, function (_record) { return (_record.timestamp); });
+			_response.writeHead (200, {"content-type" : "text/plain"});
+			_.each (_outcome.records, function (_record) {
+				_response.write (_record.data);
+			});
+			_response.end ();
 		} else
 			_renderView (500, "failed", _request, _response, _next, _mixinContext (_request, false, {
 					error : _error,
@@ -484,6 +501,7 @@ function _configureApplication (_application)
 	_application.get ("/processes/:key/stop", _handleStopProcessPre);
 	_application.post ("/processes/:key/stop", _handleStopProcess);
 	_application.get ("/processes/:key/log", _handleGetTranscript);
+	_application.get ("/processes/:key/log/raw", _handleGetTranscriptRaw);
 	
 	_application.get ("/process/create", _handleCreateProcessPre);
 	_application.post ("/process/create", _handleCreateProcess);

@@ -32,6 +32,7 @@
 										<td><code>{key}</code></td>
 										<td>
 											<a class="btn info tiny fade" href="/processes/{key|uc}/log?type={type|uc}&configuration={?configuration}{configuration|json|uc}{:else}null{/configuration}&return={returnStacked|uc}">Log</a>
+											<a class="btn info tiny fade" href="/processes/{key|uc}/log/raw">Log (raw)</a>
 											<a class="btn tiny fade" href="/processes/{key|uc}/call?type={type|uc}&return={returnStacked|uc}">Call</a>
 											<a class="btn tiny fade" href="/processes/{key|uc}/cast?type={type|uc}&return={returnStacked|uc}">Cast</a>
 											<a class="btn success tiny fade" href="/process/create?type={type|uc}&configuration={?configuration}{configuration|json|uc}{:else}null{/configuration}&return={returnStacked|uc}">Clone</a>
