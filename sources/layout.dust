@@ -5,7 +5,7 @@
 	
 	<head>
 		
-		<title>mOSAIC WebUI</title>
+		<title>mCC WebUI</title>
 		
 		<link rel="stylesheet" type="text/css" href="/static/bootstrap.min.css" />
 		
